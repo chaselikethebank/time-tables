@@ -1,0 +1,220 @@
+/* utility classes for stweardship 2024 color palette  */
+
+:root {
+  --navy: #324665;
+  --lavender: #aea2ca;
+  --white: #ffffff;
+  --black: #333;
+}
+
+.bg-navy {
+  background-color: var(--navy);
+}
+
+.text-navy {
+  color: var(--navy);
+}
+
+.bg-lavender {
+  background-color: var(--lavender);
+}
+
+.text-lavender {
+  color: var(--lavender);
+}
+
+.bg-white {
+  background-color: var(--white);
+}
+
+.text-white {
+  color: var(--white);
+}
+
+.bg-black {
+  background-color: var(--black);
+}
+
+.text-black {
+  color: var(--black);
+}
+
+.cursive {
+  font-family: 'Pacifico', cursive;
+}
+
+.shadow-blue{
+  -webkit-box-shadow: -14px 14px 0px 0px rgba(50,71,101,1);
+-moz-box-shadow: -14px 14px 0px 0px rgba(50,71,101,1);
+box-shadow: -14px 14px 0px 0px rgba(50,71,101,1);
+}
+
+.btn-2024 {
+  background-color: var(--white);
+  color: #324665;
+  border: 2px solid #324665;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  transition: all 0.3s ease-in-out;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.btn-2024:hover {
+  background-color: rgba(174, 162, 202, 0.5); 
+  transform: scale(1.02);
+  color: #333;
+
+
+}
+
+body {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero-stew-2024 {
+  background: url("../assets/Backgrounds/Generous_Background.jpg") center/cover
+  no-repeat;
+min-width: 100vw !important;
+}
+
+/* Custom background images for each section */
+.generous-church {
+  background: url("../assets/Backgrounds/Generous_Background.jpg") center/cover
+    no-repeat;
+  min-width: 100vw !important;
+}
+
+/* .bg-generous-w-50 {
+  padding: 4px;
+  background: url("../assets/Backgrounds/Generous_Background.jpg") center/cover
+    no-repeat;
+    height: auto;
+} */
+
+.guided-church {
+  background: url("../assets/Backgrounds/Grateful_Background.jpg") center/cover
+    no-repeat;
+}
+
+.grateful-church {
+  background: url("../assets/Backgrounds/Growing_Background.jpg") center/cover
+    no-repeat;
+}
+
+.growing-church {
+  background: url("../assets/Backgrounds/Guided_Background.png") center/cover
+    no-repeat;
+}
+
+.panel-body {
+  padding: 1.5rem;
+  transition: all 0.5s ease-in-out;
+  border: 2px solid var(--navy);
+  
+
+}
+
+.panel-body:hover {
+  background-color: rgba(174, 162, 202, 0.2); 
+  transform: scale(1.01);
+  border-radius: 4px;
+  box-shadow: none;
+  color: #333;
+  
+}
+
+.grow {
+  width: 50vw;
+  min-height: 10vh;
+  background: var(--navy);
+  color: var(--white);
+  transition: width 2s ease-in-out, transform 2s ease-in-out, border-radius 3s ease-in-out;
+  border-radius: 100%;
+}
+
+.expanded {
+  width: 100vw; 
+  border-radius: 0px;
+}
+
+
+.expand-dig-strategy {
+  height: max-content;
+  display: flex;
+  flex-direction: row;
+  gap: 6%;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content:flex-start;
+}
+
+.dig-strategy-left {
+  text-align: right;
+}
+
+.dig-strategy-right {
+  text-align: left;
+}
+.dig-strategy-left > img.img-responsive {
+  width: 12rem;
+  margin: 0 0 2rem auto;
+
+  
+}
+
+
+
+.circle {
+  min-width: 100px;
+  height: 100px;
+  background: var(--lavender);
+  border-radius: 50%;
+}
+
+.square-img {
+  /* width: 100%; */
+  position: relative;
+  overflow: hidden;
+}
+
+.square-img img {
+  width: 100%;
+  /* min-width: 40px; */
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.vertical-line {
+  border-left: 2px solid var(--lavender);; 
+  height: 50vh;
+}
+
+.vertical-line-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}

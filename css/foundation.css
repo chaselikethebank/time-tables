@@ -1,0 +1,205 @@
+/* ===== FOUNDATION PAGE ===== */
+/* Title stripe */
+.twmc-title-stripe-local {
+    background-color: var(--color-traditional);
+    color: #ffffff !important;
+    padding: 1rem 0;
+}
+
+/* Background */
+.twmc__bg-gradient-lightgrey-white {
+    background: linear-gradient(to bottom, #f0efee, #ffffff )
+}
+
+/* FOUNDATION - Ways to contribute */
+.twmc-foundation__grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(2, auto);
+    gap: 1rem;
+}
+
+.twmc-foundation__grid-card {
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    padding: 1rem 1.5rem;
+}
+
+.twmc-foundation__grid-1 {
+    grid-column: 1 / 3;
+    grid-row: 1 / 2;
+}
+
+.twmc-foundation__grid-2 {
+    grid-column: 3 /5;
+    grid-row: 1 / 2;
+}
+
+.twmc-foundation__grid-3 {
+    grid-column: 5 / 8;
+    grid-row: 1 / 2;
+}
+
+.twmc-foundation__grid-4 {
+    grid-column: 1 / 8;
+    grid-row: 2 / 3;
+}
+
+/* FOUNDATION - Donation recognition */
+.twmc-foundation__grid2 {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(2, auto);
+    gap: 1rem;
+}
+
+.twmc-foundation__grid2-card {
+    /* background-color: #f5f5f5; */
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 1rem 1.5rem;
+    box-shadow: 0 2px 20px rgb(0 0 0 / 15%);
+}
+
+.twmc-foundation__grid2-1 {
+    grid-column: 1 / 3;
+    grid-row: 1 / 2;
+}
+
+.twmc-foundation__grid2-2 {
+    grid-column: 3 /5;
+    grid-row: 1 / 2;
+}
+
+.twmc-foundation__grid2-3 {
+    grid-column: 5 / 8;
+    grid-row: 1 / 2;
+}
+
+.twmc-foundation__grid2-4 {
+    grid-column: 1 / 8;
+    grid-row: 2 / 3;
+}
+
+@media only screen and (max-width: 992px) {
+    .twmc-foundation__grid,
+    .twmc-foundation__grid2 {
+        grid-template-rows: repeat(3, auto);
+    }
+
+    .twmc-foundation__grid-1,
+    .twmc-foundation__grid2-1 {
+        grid-column: 1 / -1;
+        grid-row: 1 / 2;
+    }
+    
+    .twmc-foundation__grid-2,
+    .twmc-foundation__grid2-2 {
+        grid-column: 1 / -1;
+        grid-row: 2 / 3;
+    }
+    
+    .twmc-foundation__grid-3,
+    .twmc-foundation__grid2-3 {
+        grid-column: 1 / -1;
+        grid-row: 3 / 4;
+    }
+    
+    .twmc-foundation__grid-4,
+    .twmc-foundation__grid2-4 {
+        grid-column: 1 / -1;
+        grid-row: 4 / 5;
+    }
+    
+}
+
+/* ===== END OF FOUNDATION PAGE ===== */
+
+
+/* ===== OUR STORY PAGE ===== */
+.twmc-stories__box {
+    background-color: #f9f9f9;
+    padding: 1.5rem 1rem;
+    border-radius: 8px;
+}
+
+@media only screen and (max-width:768px) {
+    .twmc-stories__box {
+        margin: 0 1rem;
+    }
+}
+/* ===== END OF OUR STORY PAGE ===== */
+
+/* ===== MEMBERSHIP PAGE ===== */
+.twmc-card__bg-lightgrey {
+    background-color: #f5f5f5;
+    padding: 1.5rem 1rem;
+    border-radius: 8px;
+}
+
+.twmc-membership__flex-container-2col {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 2%;
+}
+
+.twmc-membership__flex-item-2col {
+    flex-basis: 49%;
+    overflow: visible;
+}
+
+@media only screen and (max-width: 992px) {
+    .twmc-membership__flex-container-2col {
+        gap: 0%;
+    }
+
+    .twmc-membership__flex-item-2col {
+        flex-basis: 100%;
+        margin: .5rem 0;
+    }
+}
+/* ===== END OF MEMBERSHIP PAGE ===== */
+
+/* ===== WHAT WE BELIEVE ===== */
+.twmc-flex-container--3-col__2pct-gap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 2%;
+}
+
+.twmc-flex-item--3-col__2pct-gap {
+    flex-basis: 32%;
+    overflow: visible;
+    margin-bottom: 1.5rem;
+}
+
+.twmc-card__border-wht-bg {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 1rem 1rem 1.5rem;
+    background-color: #fcfcfc;
+}
+
+@media only screen and (max-width: 992px) {
+    .twmc-flex-container--3-col__2pct-gap {
+        gap: 0;
+    }
+
+    .twmc-flex-item--3-col__2pct-gap {
+        flex-basis: 100%;
+    }
+}
+/* ===== END OF WHAT WE BELIEVE ===== */
+
+/* ===== FACILITIES ===== */
+.twmc-panel-heading--transparent {
+    background-color: transparent !important; 
+}
+
+.twmc-panel-title--narrow {
+    padding: 10px 20px;
+}
+/* ===== END OF FACILITIES ===== */
+

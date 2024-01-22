@@ -1,0 +1,541 @@
+/* ==== NAVIGATION ==== */
+/* ======================================== */
+
+/* ===== 2021 Navbar ===== */
+.twmc-header {
+    color: var(--color-white);
+    z-index: 999; 
+    
+    background-color: transparent;
+    padding: 20px 0;
+    
+    position: absolute;
+    width: 100%;
+}
+
+.twmc-header--white-bg {
+    color: var(--color-dark-orange) !important;
+    z-index: 999; 
+    
+    background-color: var(--color-white);
+    padding: 20px 0;
+
+    position: absolute;
+    width: 100%;
+}
+
+.twmc-header.mega-is-active,
+.twmc-header--white-bg.mega-is-active  {
+    color: transparent;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--color-light-grey5);
+    border-bottom: 1px solid var(--color-dark-grey);
+}
+
+.twmc-header__container,
+.twmc-header--white-bg__container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.twmc-header.mega-is-active > .twmc-container.twmc-header__container > nav > a.twmc-header__link,
+.twmc-header--white-bg.mega-is-active > .twmc-container.twmc-header__container > nav > a.twmc-header__link--dark {
+    display: none;
+}
+
+@media only screen and (max-width: 800px) {
+    .twmc-header,
+    .twmc-header--white-bg {
+        /* remove the white gap on top*/
+        position: absolute;
+    }
+
+    .twmc-header > .twmc-container.twmc-header__container > nav > a.twmc-header__link,
+    .twmc-header--white-bg > .twmc-container.twmc-header__container > nav > a.twmc-header__link--dark {
+        display: none;
+    }
+}
+
+/* logo */
+.navbar-brand,
+.twmc-nav__logo2,
+.twmc-nav__logo3 {
+    height: 45px;
+}
+
+@media only screen and (min-width: 992px) {
+    .navbar-brand,
+    .twmc-nav__logo2,
+    .twmc-nav__logo3  {
+        height: 50px;
+        margin-top: 0;
+        margin-left: 15px;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .navbar-brand,
+    .twmc-nav__logo2,
+    .twmc-nav__logo3  {
+        height: 40px !important;
+    }
+}
+
+@media only screen and (max-width: 300px) {
+    .navbar-brand,
+    .twmc-nav__logo2,
+    .twmc-nav__logo3  {
+        height: 30px !important;
+    }
+}
+
+.twmc-header-nav.mega-is-active > a,
+.twmc-header-nav--white-bg.mega-is-active > a{
+    color: var(--color-dark-orange);
+}
+
+
+/* Header link */
+.twmc-header__link {
+    padding: 0 15px;
+    color: var(--color-white);
+    text-decoration: none !important;
+
+    text-transform: uppercase;
+    transition: all .4s ease-in-out;
+}
+
+.twmc-header__link:hover,
+.twmc-header__link:focus {
+    color: var(--color-white);
+    background-color: rgba(255, 255, 255, .3);
+    padding: 10px 15px;
+    border-radius: 4px;
+    text-decoration: none !important;
+}
+
+/* Header link dark */
+.twmc-header__link--dark {
+    padding: 0 15px;
+    color: var(--color-dark-orange);
+    text-decoration: none !important;
+
+    text-transform: uppercase;
+    transition: all .4s ease-in-out;
+}
+
+.twmc-header__link--dark:hover,
+.twmc-header__link--dark:focus {
+    color: var(--color-dark-orange);
+    background-color: rgba(134, 38, 51, .3);
+    padding: 10px 15px;
+    border-radius: 4px;
+    text-decoration: none !important;
+}
+
+@media only screen and (max-width: 900px) {
+    .twmc-header__link,
+    .twmc-header__link--dark {
+        padding: 0 8px;
+    }
+}
+
+/* Hamburger Icon */
+.twmc-hamburger {
+    position: relative;
+    display: inline-block;
+    width: 45px;
+    cursor: pointer;
+    appearance: none;
+    background: none;
+    outline: none;
+    border: none;
+    vertical-align: middle;
+    padding-left: 15px;
+    
+    transition: all .3s ease-in-out;
+}
+
+.twmc-hamburger:hover {
+    opacity: .7;
+}
+
+.twmc-hamburger .twmc-bar, .twmc-hamburger::after, .twmc-hamburger::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 3.5px;
+    background-color: var(--color-white);
+    margin: 4px 0;
+    transition: all .3s ease-in-out;
+}
+
+/* Dark hamburger icon */
+.twmc-hamburger--dark {
+    position: relative;
+    display: inline-block;
+    width: 45px;
+    cursor: pointer;
+    appearance: none;
+    background: none;
+    outline: none;
+    border: none;
+    vertical-align: middle;
+    padding-left: 15px;
+    
+    transition: all .3s ease-in-out;
+}
+
+.twmc-hamburger--dark:hover {
+    opacity: .7;
+}
+
+/* Dark hamburger bar */
+.twmc-hamburger--dark .twmc-bar--dark, .twmc-hamburger--dark::after, .twmc-hamburger--dark::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 3.5px;
+    background-color: var(--color-dark-orange);
+    margin: 4px 0;
+    transition: all .3s ease-in-out;
+}
+
+.twmc-hamburger.mega-is-active::before,
+.twmc-hamburger--dark.mega-is-active::before {
+    transform: rotate(-45deg) translate(-5px, 5px);
+
+    background-color: var(--color-dark-orange);
+}
+
+.twmc-hamburger.mega-is-active::after,
+.twmc-hamburger--dark.mega-is-active::after {
+    transform: rotate(45deg) translate(-5px, -6px);
+
+    background-color: var(--color-dark-orange);
+}
+
+.twmc-hamburger.mega-is-active .twmc-bar,
+.twmc-hamburger--dark.mega-is-active .twmc-bar--dark {
+	opacity: 0;
+}
+
+/* ==== hamburger icon on click ==== */
+.twmc-mega-nav,
+.twmc-mega-nav--white-bg {
+    position: fixed;
+    top: 0;
+    left: 100%;
+    width: 100%;
+    height: max-content;
+    display: block;
+    z-index: 98;
+    background-color: var(--color-light-grey5);
+    padding-top: 80px;
+    padding-bottom: 10px;
+    transition: all .3s ease-in-out;
+}
+
+.twmc-mega-nav.mega-is-active,
+.twmc-mega-nav--white-bg.mega-is-active {
+    left: 0;
+    color: var(--color-dark-orange);
+
+    /* make the mega menu scrollable */
+    /* height: 100vh; */
+
+    min-height: max-content;
+    max-height: 100vh;
+    overflow-y: scroll;
+}
+
+@media only screen and (max-width: 800px) {
+    .twmc-mega-nav.mega-is-active,
+    .twmc-mega-nav--white-bg.mega-is-active {
+        /* scroll the mega menu vertically */
+        height: 100vh;
+        overflow-y: scroll;
+
+        min-height: initial;
+        max-height: initial;
+    }
+}
+
+
+.twmc-mega-nav__container,
+.twmc-mega-nav--white-bg__container {
+    margin-top: 10px;
+}
+
+.twmc-mega-nav__services--ml-small,
+.twmc-mega-nav--white-bg__services--ml-small {
+    margin-left: 10px;
+}
+
+.twmc-mega-nav__icon,
+.twmc-mega-nav--white-bg__icon {
+    color: var(--color-traditional);
+    transition: all .3s ease-in-out;
+}
+
+.twmc-mega-nav__icon:hover,
+.twmc-mega-nav--white-bg__icon:hover {
+    transform: scale(1.2);
+}
+
+.twmc-navbar--transparent {
+    background-color: transparent;
+    padding: 20px 0;
+}
+
+.twmc-icon-bar {
+    background-color: var(--color-white);
+}
+
+
+.twmc-mega-nav__h3-compact,
+.twmc-mega-nav--white-bg__h3-compact {
+    padding: 0;
+    color: var(--color-dark-orange);
+}
+
+@media only screen and (max-width: 576px) {
+    .twmc-mega-nav__h3-compact,
+    .twmc-mega-nav--white-bg__h3-compact {
+        padding: 20px 0 0;
+    }
+}
+
+.twmc-nav__link2-compact {
+    display: block;
+    width: 100%;
+    margin: 0 0 3px;
+    text-decoration: none;
+    color: var(--color-dark-orange);
+    font-size: 14px;
+
+    transition: all .3s ease-in-out;
+}
+
+.twmc-nav__link2-compact:hover {
+    color: var(--color-traditional);
+    text-decoration: none;
+    padding-left: 10px;
+}
+
+/* ===== Mega Navigation Grid V3 ===== */
+.twmc-mega-nav__grid3,
+.twmc-mega-nav--white-bg__grid3 {
+    display: grid;
+    gap: 1rem;
+    grid-template-rows: repeat(2, max-content);
+    grid-template-columns: [buttons3-start] repeat(3, 1fr) [buttons3-end about3-start] repeat(3, 1fr) [about3-end servicesconnect3-start] repeat(3, 1fr) [servicesconnect3-end ministries3-start] repeat(3, 1fr) [ministries3-end] ;
+}
+
+@media only screen and (max-width: 576px) {
+    .twmc-mega-nav__grid3,
+    .twmc-mega-nav--white-bg__grid3 {
+        gap: 0;
+    }
+}
+
+/* Navigation buttons */
+.twmc-mega-nav__buttons3,
+.twmc-mega-nav--white-bg__buttons3 {
+    grid-row: 1 / 2;
+    grid-column: buttons3-start / buttons3-end;
+
+    /* margin-top: 55px; */
+    margin-top: 30px;
+}
+/* Socmed */
+.twmc-mega-nav__socmed3,
+.twmc-mega-nav--white-bg__socmed3 {
+    color: var(--color-dark-orange);
+    grid-column: 1 / -1;
+    grid-row: 2 / 3;
+
+    justify-items: flex-start;
+    margin-top: 30px;
+
+    display: flex;
+    justify-content: space-between;
+    max-width: 200px;
+    
+}
+
+
+/* About */
+.twmc-mega-nav__about3,
+.twmc-mega-nav--white-bg__about3 {
+    grid-column: about3-start / about3-end;
+    grid-row: 1 / 2;
+}
+
+/* Services & Connect */
+.twmc-mega-nav__services-connect3,
+.twmc-mega-nav--white-bg__services-connect3 {
+    grid-column: servicesconnect3-start / servicesconnect3-end;
+    grid-row: 1 / 2;
+}
+
+.twmc-nav__services-img-compact {
+    /* height: 25px; */
+    height: 20px;
+    width: auto;
+}
+
+/* Ministries */
+.twmc-mega-nav__ministries3,
+.twmc-mega-nav--white-bg__ministries3{
+    grid-row: 1 / 2;
+    grid-column: ministries3-start / ministries3-end;
+}
+
+/* Grid media queries */
+@media only screen and (max-width: 1020px) {
+    .twmc-mega-nav__socmed3 {
+        max-width: 180px;
+    }
+}
+
+@media only screen and (max-width: 920px) {
+    .twmc-mega-nav__socmed3 {
+        max-width: 160px;
+    }
+}
+
+@media only screen and (max-width: 820px) {
+    .twmc-mega-nav__socmed3 {
+        max-width: 150px;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+
+    .twmc-mega-nav__grid3,
+    .twmc-mega-nav--white-bg__grid3 {
+        grid-template-rows: repeat(3, max-content);
+        grid-template-columns: [buttons3-start] 1fr [buttons3-end about3-start] 1fr [about3-end];
+    }
+
+    .twmc-mega-nav__buttons3,
+    .twmc-mega-nav--white-bg__buttons3 {
+        grid-row: 1 / 2;
+        grid-column: buttons3-start / buttons3-end;
+    }
+
+
+    .twmc-mega-nav__about3,
+    .twmc-mega-nav--white-bg__about3 {
+        grid-row: 2 / 3;
+        grid-column: buttons3-start / buttons3-end;
+    }
+
+    .twmc-mega-nav__services-connect3,
+    .twmc-mega-nav--white-bg__services-connect3 {
+        grid-row: 1 / 2;
+        grid-column: about3-start / about3-end;
+    }
+
+    .twmc-mega-nav__ministries3,
+    .twmc-mega-nav--white-bg__ministries3 {
+        grid-row: 2 / 3;
+        grid-column: about3-start / about3-end;
+        padding-bottom: 4rem;
+    }
+
+}
+
+@media only screen and (max-width: 576px) {
+    .twmc-mega-nav__grid3,
+    .twmc-mega-nav--white-bg__grid3 {
+        grid-template-rows: repeat(4, max-content);
+        grid-template-columns: 1fr;
+    }
+
+    .twmc-mega-nav__buttons3,
+    .twmc-mega-nav--white-bg__buttons3 {
+        grid-row: 1 / 2;
+        grid-column: 1 / -1;
+    }
+
+    .twmc-mega-nav__about3,
+    .twmc-mega-nav--white-bg__about3 {
+        grid-row: 2 / 3;
+        grid-column: 1 / -1;
+    }
+
+    .twmc-mega-nav__services-connect3,
+    .twmc-mega-nav--white-bg__services-connect3 {
+        grid-row: 3 / 4;
+        grid-column: 1 / -1;
+    }
+
+    .twmc-mega-nav__ministries3,
+    .twmc-mega-nav--white-bg__ministries3 {
+        grid-row: 4 / 5;
+        grid-column: 1 / -1;
+        padding-bottom: 5rem;
+    }
+
+}
+/* ===== End of Mega Navigation Grid V3 ===== */
+
+/* Navbar button */
+/* Button mega nav */
+.twmc--btn--outline-mega-compact  {
+    border: 2px solid transparent;
+    border-color: var(--color-dark-orange);
+    color: var(--color-dark-orange);
+    min-width: 200px;
+    max-width: 100%;
+    margin-bottom: 5px;
+    margin-right: 10px;
+
+    transition: all .3s ease-in-out;
+}
+
+.twmc--btn--outline-mega-compact :hover,
+.twmc--btn--outline-mega-compact :focus {
+    background-color: rgba(255, 255, 255, .2) !important;
+    text-decoration: none;
+    color: var(--color-dark-orange);
+
+    transform: scale(1.05);
+}
+
+@media only screen and (max-width: 1020px) {
+    .twmc--btn--outline-mega-compact  {
+        min-width: 180px;
+    }
+}
+
+
+@media only screen and (max-width: 920px) {
+    .twmc--btn--outline-mega-compact  {
+        min-width: 160px;
+    }
+}
+
+@media only screen and (max-width: 820px) {
+    .twmc--btn--outline-mega-compact  {
+        min-width: 150px;
+    }
+}
+
+/* ===== End of 2021 Navbar ===== */
+
+
+/* ===== Navbar Jul 2022 ===== */
+header {
+    position: relative;
+}
+/* ===== End of Navbar Jul 2022 ===== */
+
+/* ==== END OF NAVIGATION ==== */
+/* ======================================== */

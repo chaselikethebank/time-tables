@@ -1,0 +1,32 @@
+:root {
+    padding-top: 2rem;
+}
+
+.panel-body {
+    transition: all 0.5s ease-in-out;
+    border: 2px solid black;
+}
+.rounded {
+    border-radius: 4px !important;
+}
+
+body {
+    color: #333;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  ul li::before {
+    content: '\f105'; /* Unicode for a checkmark (Font Awesome) */
+    font-family: 'FontAwesome'; /* Use the Font Awesome font */
+    margin-right: 8px; /* Adjust spacing as needed */
+  }
+  
+  ul li::before {
+    content: '\2022'; /* Unicode for a bullet point */
+    color: #007bff; /* Customize color */
+    margin-right: 8px; /* Adjust spacing as needed */
+  }

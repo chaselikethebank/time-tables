@@ -1,0 +1,394 @@
+/* ==== NAVIGATION ==== */
+/* ======================================== */
+.twmc__nav-logo {
+    height: 45px;
+}
+
+.twmc__nav-right {
+    height: 47px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+/* ==== Transparent background navbar === */
+.twmc__nav {
+    color: var(--color-white);
+    z-index: 999; 
+    
+    background-color: transparent;
+    padding: 20px 0;
+    
+    position: absolute;
+    width: 100%;
+}
+
+/* @media only screen and (max-width: 991px) {
+    .twmc__nav {
+        background-color: var(--color-white);
+        border-radius: 0;
+    }
+} */
+
+.twmc__nav-link {
+    padding: 0 15px;
+    color: var(--color-white);
+    text-decoration: none !important;
+
+    text-transform: uppercase;
+    transition: all .4s ease-in-out;
+}
+
+.twmc__nav-link:hover,
+.twmc__nav-link:focus {
+    color: var(--color-white);
+    background-color: rgba(255, 255, 255, .3);
+    padding: 10px 15px;
+    border-radius: 4px;
+    text-decoration: none !important;
+}
+/* ==== End of transparent background navbar === */
+
+/* === White background navbar === */
+.twmc__nav--white {
+    color: var(--color-dark-orange);
+    z-index: 999; 
+    
+    background-color: var(--color-white);
+    padding: 20px 0;
+    
+    position: absolute;
+    /* width: 90%;
+    left: 5%; */
+    width: 100%;
+    border-radius: 0;
+    
+    
+}
+
+/* .twmc__nav--white-full-width {
+    color: var(--color-dark-orange);
+    z-index: 999; 
+    
+    background-color: var(--color-white);
+    padding: 20px 0;
+    
+    position: absolute;
+    width: 100%;
+    border-radius: 0;
+    
+    
+} */
+
+.twmc__nav--white-wrapper {
+    color: var(--color-dark-orange);
+    z-index: 999; 
+    
+    background-color: var(--color-white);
+    padding: 20px 0;
+}
+
+.twmc__nav-link--dark {
+    padding: 0 15px;
+    color: var(--color-dark-orange);
+    text-decoration: none !important;
+
+    text-transform: uppercase;
+    transition: all .4s ease-in-out;
+}
+
+.twmc__nav-link--dark:hover,
+.twmc__nav-link--dark:focus {
+    color: var(--color-dark-orange);
+    background-color: rgba(110, 98, 89, .1);
+    padding: 10px 15px;
+    border-radius: 4px;
+    text-decoration: none !important;
+}
+/* === End of white background navbar === */
+
+
+
+/* Mega menu */
+.twmc__nav-megamenu {
+    background-color: var(--color-white);
+    color: var(--color-dark-orange);
+    border-radius: 4px;
+    display: grid;
+    gap: 1rem;
+    grid-template-rows: repeat(2, max-content);
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.twmc__mega-buttons {
+    grid-row: 1 / -1;
+    grid-column: 1 / 2;
+    margin-top: 20px;
+}
+
+.twmc__mega-socmed {
+    color: var(--color-dark-orange);
+    grid-column: 1 / -1;
+    grid-row: 2 / 3;
+
+    justify-items: flex-start;
+    margin-top: 30px;
+
+    display: flex;
+    justify-content: space-between;
+    max-width: 200px;
+}
+
+.twmc__mega-about {
+    grid-row: 1 / -1;
+    grid-column: 2 / 3;
+}
+
+.twmc__mega-services-connect {
+    grid-row: 1 / -1;
+    grid-column: 3 / 4;
+}
+.twmc__mega-ministries {
+    grid-row: 1 / -1;
+    grid-column: 4 / 5;
+}
+
+@media only screen and (min-width: 992px) {
+    /* Mobile nav */
+    .twmc__nav-mobile,
+    .twmc__nav-mobile-white {
+        display: none;
+    }
+
+    /* .twmc__nav-mobile,
+    .twmc__nav-mobile-white,
+    .twmc__nav-logo-color--toggle {
+        display: none;
+    } */
+}
+
+@media only screen and (max-width:991px) {
+    /* Toggle to hamburger icon */
+    .navbar-header {
+        float: none;
+    }
+    .navbar-toggle {
+        display: block;
+    }
+    .navbar-collapse {
+        border-top: 1px solid transparent;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+    }
+    .navbar-collapse.collapse {
+        display: none!important;
+    }
+    .navbar-nav {
+        float: none!important;
+        margin: 7.5px -15px;
+    }
+    .navbar-nav>li {
+        float: none;
+    }
+    .navbar-nav>li>a {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .navbar-text {
+        float: none;
+        margin: 15px 0;
+    }
+    /* since 3.1.0 */
+    .navbar-collapse.collapse.in { 
+        display: block!important;
+    }
+    .collapsing {
+        overflow: hidden!important;
+    }
+    /* End of toggle to hamburger icon */
+
+    /* Mobile nav */
+    .nav.navbar-nav.navbar-right.twmc__nav-right,
+    .navbar-collapse.twmc__nav-collapse.collapse.in > .nav.navbar-nav.navbar-right.twmc__nav-right {
+        display: none;
+    }
+
+    /* .nav.navbar-nav.navbar-right.twmc__nav-right,
+    .navbar-collapse.twmc__nav-collapse.collapse.in > .nav.navbar-nav.navbar-right.twmc__nav-right,
+    .twmc__nav-logo-white--toggle {
+        display: none;
+    } */
+
+    /* Remove thin top border */
+    .navbar-collapse.twmc__nav-collapse {
+        box-shadow: none;
+    }
+    
+        
+
+    .twmc__nav-mobile {
+        background-color: var(--color-white);
+        color: var(--color-dark-orange);
+        border-radius: 4px;
+        /* width: 100vw; */
+        display: grid;
+        gap: 1rem;
+        grid-template-rows: repeat(3, max-content);
+        grid-template-columns: repeat(2, 1fr);
+        padding: 30px;
+        
+        margin-top: 20px;
+
+
+        /* position: absolute;
+        left: 0;
+        padding: 30px 8%;
+        transition: all .4s ease-in-out; */
+    }
+
+    .twmc__nav-mobile-white {
+        background-color: var(--color-white);
+        color: var(--color-dark-orange);
+        border-top: 1px solid lightgrey;
+        display: grid;
+        gap: 1rem;
+        grid-template-rows: repeat(3, max-content);
+        grid-template-columns: repeat(2, 1fr);
+        padding: 30px;
+        margin-top: 20px;
+    }
+
+   .twmc__nav-link {
+        color: var(--color-dark-orange);
+    }
+
+    .navbar-toggle.twmc__hamburger {
+        margin-right: 0;
+    }
+
+    /* Mobile grid */
+    .twmc__mobile-buttons {
+        grid-row: 1 / 2;
+        grid-column: 1 / -1;
+        margin-top: 10px;
+    }
+
+    .twmc__mobile-about {
+        grid-row: 2 / 3;
+        grid-column: 1 / 2;
+    }
+
+    .twmc__mobile-services-connect {
+        grid-row: 2 / 3;
+        grid-column: 2 / 3;
+    }
+
+    .twmc__mobile-ministries {
+        grid-row: 3 / 4;
+        grid-column: 1 / 2;
+    }
+
+    /* End of Mobile nav */
+}
+
+@media only screen and (max-width: 576px) {
+    /* Mobile grid */
+    .twmc__nav-mobile{
+        grid-template-rows: repeat(4, max-content);
+    }
+
+    .twmc__mobile-buttons {
+        grid-row: 1 / 2;
+        grid-column: 1 / -1;
+    }
+
+    .twmc__mobile-about {
+        grid-row: 2 / 3;
+        grid-column: 1 / -1;
+    }
+
+    .twmc__mobile-services-connect {
+        grid-row: 3 / 4;
+        grid-column: 1 / -1;
+    }
+
+    .twmc__mobile-ministries {
+        grid-row: 4 / 5;
+        grid-column: 1 / -1;
+    }
+}
+
+.twmc-icon-bar {
+    background-color: var(--color-white);
+}
+
+/* @media only screen and (max-width: 991px) {
+    .twmc-icon-bar {
+        background-color: var(--color-dark-orange);
+    }
+
+    a > img.twmc__nav-logo {
+        background-image: url("https://www.thewoodlandsmethodist.org/Content/web/twumc-logo-fullcolor.png");
+        height: 45px;
+    }
+} */
+
+.twmc-icon-bar-dark {
+    background-color: var(--color-dark-orange);
+}
+
+.dropdown-menu.twmc__nav-dropdown-menu {
+    width: 96%;
+    right: 2%;
+
+    color: var(--color-black);
+    padding: 30px; 
+}
+
+.dropdown-menu.twmc__nav-dropdown-menu--white {
+    width: 96%;
+    right: 2%;
+
+    color: var(--color-black);
+    padding: 30px; 
+}
+
+.dropdown-menu.twmc__nav-dropdown-menu--white-full-width {
+    width: 100%;
+
+    color: var(--color-black);
+    padding: 30px;
+    border-radius: 0;
+}
+
+@media only screen and (max-width: 767px) {
+    .dropdown-menu.twmc__nav-dropdown-menu {
+        width: 84%;
+        left: 8%;
+    }
+}
+
+.twmc__nav-h3 {
+    color: var(--color-dark-orange);
+}
+/* ==== END OF NAVIGATION ==== */
+/* ======================================== */
+
+
+/* ===== HERO ===== */
+/* ======================================== */
+#twmc-hero__home-video {
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, .5)), url("https://images.unsplash.com/photo-1438232992991-995b7058bbb3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1173&q=80");
+    text-align: center;
+}
+
+#twmc-hero__home-video > video {
+    width: 100%;
+    height: 650px;
+    object-fit: cover;
+    z-index: 11;
+    
+}
+
+/* ===== END OF HERO ===== */
+/* ======================================== */

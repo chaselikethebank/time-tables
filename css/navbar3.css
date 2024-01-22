@@ -1,0 +1,214 @@
+/* ===== Navbar ===== */
+.twmc-nav-wrapper {
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: 10000;
+    height: max-content;
+
+    /* remove later */
+    background-color: black;
+}
+
+.twmc-nav-wrapper.mega-is-active {
+    top: -90px;
+}
+
+.twmc-navbar-transparent {
+    background-color: rgba(241, 194, 50, .5);
+    /* background-color: transparent; */
+    /* opacity: .5; */
+    z-index: 10001;
+}
+
+.twmc-navbar-transparent__wrapper,
+.twmc-navbar-white__wrapper,
+.twmc-mega-menu--top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 90px;
+}
+
+.twmc-header.mega-is-active > .twmc-container.twmc-header__container > nav > a.twmc-header__link,
+.twmc-header--white-bg.mega-is-active > .twmc-container.twmc-header__container > nav > a.twmc-header__link--dark {
+    display: none;
+}
+
+@media only screen and (max-width: 800px) {
+    .twmc-header,
+    .twmc-header--white-bg {
+        /* remove the white gap on top*/
+        position: absolute;
+    }
+
+    .twmc-header > .twmc-container.twmc-header__container > nav > a.twmc-header__link,
+    .twmc-header--white-bg > .twmc-container.twmc-header__container > nav > a.twmc-header__link--dark {
+        display: none;
+    }
+}
+
+/* logo */
+.navbar-brand,
+.twmc-nav__logo-white,
+.twmc-nav__logo-color {
+    height: 45px;
+}
+
+@media only screen and (min-width: 992px) {
+    .navbar-brand,
+    .twmc-nav__logo2,
+    .twmc-nav__logo3  {
+        height: 50px;
+        margin-top: 0;
+        margin-left: 15px;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .navbar-brand,
+    .twmc-nav__logo2,
+    .twmc-nav__logo3  {
+        height: 40px !important;
+    }
+}
+
+@media only screen and (max-width: 300px) {
+    .navbar-brand,
+    .twmc-nav__logo2,
+    .twmc-nav__logo3  {
+        height: 30px !important;
+    }
+}
+
+
+.twmc-mega-menu {
+    background-color: pink;
+    position: relative;
+    top: -90px;
+    left: 0;
+    z-index: 10002;
+
+    /* Hide the mega menu */
+    display: none;
+}
+
+.twmc-mega-menu.mega-is-active {
+    display: block;
+}
+
+.twmc-mega-menu--top {
+    background-color: lightgray;
+}
+
+.twmc-navbar {
+    color: white;
+
+
+    /* color: var(--color-white);
+    z-index: 999; 
+    
+    background-color: transparent;
+    padding: 20px 0;
+    
+    position: absolute;
+    width: 100%; */
+}
+
+/* Hamburger Icon */
+.twmc-hamburger {
+    position: relative;
+    display: inline-block;
+    width: 45px;
+    cursor: pointer;
+    appearance: none;
+    background: none;
+    outline: none;
+    border: none;
+    vertical-align: middle;
+    padding-left: 15px;
+    
+    transition: all .3s ease-in-out;
+}
+
+.twmc-hamburger:hover {
+    opacity: .7;
+}
+
+.twmc-hamburger .twmc-bar, .twmc-hamburger::after, .twmc-hamburger::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 3.5px;
+    background-color: var(--color-white);
+    margin: 4px 0;
+    /* transition: .4s; */
+    transition: all .3s ease-in-out;
+}
+
+/* Dark hamburger icon */
+.twmc-hamburger--dark {
+    position: relative;
+    display: inline-block;
+    width: 45px;
+    cursor: pointer;
+    appearance: none;
+    background: none;
+    outline: none;
+    border: none;
+    vertical-align: middle;
+    padding-left: 15px;
+    
+    transition: all .3s ease-in-out;
+}
+
+.twmc-hamburger--dark:hover {
+    opacity: .7;
+}
+
+/* Dark hamburger bar */
+.twmc-hamburger--dark .twmc-bar--dark, .twmc-hamburger--dark::after, .twmc-hamburger--dark::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 3.5px;
+    background-color: var(--color-dark-orange);
+    margin: 4px 0;
+    /* transition: .4s; */
+    transition: all .3s ease-in-out;
+}
+
+.twmc-hamburger.mega-is-active::before,
+.twmc-hamburger--dark.mega-is-active::before {
+    transform: rotate(-45deg) translate(-5px, 5px);
+
+    background-color: var(--color-dark-orange);
+}
+
+.twmc-hamburger.mega-is-active::after,
+.twmc-hamburger--dark.mega-is-active::after {
+    transform: rotate(45deg) translate(-5px, -6px);
+
+    background-color: var(--color-dark-orange);
+}
+
+.twmc-hamburger.mega-is-active .twmc-bar,
+.twmc-hamburger--dark.mega-is-active .twmc-bar--dark {
+	opacity: 0;
+}
+
+
+/* ===== Navbar is open ===== */
+
+
+/* ===== Hero ===== */
+.twmc-hero-transparent {
+    background-color: cornflowerblue;
+    height: 650px;
+    width: 100%;
+
+   position: relative;
+   top: -90px;
+   left: 0;
+   z-index: 0;
+}
