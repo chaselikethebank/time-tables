@@ -27,6 +27,27 @@
     <link rel="stylesheet" href="./css/seasonal.css" />
     <link rel="stylesheet" href="./css/service-times.css" />
     <script src="./js/twmc-scripts.js"></script>
+    <style>
+      /*       
+      .special-p {
+  position: relative;
+  display: inline-block;
+}
+
+.special-p::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;  
+  background-image: linear-gradient(to left, transparent 10%, #850129 100%);
+  background-position: 0 100%;
+  background-size: 250px ;   
+  border-radius: 1px;
+
+} */
+    </style>
   </head>
   <body>
     <div class="container-fluid texture-bg h-25 d-flex align-items-center">
@@ -75,10 +96,10 @@
         <!-- Traditional Card -->
         <div class="container texture-bg-noise-dark py-3">
           <div class="row">
-            <h2 class="text-uppercase px-3">Traditional</h2>
+            <h2 class="text-uppercase px-3">Traditional {Card Design #1}</h2>
           </div>
           <div class="row">
-            <div class="col-md-4 order-md-1">
+            <div class="col-sm-6">
               <div class="embed-container">
                 <iframe
                   src="https://player.vimeo.com/video/646149190"
@@ -87,39 +108,32 @@
                 ></iframe>
               </div>
             </div>
-            <div class="pl-3 pt-3">
-              <div class="col-md-2">
-                <div class="service-info-container">
-                  <i class="fas fa-clock"></i>
-                  <div class="service-info">
-                    <h5 class="text-uppercase mb-2">Service Times</h5>
-                    <p class="font-weight-normal small">
-                      Sundays at 8:30 and 11:00 a.m.
-                    </p>
-                  </div>
+            <div class="col-sm-6">
+              <div class="row">
+                <div class="col-md-12">
+                  <h5 class="text-uppercase mb-2">
+                    <i class="fas fa-clock"></i> Service Times
+                  </h5>
+                  <p class="font-weight-normal  ">
+                    Sundays at 8:30 and 11:00 a.m.
+                  </p>
                 </div>
-              </div>
-              <div class="col-md-2">
-                <div class="service-info-container">
-                  <i class="fas fa-music"></i>
-                  <div class="service-info">
-                    <h5 class="text-uppercase mb-2">Music</h5>
-                    <p class="font-weight-normal small">
-                      Choirs and traditional hymns
-                    </p>
-                  </div>
+                <div class="col-md-12">
+                  <h5 class="text-uppercase mb-2">
+                    <i class="fas fa-music"></i> Music
+                  </h5>
+                  <p class="font-weight-normal  ">
+                    Choirs and traditional hymns
+                  </p>
                 </div>
-              </div>
-              <div class="col-md-4">
-                <div class="service-info-container">
-                  <i class="fas fa-parking"></i>
-                  <div class="service-info">
-                    <h5 class="text-uppercase mb-2">Parking Information</h5>
-                    <p class="font-weight-normal small">
-                      Parking lots A, B, C, D, E, F and G. Lot A reserved for
-                      senior and special accessibility.
-                    </p>
-                  </div>
+                <div class="col-md-12">
+                  <h5 class="text-uppercase mb-2">
+                    <i class="fas fa-parking"></i> Parking Information
+                  </h5>
+                  <p class="font-weight-normal  ">
+                    Parking lots A, B, C, D, E, F and G. Lot A reserved for
+                    senior and special accessibility.
+                  </p>
                 </div>
               </div>
             </div>
@@ -128,7 +142,7 @@
         <!-- Chapel Card -->
         <div class="container texture-bg-noise-light py-3">
           <div class="row">
-            <h2 class="text-uppercase px-3">Chapel</h2>
+            <h2 class="text-uppercase px-3">Chapel {Card Design #2}</h2>
           </div>
           <div class="row">
             <div class="col-md-4 order-md-1">
@@ -140,7 +154,7 @@
                 ></iframe>
               </div>
             </div>
-            <div class="pl-3 pt-3">
+            <div class="pl-3 pt-5">
               <div class="col-md-2">
                 <div class="service-info-container">
                   <i class="fas fa-clock"></i>
@@ -177,12 +191,13 @@
           </div>
         </div>
         <!-- Harvest -->
-        <div class="container texture-bg-noise-dark py-3">
+        <div class="shadow container texture-bg-noise-dark pb-3 rounded ">
+
           <div class="row">
-            <h2 class="text-uppercase px-3">Harvest</h2>
+            <h2 class="text-uppercase pb-2 px-3">Harvest {Card Design #3}</h2>
           </div>
           <div class="row">
-            <div class="col-md-4 order-md-1">
+            <div class="col-md-3 order-md-1">
               <div class="embed-container">
                 <iframe
                   src="https://player.vimeo.com/video/646154854"
@@ -191,37 +206,30 @@
                 ></iframe>
               </div>
             </div>
-            <div class="pl-3 pt-3">
-              <div class="col-md-2">
-                <div class="service-info-container">
+            <div class="pl-3 pt-5">
+              <div class="col-md-3  pt-4">
+                <h5 class="text-uppercase mb-2 ">
                   <i class="fas fa-clock"></i>
-                  <div class="service-info">
-                    <h5 class="text-uppercase mb-2">Service Times</h5>
-                    <p class="font-weight-normal small">
-                      Sundays at 9:30 and 11:00 a.m.
-                    </p>
-                  </div>
-                </div>
+                  Service Times
+                </h5>
+                <p class="font-weight-normal">Sundays at 9:30 and 11:00 a.m.</p>
               </div>
-              <div class="col-md-2">
-                <div class="service-info-container">
+              <div class="col-md-3 pt-4">
+                <h5 class="text-uppercase mb-2">
                   <i class="fas fa-music"></i>
-                  <div class="service-info">
-                    <h5 class="text-uppercase mb-2">Music</h5>
-                    <p class="font-weight-normal small">
-                      Contemporary Praise and Worship
-                    </p>
-                  </div>
-                </div>
+
+                  Music
+                </h5>
+                <p class="font-weight-normal">
+                  Contemporary Praise and Worship
+                </p>
               </div>
-              <div class="col-md-4">
-                <div class="service-info-container">
+              <div class="col-md-3 pt-4">
+                <h5 class="text-uppercase mb-2">
                   <i class="fas fa-parking"></i>
-                  <div class="service-info">
-                    <h5 class="text-uppercase mb-2">Parking Information</h5>
-                    <p class="font-weight-normal small">Parking lots K, L, M and N</p>
-                  </div>
-                </div>
+                  Parking Information
+                </h5>
+                <p class="font-weight-normal">Parking lots K, L, M and N</p>
               </div>
             </div>
           </div>
@@ -323,7 +331,9 @@
                   <i class="fas fa-parking"></i>
                   <div class="service-info">
                     <h5 class="text-uppercase mb-2">Parking Information</h5>
-                    <p class="font-weight-normal small">Parking lots K, L, M and N</p>
+                    <p class="font-weight-normal small">
+                      Parking lots K, L, M and N
+                    </p>
                   </div>
                 </div>
               </div>
@@ -427,7 +437,9 @@
                   <i class="fas fa-parking"></i>
                   <div class="service-info">
                     <h5 class="text-uppercase mb-2">Parking Information</h5>
-                    <p class="font-weight-normal small">Parking lots K, L, M and N</p>
+                    <p class="font-weight-normal small">
+                      Parking lots K, L, M and N
+                    </p>
                   </div>
                 </div>
               </div>
