@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Service Time</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://people.thewoodlandsmethodist.org/Themes/TWMC2022/Styles/bootstrap.css?v1.0.22"
+    />
+    <link
+      rel="stylesheet"
+      href="https://people.thewoodlandsmethodist.org/Themes/TWMC2022/Styles/theme.css?1.0.22"
+    />
+    <script
+      src="https://kit.fontawesome.com/c1e56ff018.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/navbar_nov2022.css" />
+    <link rel="stylesheet" href="./css/seasonal.css" />
+    <link rel="stylesheet" href="./css/service-times.css" />
+    <!-- <script src="./js/twmc-scripts.js"></script> -->
+  </head>
+
+  <body>
+    <div class="container-fluid bg-light">
+      <div class="row pt-3">
+        <div class="btn-container pt-5">
+          <div class="col-md-3">
+            <div>
+              <a
+                target="_blank"
+                class="btn-text btn-block text-uppercase mb-3 "
+                href="#the-woodlands"
+              >
+                The Woodlands
+              </a>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <a
+              href="#woodforest"
+              class="btn-text btn-block text-uppercase mb-3 "
+              >Woodforest</a
+            >
+          </div>
+          <div class="col-md-3">
+            <a
+              href="#montgomery"
+              class="btn-text btn-block text-uppercase mb-3  "
+              >Montgomery</a
+            >
+          </div>
+          <div class="col-md-3">
+            <a
+              href="#creekside"
+              class="btn-text btn-block text-uppercase mb-3  "
+              >Creekside</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="service-content"></div>
+    <script>
+      const services = [
+        {
+          id: "chapel",
+          name: "Chapel",
+          campus: "The Woodlands",
+          videoUrl: "https://player.vimeo.com/video/646149190",
+          times: ["Sundays at 8:30 a.m."],
+          music: "Choirs and traditional hymns",
+          parking:
+            "Parking lots A, B, C, D, E, F and G. Lot A reserved for senior and special accessibility.",
+          bgClass: "bg-dark",
+        },
+        {
+          id: "sanctuary",
+          name: "Sanctuary",
+          campus: "The Woodlands",
+          videoUrl: "https://player.vimeo.com/video/646149190",
+          times: ["Sundays at 11:00 a.m."],
+          music: "Choirs and traditional hymns",
+          parking:
+            "Parking lots A, B, C, D, E, F and G. Lot A reserved for senior and special accessibility.",
+          bgClass: "bg-light",
+        },
+        {
+          id: "harvest",
+          name: "Harvest",
+          campus: "The Woodlands",
+          videoUrl: "https://player.vimeo.com/video/646154854",
+          times: ["Sundays at 9:30 a.m.", "Sundays at 11:00 a.m."],
+          music: "Contemporary Worship",
+          parking: "Parking lots N, M, L, and K.",
+          bgClass: "bg-dark",
+        },
+        {
+          id: "loft",
+          name: "The Loft",
+          campus: "The Woodlands",
+          videoUrl: "https://player.vimeo.com/video/710423883",
+          times: [
+            "Saturdays at 6:00 p.m.",
+            "Sundays at 9:30 a.m.",
+            "Sundays at 11:00 a.m.",
+          ],
+          music: "Contemporary Worship",
+          parking: "Parking lots I, J, O, P, Q, R, and S.",
+          bgClass: "bg-light",
+        },
+        {
+          id: "espanol",
+          name: "Español",
+          campus: "The Woodlands",
+          videoUrl: "https://player.vimeo.com/video/850592470",
+          times: ["Sundays at 11:00 a.m."],
+          music: "Contemporary Spanish Worship",
+          parking: "Parking availible",
+          bgClass: "bg-dark",
+        },
+        {
+          id: "rebelbase",
+          name: "Rebel Base",
+          campus: "The Woodlands",
+          videoUrl: "https://player.vimeo.com/video/646149120",
+          times: ["Sundays at 9:30 a.m.", "Sundays at 11:00 a.m."],
+          music: "Contemporary Youth Worship",
+          parking: "Parking lots I, J, O, P, Q, R, and S.",
+          bgClass: "bg-light",
+        },
+        {
+          id: "children",
+          name: "Children",
+          campus: "The Woodlands",
+          videoUrl: "https://player.vimeo.com/video/646149021",
+          times: ["Sundays at 9:30 a.m.", "Sundays at 11:00 a.m."],
+          music: "Contemporary Children Worship",
+          parking:
+            "Parking lots A, B, C, D, E, F and G. Lot A reserved for senior and special accessibility.",
+          bgClass: "bg-dark",
+        },
+        {
+          id: "woodforest",
+          name: "Contemporary at Woodforest",
+          campus: "Woodforest",
+          videoUrl:
+            "https://rockrms-assets.s3.us-east-2.amazonaws.com/images/_cam-montgomery/CAM_I'm+New.jpg",
+          times: ["Sundays at 8:30 a.m.", "Sundays at 11:00 a.m."],
+          music: "Contemporary Worship",
+          parking: "Parking availible",
+          bgClass: "bg-light",
+        },
+
+        {
+          id: "montgomery",
+          name: "Contemporary at Montgomery",
+          campus: "Montgomery",
+          videoUrl: "https://player.vimeo.com/video/646148987",
+          times: ["Sundays at 8:30 a.m.", "Sundays at 11:00 a.m."],
+          music: "Contemporary Worship",
+          parking: "Parking availible",
+          bgClass: "bg-dark",
+        },
+        {
+          id: "creekside",
+          name: "Contemporary at Creekside",
+          campus: "Creekside",
+          videoUrl:
+            "https://rockrms-assets.s3.us-east-2.amazonaws.com/images/_cov/worship-confirmation.jpg",
+          times: ["Sundays at 10:00 a.m."],
+          music: "Contemporary Worship",
+          parking: "Parking availible",
+          bgClass: "bg-light",
+        },
+        {
+          id: "creekside",
+          name: "Espanol at Creekside",
+          campus: "Creekside",
+          videoUrl:
+            "https://rockrms-assets.s3.us-east-2.amazonaws.com/images/_cov/worship-confirmation.jpg",
+          times: ["Sundays at 12:30 a.m."],
+          music: "Espanol Worship",
+          parking: "Parking availible",
+          bgClass: "bg-dark",
+        },
+      ];
+      function generateServiceHTML(service) {
+        return `
+          <div class="${service.bgClass} px-3 pb-3 rounded">
+            <div class="row">
+              <h2 class="text-uppercase pb-2 px-3">${service.name}</h2>
+            </div>
+            <div class="row">
+              <div class="col-sm-6 pb-3">
+                <div class="embed-container">
+                  <iframe src="${
+                    service.videoUrl
+                  }" allowfullscreen="" frameborder="0"></iframe>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="row">
+                  <div class="col-md-12">
+                    <h5 class="text-uppercase mb-2">
+                      <i class="fas fa-clock"></i> Service Times
+                    </h5>
+                    <p class="font-weight-normal">
+                      ${service.times.join("<br>")}
+                    </p>
+                  </div>
+                  <div class="col-md-12">
+                    <h5 class="text-uppercase mb-2">
+                      <i class="fas fa-music"></i> Music
+                    </h5>
+                    <p class="font-weight-normal">${service.music}</p>
+                  </div>
+                  <div class="col-md-12">
+                    <h5 class="text-uppercase mb-2">
+                      <i class="fas fa-parking"></i> Parking Information
+                    </h5>
+                    <p class="font-weight-normal">${service.parking}</p>
+                  </div>
+
+                  
+                    <svg 
+                    xmlns="http://www.w3.org/2000/svg" 
+                    width="100" height="100" 
+                    viewBox="0 0 24 24" 
+                    fill="none" stroke="currentColor" 
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
+                    class="feather feather-arrow-right">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+
+      function generatePage() {
+        const container = document.getElementById("service-content");
+
+        const campuses = [
+          ...new Set(services.map((service) => service.campus)),
+        ];
+
+        campuses.forEach((campus) => {
+          const campusServices = services.filter(
+            (service) => service.campus === campus
+          );
+
+          const campusHTML = `
+            <div id="${campus.toLowerCase().replace(" ", "-")}">
+              <h1 class="text-left text-uppercase py-3">${campus} Campus</h1>
+              ${campusServices.map(generateServiceHTML).join("")}
+            </div>
+          `;
+
+          container.innerHTML += campusHTML;
+        });
+      }
+
+      document.addEventListener("DOMContentLoaded", generatePage);
+    </script>
+  </body>
+</html>

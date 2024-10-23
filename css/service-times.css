@@ -30,22 +30,20 @@ ul li::before {
   margin-right: 8px; /* Adjust spacing as needed */
 }
 
-.texture-bg-noise-light {
-  /* background-image: url(https://s3.us-east-2.amazonaws.com/rockrms-assets/images/noise-texture.png);
-  background-repeat: repeat;
-  background-size: 100%;
-  background-color: rgba(0, 0, 0, 0.1); */
+.bg-light {
+  
   background-color: #ffffff;
 
 }
 
-.texture-bg-noise-dark {
-  /* position: relative;
-  background-image: url(https://s3.us-east-2.amazonaws.com/rockrms-assets/images/noise-texture.png);
-  background-repeat: repeat;
-  background-size: 100%;
-  background-color: rgba(0, 0, 0, 0.4); */
+.bg-dark {
+  
   background-color: #efefee;
+}
+
+.bg-placeholder {
+  background-image: url(https://rockrms-assets.s3.us-east-2.amazonaws.com/images/_seasonal/_worship/WOR_VenueTransition_Background_2000x800.png);
+  /* background-image: url(https://rockrms-assets.s3.us-east-2.amazonaws.com/images/_seasonal/_worship/WOR_VenueTransition_Hero_2000x800.png); */
 }
 
 .texture-bg {
@@ -79,11 +77,11 @@ ul li::before {
 }
 
 .service-name-container::before {
-    content: "\f51d"; /* Unicode for a church icon in Font Awesome 5 Free Solid */
-    font-family: "Font Awesome 5 Free"; /* Font Awesome library */
-    margin-right: 10px; /* Adjust spacing between the icon and text */
-    color: #333; /* Set the color of the icon */
-    font-weight: 900; /* Adjust font weight for a filled icon */
+    content: "\f51d";  
+    font-family: "Font Awesome 5 Free";  
+    margin-right: 10px;  
+    color: #333;  
+    font-weight: 900; 
 }
 
 
@@ -93,3 +91,74 @@ ul li::before {
     
 }
 
+.service-content{
+  margin: 4rem;
+}
+
+ 
+@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk&display=swap');
+
+.underline-header-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin:5rem;
+  /* height: 100vh; */
+}
+
+.btn-text {
+  display: block;
+  font-size: 24px;
+  letter-spacing: -0.03em;
+  font-family: 'Hanken Grotesk', sans-serif;
+  text-decoration: none;
+  position: relative;
+  padding-bottom: 4px;
+  color: #212121; /* $neutral-black */
+
+}
+
+.btn-text::after {
+  content: "";
+  position: absolute;
+  bottom: -0.01em;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background-repeat: no-repeat;
+  background-image: linear-gradient(to right, #212121 50%, rgba(33, 33, 33, 0.3) 50%);  
+  background-size: 200% 100%;
+  background-position: 100% 50%;
+  transition: 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);  
+}
+
+.btn-text:hover::after {
+  background-position: 0% 50%;
+}
+
+.border-radius-global {
+  border-radius: 2px;
+}
+
+.tag {
+  text-transform: uppercase;
+  letter-spacing: 0.6em;
+  font-family: 'Arial', sans-serif;
+  font-weight: 800;
+  
+  background-color: white;
+  color: #862633;
+  padding: 6px 10px 6px 12px;
+  display: inline-block;
+  font-size: 12px;
+  margin: 1px;
+}
+
+@media (min-width: 768px) {
+  .vertical-text {
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      text-align: left;
+  }
+}
