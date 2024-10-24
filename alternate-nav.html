@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Navigation with Underline</title>
+    <style>
+      *,
+      *::after,
+      *::before {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        color: #862633;
+        background-color: #333;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      .inner-nav {
+        position: fixed;  
+        top: 0;
+        left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        z-index: 1000;
+      }
+
+      .inner-nav a {
+        color: #999999;
+        text-decoration: none;
+        font-size: 2rem;
+        transition: all 0.3s ease-in-out;
+      }
+
+      .inner-nav-underline {
+        position: absolute;
+        height: 5px;
+        background: #862633;
+        left: 0;
+        bottom: -7px;
+        scale: 1.05;
+        border-radius: 1px;
+        transition: all 0.3s ease-in-out;
+      }
+
+      .inner-nav a.active {
+        color: #fff;
+        transition: all 0.3s ease-in-out;
+      }
+
+      .inner-nav a:hover {
+        color: #616161;
+        transition: all 0.3s ease-in-out;
+      }
+
+      .full-height {
+        height: 100vh;
+        width: 100%;  
+        margin: 0;
+        padding: 0;
+      }
+
+      .spacer {
+        height: 80px;  
+      }
+
+      .absolute {
+        position: absolute;
+      }
+
+      section[id] {
+        scroll-margin-top: 80px; /* Offset by nav height ; needs to be same as .spacer */
+      }
+
+      .bg-campus {
+
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="spacer"> 
+    <div class="inner-nav  " style="padding-top:2rem">
+        <a href="#section1">The Woodlands</a>
+        <a href="#section2">Woodforest</a>
+        <a href="#section3">Montgomery</a>
+        <a href="#section4">Creekside</a>
+    </div>
+
+    </div>
+    <section id="section1" class="full-height " > The Woodlands</section>
+    <section id="section2" class="full-height "> Woodforest</section>
+    <section id="section3" class="full-height "> Montgomery</section>
+    <section id="section4" class="full-height "> Creekside</section>
+
+    <script>
+        const nav = document.querySelector(".inner-nav");
+        const navLinks = document.querySelectorAll(".inner-nav a");
+        const underline = document.createElement("div");
+        underline.classList.add("inner-nav-underline");
+        nav.appendChild(underline);
+        
+        // Set the initial active link and underline position
+        function setActiveLink(link) {
+            navLinks.forEach((link) => link.classList.remove("active"));
+            link.classList.add("active");
+            underline.style.width = link.offsetWidth + "px";
+            underline.style.left = link.offsetLeft + "px";
+        }
+        
+        // Set the initial active link
+        setActiveLink(navLinks[0]);
+        
+        navLinks.forEach((link) => {
+            link.addEventListener("mouseenter", () => {
+                underline.style.width = link.offsetWidth + "px";
+                underline.style.left = link.offsetLeft + "px";
+            });
+        
+            link.addEventListener("click", (event) => {
+                event.preventDefault(); // Prevent default anchor behavior
+                setActiveLink(link); // Set the clicked link as active
+                // Scroll to the target section
+                const targetId = link.getAttribute("href");
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: "smooth" });
+                }
+            });
+        });        
+    </script>
+  </body>
+</html>

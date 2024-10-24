@@ -30,14 +30,14 @@
   </head>
 
   <body>
-    <div class="container-fluid bg-light">
+    <div class="container-fluid btn-container">
       <div class="row pt-3">
-        <div class="btn-container pt-5">
+        <div class=" pt-5">
           <div class="col-md-3">
             <div>
               <a
                 target="_blank"
-                class="btn-text btn-block text-uppercase mb-3 "
+                class="btn-text btn-block text-uppercase mb-3"
                 href="#the-woodlands"
               >
                 The Woodlands
@@ -45,23 +45,17 @@
             </div>
           </div>
           <div class="col-md-3">
-            <a
-              href="#woodforest"
-              class="btn-text btn-block text-uppercase mb-3 "
+            <a href="#woodforest" class="btn-text btn-block text-uppercase mb-3"
               >Woodforest</a
             >
           </div>
           <div class="col-md-3">
-            <a
-              href="#montgomery"
-              class="btn-text btn-block text-uppercase mb-3  "
+            <a href="#montgomery" class="btn-text btn-block text-uppercase mb-3"
               >Montgomery</a
             >
           </div>
           <div class="col-md-3">
-            <a
-              href="#creekside"
-              class="btn-text btn-block text-uppercase mb-3  "
+            <a href="#creekside" class="btn-text btn-block text-uppercase mb-3"
               >Creekside</a
             >
           </div>
@@ -69,7 +63,7 @@
       </div>
     </div>
 
-    <div id="service-content"></div>
+    <div id="service-content" style="margin-top: 150px"></div>
     <script>
       const services = [
         {
@@ -82,6 +76,8 @@
           parking:
             "Parking lots A, B, C, D, E, F and G. Lot A reserved for senior and special accessibility.",
           bgClass: "bg-dark",
+          campusBG: "campusBG",
+          planYourVisitLink: "",
         },
         {
           id: "sanctuary",
@@ -93,16 +89,21 @@
           parking:
             "Parking lots A, B, C, D, E, F and G. Lot A reserved for senior and special accessibility.",
           bgClass: "bg-light",
+          campusBG: "campusBG",
+          planYourVisitLink: "",
+          
         },
         {
           id: "harvest",
           name: "Harvest",
           campus: "The Woodlands",
           videoUrl: "https://player.vimeo.com/video/646154854",
-          times: ["Sundays at 9:30 a.m.", "Sundays at 11:00 a.m."],
+          times: ["Sundays at 9:30 a.m. & 11:00 a.m."],
           music: "Contemporary Worship",
           parking: "Parking lots N, M, L, and K.",
           bgClass: "bg-dark",
+          campusBG: "bg-campus",
+          planYourVisitLink: "",
         },
         {
           id: "loft",
@@ -117,6 +118,8 @@
           music: "Contemporary Worship",
           parking: "Parking lots I, J, O, P, Q, R, and S.",
           bgClass: "bg-light",
+          campusBG: "bg-campus",
+          planYourVisitLink: "",
         },
         {
           id: "espanol",
@@ -127,6 +130,8 @@
           music: "Contemporary Spanish Worship",
           parking: "Parking availible",
           bgClass: "bg-dark",
+          campusBG: "bg-campus",
+          planYourVisitLink: "",
         },
         {
           id: "rebelbase",
@@ -137,6 +142,8 @@
           music: "Contemporary Youth Worship",
           parking: "Parking lots I, J, O, P, Q, R, and S.",
           bgClass: "bg-light",
+          campusBG: "bg-campus",
+          planYourVisitLink: "",
         },
         {
           id: "children",
@@ -148,6 +155,8 @@
           parking:
             "Parking lots A, B, C, D, E, F and G. Lot A reserved for senior and special accessibility.",
           bgClass: "bg-dark",
+          campusBG: "bg-campus",
+          planYourVisitLink: "",
         },
         {
           id: "woodforest",
@@ -159,6 +168,8 @@
           music: "Contemporary Worship",
           parking: "Parking availible",
           bgClass: "bg-light",
+          campusBG: "bg-campus",
+          planYourVisitLink: "",
         },
 
         {
@@ -170,6 +181,8 @@
           music: "Contemporary Worship",
           parking: "Parking availible",
           bgClass: "bg-dark",
+          campusBG: "bg-campus",
+          planYourVisitLink: "",
         },
         {
           id: "creekside",
@@ -181,6 +194,8 @@
           music: "Contemporary Worship",
           parking: "Parking availible",
           bgClass: "bg-light",
+          campusBG: "bg-campus",
+          planYourVisitLink: "",
         },
         {
           id: "creekside",
@@ -192,85 +207,137 @@
           music: "Espanol Worship",
           parking: "Parking availible",
           bgClass: "bg-dark",
+          campusBG: "bg-campus",
+          planYourVisitLink: "",
         },
       ];
       function generateServiceHTML(service) {
         return `
-          <div class="${service.bgClass} px-3 pb-3 rounded">
-            <div class="row">
-              <h2 class="text-uppercase pb-2 px-3">${service.name}</h2>
+        <div class="${service.bgClass}  pb-3">
+      <!-- start card -->
+      <div class="container">
+        <!-- header -->
+        <div class=" ">
+          <div class="  text-start  ">
+            <span class="d-flex flex-row">
+            <h2 class="text-uppercase text-black h-text  mr-3">${
+              service.name
+            }</h2>
+        </span>
+        </div>
+        </div>
+        <!-- video content -->
+        <div class="row">
+          <div class="col-sm-6 pb-3">
+            <div class="embed-container border-radius-global">
+              <iframe
+                src="${service.videoUrl}"
+                allowfullscreen=""
+                frameborder="0"
+              ></iframe>
             </div>
-            <div class="row">
-              <div class="col-sm-6 pb-3">
-                <div class="embed-container">
-                  <iframe src="${
-                    service.videoUrl
-                  }" allowfullscreen="" frameborder="0"></iframe>
+          </div>
+          <!-- right side start -->
+          <!-- Service times -->
+          <div class="col-sm-6">
+            <div class="d-flex flex-column justify-content-between h-100">
+              <div class="row">
+                <div class="col-md-12">
+                  <!-- <h5 class="text-uppercase mb-2 text-black">
+                     Service Times
+                  </h5> -->
+                    ${service.times
+                      .map(
+                        (
+                          time
+                        ) => ` <p class="tag border-radius-global mb-2 my-2">
+                                    <i class="fas fa-clock m-2 text-black"></i> 
+                                    <span>${time}</span>
+                                     </p>`
+                      )
+                      .join("<br>")}
+                      
                 </div>
+                <div class="col-md-12">
+                  <p class="tag border-radius-global mb-2 my-2">
+                    <i class="fas fa-parking m-2 text-black"></i> ${service.parking}
+                  </p>
+                </div>
+                <div class="col-md-12">
+                  <p class="tag border-radius-global mb-2 my-2">
+                <i class="fas m-2 fa-music text-black"></i>${service.music}  
+                </p></br>
+                <p class="tag border-radius-global mb-2 my-2">
+                <i class="fas fa-shirt m-2 text-black"></i>Casual
+                </p>
+                </div>
+                
               </div>
-              <div class="col-sm-6">
-                <div class="row">
-                  <div class="col-md-12">
-                    <h5 class="text-uppercase mb-2">
-                      <i class="fas fa-clock"></i> Service Times
-                    </h5>
-                    <p class="font-weight-normal">
-                      ${service.times.join("<br>")}
-                    </p>
+            
+              <div class="mt-auto">
+                <div
+                  class="border-radius-global bg-white w-100 p-3 d-flex justify-content-between align-items-center"
+                >
+                  <div class="m-auto ">
+                    <a href="service-times.html" class="p-0 m-0 text-black btn-block ">
+                      <h4 class="my-0 btn-text ">Plan Your Visit</h4>
+                    </a>
                   </div>
-                  <div class="col-md-12">
-                    <h5 class="text-uppercase mb-2">
-                      <i class="fas fa-music"></i> Music
-                    </h5>
-                    <p class="font-weight-normal">${service.music}</p>
-                  </div>
-                  <div class="col-md-12">
-                    <h5 class="text-uppercase mb-2">
-                      <i class="fas fa-parking"></i> Parking Information
-                    </h5>
-                    <p class="font-weight-normal">${service.parking}</p>
-                  </div>
-
-                  
-                    <svg 
-                    xmlns="http://www.w3.org/2000/svg" 
-                    width="100" height="100" 
-                    viewBox="0 0 24 24" 
-                    fill="none" stroke="currentColor" 
-                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
-                    class="feather feather-arrow-right">
-                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                    <polyline points="12 5 19 12 12 19"></polyline>
+                  <a href="service-times.html" class="p-0 m-0 d-flex">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="30"
+                      height="30"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="feather feather-arrow-right"
+                      transform="rotate(-35)"
+                    >
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                      <polyline points="12 5 19 12 12 19"></polyline>
                     </svg>
+                  </a>
                 </div>
               </div>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
         `;
       }
 
       function generatePage() {
         const container = document.getElementById("service-content");
-
-        const campuses = [
-          ...new Set(services.map((service) => service.campus)),
-        ];
-
+      
+        const campuses = [...new Set(services.map((service) => service.campus))];
+      
         campuses.forEach((campus) => {
           const campusServices = services.filter(
             (service) => service.campus === campus
           );
-
+      
+          // Retrieve the campus background or default to 'bg-light' class
+          const campusBG = services.find((service) => service.campus === campus)?.campusBG;
+          const divClass = campusBG ? "" : "bg-campus";
+      
           const campusHTML = `
-            <div id="${campus.toLowerCase().replace(" ", "-")}">
-              <h1 class="text-left text-uppercase py-3">${campus} Campus</h1>
+            <div id="${campus.toLowerCase().replace(" ", "-")}" 
+                 class="${divClass}">
+              <h2 class="text-left text-uppercase text-red btn-text btn-block-red px-5">
+                ${campus} Campus: Services and Times
+              </h2>
               ${campusServices.map(generateServiceHTML).join("")}
             </div>
           `;
-
           container.innerHTML += campusHTML;
         });
       }
+      
 
       document.addEventListener("DOMContentLoaded", generatePage);
     </script>

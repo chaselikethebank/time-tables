@@ -19,31 +19,41 @@ ul {
 }
 
 ul li::before {
-  content: "\f105"; /* Unicode for a checkmark (Font Awesome) */
-  font-family: "FontAwesome"; /* Use the Font Awesome font */
-  margin-right: 8px; /* Adjust spacing as needed */
+  content: "\f105";  
+  font-family: "FontAwesome";  
+  margin-right: 8px; 
 }
 
 ul li::before {
-  content: "\2022"; /* Unicode for a bullet point */
-  color: #007bff; /* Customize color */
-  margin-right: 8px; /* Adjust spacing as needed */
+  content: "\2022";  
+  color: #007bff; 
+  margin-right: 8px;  
 }
 
 .bg-light {
-  
-  background-color: #ffffff;
-
+  /* background-image: url(https://rockrms-assets.s3.us-east-2.amazonaws.com/images/_seasonal/_worship/WOR_VenueTransition_Background_2000x800.png); */
+  background-color: #efefee
 }
 
 .bg-dark {
-  
-  background-color: #efefee;
+  /* background-image: url(https://rockrms-assets.s3.us-east-2.amazonaws.com/images/_seasonal/_worship/WOR_VenueTransition_Hero_2000x800.png); */
+  background-color: #ffffff;
 }
 
 .bg-placeholder {
-  background-image: url(https://rockrms-assets.s3.us-east-2.amazonaws.com/images/_seasonal/_worship/WOR_VenueTransition_Background_2000x800.png);
+  /* background-image: url(https://rockrms-assets.s3.us-east-2.amazonaws.com/images/_seasonal/_worship/WOR_VenueTransition_Background_2000x800.png); */
+  background-color: #efefee
   /* background-image: url(https://rockrms-assets.s3.us-east-2.amazonaws.com/images/_seasonal/_worship/WOR_VenueTransition_Hero_2000x800.png); */
+}
+
+.bg-placeholder-other {
+  /* background-image: url(https://rockrms-assets.s3.us-east-2.amazonaws.com/images/_seasonal/_worship/WOR_VenueTransition_Background_2000x800.png); */
+  /* background-image: url(https://rockrms-assets.s3.us-east-2.amazonaws.com/images/_seasonal/_worship/WOR_VenueTransition_Hero_2000x800.png); */
+  background-color: #ffffff;
+}
+
+.bg-white {
+  background-color: white;
 }
 
 .texture-bg {
@@ -115,7 +125,7 @@ ul li::before {
   text-decoration: none;
   position: relative;
   padding-bottom: 4px;
-  color: #212121; /* $neutral-black */
+  color: #212121;  
 
 }
 
@@ -143,7 +153,7 @@ ul li::before {
 
 .tag {
   text-transform: uppercase;
-  letter-spacing: 0.6em;
+  letter-spacing: 0.3em;
   font-family: 'Arial', sans-serif;
   font-weight: 800;
   
@@ -152,7 +162,7 @@ ul li::before {
   padding: 6px 10px 6px 12px;
   display: inline-block;
   font-size: 12px;
-  margin: 1px;
+  /* margin: 1px; */
 }
 
 @media (min-width: 768px) {
@@ -161,4 +171,31 @@ ul li::before {
       transform: rotate(180deg);
       text-align: left;
   }
+}
+
+.h-text {
+  display: block;
+  font-size: 24px;
+  letter-spacing: -0.03em;
+  font-family: 'Hanken Grotesk', sans-serif;
+  text-decoration: none;
+  position: relative;
+  padding-bottom: 4px;
+  color: #212121;  
+}
+
+.btn-container {
+  position: sticky;
+  position: fixed;
+  top: 0;
+  z-index: 1000;  
+  background-color: white;  
+  padding-top: 0px;  
+  width:fit-content;
+  min-width: 100vw;
+}
+
+.campusBG{
+  background-image: url(https://rockrms-assets.s3.us-east-2.amazonaws.com/images/_seasonal/_worship/WOR_VenueTransition_Hero_2000x800.png);
+  background-size: cover;
 }
