@@ -7,16 +7,16 @@
 
     <style>
       /* Global Reset */
-      .all-st, 
-      .all-st::after, 
-      .all-st::before {
+      *,
+      *::after,
+      *::before {
         box-sizing: border-box;
         margin: 0;
         padding: 0;
       }
 
       /* Body Styling */
-      .body-st {
+      body {
         font-family: "Poppins", sans-serif;
         color: #862633;
         background-color: #333;
@@ -28,7 +28,7 @@
       }
 
       /* Navigation Bar */
-      .inner-nav-st {
+      .inner-nav {
         position: fixed;
         top: 0;
         left: 0;
@@ -37,119 +37,131 @@
         justify-content: space-around;
         align-items: center;
         gap: 1rem;
-        padding: 1rem 0 1rem 0;
+        padding: 1rem;
         background-color: #333;  
         z-index: 1000;
       }
 
       /* Nav Links */
-      .inner-nav-st a {
+      .inner-nav a {
         color: #999999;
         text-decoration: none;
-        font-size: 1.5rem;
+        font-size: 1.5rem; 
         transition: all 0.3s ease-in-out;
       }
 
       /* Underline */
-      .inner-nav-underline-st {
+      .inner-nav-underline {
         position: absolute;
         height: 5px;
         background: #862633;
         left: 0;
-        bottom: -5px;
+        bottom: -5px; 
         scale: 1.05;
         border-radius: 1px;
         transition: all 0.3s ease-in-out;
       }
 
-      .inner-nav-st a.active-st {
+      .inner-nav a.active {
         color: #fff;
         transition: all 0.3s ease-in-out;
       }
 
-      .inner-nav-st a:hover {
+      .inner-nav a:hover {
         color: #616161;
         transition: all 0.3s ease-in-out;
       }
 
-      .full-height-st {
+      .full-height {
         height: 100vh;
         width: 100%;
         margin: 0;
         padding: 0;
       }
 
-      .spacer-st {
-        height: 80px;
+      .spacer {
+        height: 80px; /* Same as the height of the nav */
       }
 
       section[id] {
-        scroll-margin-top: 80px;
+        scroll-margin-top: 80px;  
       }
 
       @media (max-width: 768px) {
-        .inner-nav-st {
-          flex-direction: column;
+        .inner-nav {
+          flex-direction: column;  
           gap: 1rem;
           padding: 0.5rem;
         }
 
-        .inner-nav-st a {
-          font-size: 1.25rem;
+        .inner-nav a {
+          font-size: 1.25rem;  
         }
 
-        .inner-nav-st a.active-st {
-          color: #ffffff !important;
+        .inner-nav a.active {
+            color: #ffffff !important;  
         }
 
-        .inner-nav-underline-st {
-          height: 0px;
+        .inner-nav-underline {
+          height: 0px;  
         }
 
         section[id] {
-          scroll-margin-top: 195px;
-        }
+            scroll-margin-top: 195px;  
+          }
       }
     </style>
   </head>
-  <body class="body-st">
-    <div class="spacer-st">
-      <div class="inner-nav-st">
-        <a class="nav-link-st" href="#woodlands-st">The Woodlands</a>
-        <a class="nav-link-st" href="#woodforest-st">Woodforest</a>
-        <a class="nav-link-st" href="#montgomery-st">Montgomery</a>
-        <a class="nav-link-st" href="#creekside-st">Creekside</a>
-        <a class="nav-link-st" href="#espanol-st">Espanol</a>
+  <body>
+    <div class="spacer">
+      <div class="inner-nav"  >
+        <a href="#woodlands">The Woodlands</a>
+        <a href="#woodforest">Woodforest</a>
+        <a href="#montgomery">Montgomery</a>
+        <a href="#creekside">Creekside</a>
+        <a href="#espanol">Espanol</a>
+
+
       </div>
     </div>
-
     <!-- Woodlands -->
-    <section id="woodlands-st" class="full-height-st">THE woodlands</section>
-    <section id="woodforest-st" class="full-height-st">Woodforest</section>
-    <section id="montgomery-st" class="full-height-st">Montgomery</section>
-    <section id="creekside-st" class="full-height-st">Creekside</section>
-    <section id="espanol-st" class="full-height-st">Espanol</section>
+    <section id="woodlands" class="full-height">THE woodlands</section>
+        <!-- Woodforest -->
+
+    <section id="woodforest" class="full-height">Woodforest</section>
+        <!-- Mont-->
+
+    <section id="montgomery" class="full-height">Montgomery</section>
+        <!-- Creekside -->
+
+    <section id="creekside" class="full-height">Creekside</section>
+        <!-- Creekside -->
+
+        <section id="espanol" class="full-height">Espanol</section>
 
     <script>
-      const nav = document.querySelector(".inner-nav-st");
-      const navLinks = document.querySelectorAll(".nav-link-st");
+      const nav = document.querySelector(".inner-nav");
+      const navLinks = document.querySelectorAll(".inner-nav a");
       const underline = document.createElement("div");
-      underline.classList.add("inner-nav-underline-st");
+      underline.classList.add("inner-nav-underline");
       nav.appendChild(underline);
 
+      // Set the initial active link and underline position
       function setActiveLink(link) {
-        navLinks.forEach((link) => link.classList.remove("active-st"));
-        link.classList.add("active-st");
+        navLinks.forEach((link) => link.classList.remove("active"));
+        link.classList.add("active");
         underline.style.width = link.offsetWidth + "px";
         underline.style.left = link.offsetLeft + "px";
       }
 
+      // Set the initial active link
       setActiveLink(navLinks[0]);
 
       navLinks.forEach((link) => {
         link.addEventListener("click", (event) => {
-          event.preventDefault();
-          setActiveLink(link);
+          event.preventDefault(); // Prevent default anchor behavior
+          setActiveLink(link); // Set the clicked link as active
+          // Scroll to the target section
           const targetId = link.getAttribute("href");
           const targetElement = document.querySelector(targetId);
           if (targetElement) {
@@ -160,4 +172,3 @@
     </script>
   </body>
 </html>
-

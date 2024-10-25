@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://rockrms-assets.s3.us-east-2.amazonaws.com/theme-demo/css/sparkle.css">
+    <link rel="stylesheet" href="https://rockrms-assets.s3.us-east-2.amazonaws.com/theme-demo/css/utilities-templates.css">
+    <!-- fontawesome -->
+    <script src="https://kit.fontawesome.com/85947205a9.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/navbar_nov2022.css" />
+    <link rel="stylesheet" href="./css/seasonal.css" />
+    <link rel="stylesheet" href="./css/service-times.css" />
+</head>
+<body>
+    <!-- Advent Activities -->
+<head>
+    
+</head>
+
+<style>
+ 
+/* TYPOGRAPHY */
+.p {
+    font-size: 1.1rem;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+/* END OF TYPOGRAPHY */
+
+/* COLORS */
+
+.primary-dark {
+    color: #151515;
+   
+}
+
+.gold {
+ 
+    color: #C6A357;
+}
+
+/* END OF COLORS */
+
+/* BUTTONS */
+.twmc--btn-2024 {
+    border: 2px solid #313030;
+    background-color: #151515;
+    /* color: #fff; */
+    color: #fefef6;
+    transition: all .3s ease-in-out;
+    font-weight: 700;
+    padding: 0.7rem 1rem 0.6rem;
+}
+
+.twmc--btn-2024:hover,
+.twmc--btn-2024:focus {
+  border: 2px solid #313030;
+    background-color: rgba(106, 138, 111, 0.2);
+    color: #313030;
+    padding: 0.7rem 1rem 0.6rem;
+    transform: scale(1.02);
+}
+
+ 
+
+ 
+/* END OF BUTTONS */
+
+/* EVENTS */
+.bg-lite {
+    padding: 5rem 0;
+    /* background: linear-gradient(#abb4ab, #d4d9d4, #fbf9dc, #fff); */
+    background: linear-gradient(#ffffff, #ffffff, #ffffff, #ffffff);
+}
+/* END OF EVENTS */
+ 
+
+/* ===== End of Advent 2024 ===== */
+</style>
+<section class="bg-lite">
+    <div class="container-fluid">
+        <div class="row">
+            <div  class="col-sm-10 col-sm-offset-1 mt-6">
+                <h1 class="twmc-section-title--light mt-0 mb-5 primary-dark">Service Times</h1>
+                <!-- Toggle nav -->
+                <div class="nav-pills--twmctoggleadvent">
+                    <ul class="nav nav-pills mt-1 nav-pills--twmctoggleadvent-ul">
+                        <li class="twmctoggleadvent-navtitle" style="color:black;">Select campus:</li>
+                        <li class="active" style="color:black;"><a data-toggle="pill" href="#twmctoggle-tab1" class=" " data-filter="The Woodlands">The Woodlands</a></li>
+                        <li><a data-toggle="pill" href="#twmctoggle-tab2" class=" " data-filter="Woodforest">Woodforest</a></li>
+                        <li><a data-toggle="pill" href="#twmctoggle-tab3" class=" " data-filter="Montgomery">Montgomery</a></li>
+                        <li><a data-toggle="pill" href="#twmctoggle-tab4" class=" " data-filter="Creekside">Creekside</a></li>
+                    </ul>
+                </div>
+                <!-- End of toggle nav -->
+
+               <div class="tab-content tab-content--twmctoggleadvent">
+                    {% assign campuses = "The Woodlands,Woodforest,Montgomery,Creekside" | Split: "," %}
+                    {% for campus in campuses %}
+                        <div id="twmctoggle-tab{{forloop.index}}" 
+                        class="tab-pane fade{% if forloop.first %} in active{% endif %}" data-tab-filter="{{campus}}">
+                            {% for item in Items %}
+                                {% assign TabFilter = item | Attribute: 'TabFilter' %}
+                                {% if TabFilter == campus %}
+
+                                    {% assign WorshipCommunity = item | Attribute:'WorshipCommunity' %}
+                                    {% assign Music = item | Attribute:'Music'%}
+                                    {% assign ServiceTimes = item | Attribute:'ServiceTimes'%}
+
+                                    <div class="twmc-connect--flex-container">
+                                        <div class="twmc-connect--flex-item    ">
+                                            <div class="mt-2">
+                                                <h3 class="primary-dark">{{item.Title}}</h3>
+                                                <p>Worship Community name:</p> <h4>{{WorshipCommunity}}</h4> 
+                                                <p>Worship style: {{Music}}</p>
+                                                <p>Service Days and Times: {{ServiceTimes}}</p>
+                                                <p class="twmc-p events-info"><strong>
+                                                </strong></p>
+                                             </div>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    $(document).ready(function () {
+        // Show content for the first tab by default
+        $('#twmctoggle-tab1').addClass('in active');
+
+        // Tab click event
+        $('.nav-pills--twmctoggleadvent a').on('click', function (e) {
+            e.preventDefault();
+
+            // Get the target tab
+            var target = $(this).attr('href');
+
+            // Hide all tab content and show the target
+            $('.tab-pane').removeClass('in active');
+            $(target).addClass('in active');
+
+            // Activate the clicked tab
+            $('.nav-pills--twmctoggleadvent a').removeClass('active');
+            $(this).addClass('active');
+        });
+    });
+</script>
+
+
+
+    
+</body>
+</html>
