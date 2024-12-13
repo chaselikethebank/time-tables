@@ -106,7 +106,6 @@ ul li::before {
 }
 
  
-@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk&display=swap');
 
 .underline-header-wrapper {
   display: flex;
@@ -152,16 +151,10 @@ ul li::before {
 }
 
 .tag {
-  text-transform: uppercase;
-  letter-spacing: 0.3em;
-  font-family: 'Arial', sans-serif;
   font-weight: 800;
-  
   background-color: white;
-  color: #862633;
   padding: 6px 10px 6px 12px;
   display: inline-block;
-  font-size: 12px;
   /* margin: 1px; */
 }
 
@@ -171,13 +164,25 @@ ul li::before {
       transform: rotate(180deg);
       text-align: left;
   }
+
+ 
 }
+
+@media (max-width: 992px) {
+  .cuff {
+    min-height: 410px;
+
+  }
+
+
+}
+
 
 .h-text {
   display: block;
   font-size: 24px;
   letter-spacing: -0.03em;
-  font-family: 'Hanken Grotesk', sans-serif;
+  font-family: 'Poppin', sans-serif;
   text-decoration: none;
   position: relative;
   padding-bottom: 4px;
@@ -185,8 +190,7 @@ ul li::before {
 }
 
 .btn-container {
-  position: sticky;
-  position: fixed;
+  position: relative;
   top: 0;
   z-index: 1000;  
   background-color: white;  
@@ -198,4 +202,93 @@ ul li::before {
 .campusBG{
   background-image: url(https://rockrms-assets.s3.us-east-2.amazonaws.com/images/_seasonal/_worship/WOR_VenueTransition_Hero_2000x800.png);
   background-size: cover;
+}
+
+.woodlands-bg {
+  background-image: url(https://s3.us-east-2.amazonaws.com/rockrms-assets/twms-images/campuses-bg/Woodlands%20-%20White.jpg);
+  background-repeat: no-repeat;  
+  background-size: cover;  
+  background-position: center;  
+  z-index: -1;
+}
+
+.woodforest-bg {
+  background-image: url(https://s3.us-east-2.amazonaws.com/rockrms-assets/twms-images/campuses-bg/Woodforest%20-%20White.jpg);
+  background-repeat: no-repeat;  
+  background-size: cover;  
+  background-position: center;  
+  z-index: -1;
+}
+
+.bg-campus{
+  background-color: #862633;
+  background-repeat: no-repeat;  
+  background-size: cover;  
+  background-position: center;  
+  z-index: -1;
+
+}
+
+
+.card-t-and-l {
+  background-color: white;
+  
+}
+ 
+.tag-no-bg {
+  letter-spacing: 0.3em;
+  font-family: 'Arial', sans-serif;
+  font-weight: 800;
+  color: #862633;
+  padding: 6px 10px 6px 12px;
+  display: inline-block;
+  font-size: 16px;
+  /* margin: 1px; */
+}
+
+.let-spa-m {
+  letter-spacing: 0.3em;
+
+}
+
+.cuff{
+  background-color: #862633;
+  
+  display: flex;
+  min-height: 100px;
+  flex-direction: column;
+  justify-content: end;
+}
+
+
+@media (max-width: 1200px) {
+  .tag-no-bg {
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-family: 'Arial', sans-serif;
+    font-weight: 700;
+    color: #862633;
+    padding: 6px 10px 6px 12px;
+    display: inline-block;
+    font-size: 14px;
+    /* margin: 1px; */
+  }
+
+  
+}
+
+@media (max-width: 992px) {
+  .tag-no-bg {
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-family: 'Arial', sans-serif;
+    font-weight: 700;
+    color: #862633;
+    padding: 4px 8px 4px 10px;
+    display: inline-block;
+    font-size: 12px;
+    /* margin: 1px; */
+  }
+
+  
 }

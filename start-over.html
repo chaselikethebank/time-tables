@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Service Time</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://people.thewoodlandsmethodist.org/Themes/TWMC2022/Styles/bootstrap.css?v1.0.22"
+    />
+    <link
+      rel="stylesheet"
+      href="https://people.thewoodlandsmethodist.org/Themes/TWMC2022/Styles/theme.css?1.0.22"
+    />
+    <script
+      src="https://kit.fontawesome.com/c1e56ff018.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/navbar_nov2022.css" />
+    <link rel="stylesheet" href="./css/seasonal.css" />
+    <link rel="stylesheet" href="./css/service-times.css" />
+    <!-- <script src="./js/twmc-scripts.js"></script> -->
+  </head>
+
+  <body>
+    <div class="container-fluid btn-container">
+      <div class="row pt-3">
+        <div class="">
+          <div class="col-md-3">
+            <div>
+              <a
+                class="btn-text btn-block text-uppercase mb-3"
+                href="#campus-1"
+              >
+                The Woodlands
+              </a>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <a href="#campus-2" class="btn-text btn-block text-uppercase mb-3"
+              >Woodforest</a
+            >
+          </div>
+          <div class="col-md-3">
+            <a href="#campus-3" class="btn-text btn-block text-uppercase mb-3"
+              >Montgomery</a
+            >
+          </div>
+          <div class="col-md-3">
+            <a href="#campus-4" class="btn-text btn-block text-uppercase mb-3"
+              >Creekside</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="service-content"  >
+
+
+    </div>
+    <script>
+      const data = [
+        {
+          id: "1",
+          name: "The Woodlands",
+          campusBG: "woodlands-bg",
+          services: [
+            {
+              id: "chapel",
+              name: "Chapel",
+              videoUrl: "https://player.vimeo.com/video/646149190",
+              times: ["Sundays at 8:30 a.m. | Robb Chapel"],
+              music: "Choirs and traditional hymns",
+              parking:
+                "Parking lots A, B, C, D, E, F and G. Lot A reserved for senior and special accessibility.",
+              bgClass: "bg-dark",
+              planYourVisitLink: "",
+              bldg: "",
+              address: "2453 Woodland Hills Dr."
+            },
+            {
+              id: "traditional",
+              name: "Traditional",
+              videoUrl: "https://player.vimeo.com/video/646149190",
+              times: ["Sundays at 11:00 a.m. | Robb Chapel"],
+              music: "Choirs and traditional hymns",
+              parking:
+                "Parking lots A, B, C, D, E, F and G. Lot A reserved for senior and special accessibility.",
+              bgClass: "bg-light",
+              planYourVisitLink: "",
+              bldg: "",
+              address: "2453 Woodland Hills Dr."
+            },
+            {
+              id: "harvest",
+              name: "Harvest",
+              videoUrl: "https://player.vimeo.com/video/646154854",
+              times: ["Sundays at 9:30 a.m. & 11:00 a.m. | Robb Chapel"],
+              music: "Contemporary Worship",
+              parking: "Parking lots N, M, L, and K.",
+              bgClass: "bg-dark",
+              planYourVisitLink: "",
+              bldg: "",
+              address: "2453 Woodland Hills Dr."
+            },
+            {
+              id: "loft",
+              name: "The Loft",
+              videoUrl: "https://player.vimeo.com/video/710423883",
+              times: [
+                "Saturdays at 6:00 p.m. | Not Robb Chapel",
+                "Sundays at 9:30 a.m. & 11:00 a.m. | Robb Chapel",
+              ],
+              music: "Contemporary Worship",
+              parking: "Parking lots I, J, O, P, Q, R, and S.",
+              bgClass: "bg-light",
+              planYourVisitLink: "",
+              bldg: "",
+              address: "2453 Woodland Hills Dr."
+            },
+            {
+              id: "espanol",
+              name: "Español",
+              videoUrl: "https://player.vimeo.com/video/850592470",
+              times: ["Sundays at 11:00 a.m. | Robb Chapel"],
+              music: "Contemporary Spanish Worship",
+              parking: "Parking available",
+              bgClass: "bg-dark",
+              planYourVisitLink: "",
+              bldg: "",
+              address: "2453 Woodland Hills Dr."
+            },
+            {
+              id: "rebelbase",
+              name: "Rebel Base",
+              videoUrl: "https://player.vimeo.com/video/646149120",
+              times: ["Sundays at 9:30 a.m. | Robb Chapel", "Sundays at 11:00 a.m. | Not Robb Chapel"],
+              music: "Contemporary Youth Worship",
+              parking: "Parking lots I, J, O, P, Q, R, and S.",
+              bgClass: "bg-light",
+              planYourVisitLink: "",
+              bldg: "",
+              address: "2453 Woodland Hills Dr."
+            },
+            {
+              id: "children",
+              name: "Children",
+              videoUrl: "https://player.vimeo.com/video/646149021",
+              times: ["Sundays at 9:30 a.m. & 11:00 a.m. | Robb Chapel"],
+              music: "Contemporary Children Worship",
+              parking:
+                "Parking lots A, B, C, D, E, F and G. Lot A reserved for senior and special accessibility.",
+              bgClass: "bg-dark",
+              planYourVisitLink: "",
+              bldg: "",
+              address: "2453 Woodland Hills Dr."
+            },
+          ],
+        },
+        {
+          id: "2",
+          name: "Woodforest",
+          campusBG: "woodforect-bg",
+          services: [
+            {
+              id: "woodforest",
+              name: "Woodforest",
+              videoUrl:
+                "https://rockrms-assets.s3.us-east-2.amazonaws.com/images/_cam-montgomery/CAM_I'm+New.jpg",
+              times: ["Sundays at 8:30 a.m. & 11:00 a.m. | Robb Chapel"],
+              music: "Contemporary Worship",
+              parking: "Parking available",
+              bgClass: "bg-light",
+              planYourVisitLink: "",
+              bldg: "",
+              address: "2453 Woodland Hills Dr."
+            },
+          ],
+        },
+        {
+          id: "3",
+          name: "Montgomery",
+          campusBG: "montgomery-bg",
+          services: [
+            {
+              id: "montgomery",
+              name: "Montgomery",
+              videoUrl: "https://player.vimeo.com/video/646148987",
+              times: ["Sundays at 8:30 a.m. & 11:00 a.m. | Robb Chapel"],
+              music: "Contemporary Worship",
+              parking: "Parking available",
+              bgClass: "bg-dark",
+              planYourVisitLink: "",
+              bldg: "",
+              address: "2453 Woodland Hills Dr."
+            },
+          ],
+        },
+        {
+          id: "4",
+          name: "Creekside",
+          campusBG: "montgomery-bg",
+          services: [
+            {
+              id: "creekside",
+              name: "Creekside",
+              videoUrl:
+                "https://rockrms-assets.s3.us-east-2.amazonaws.com/images/_cov/worship-confirmation.jpg",
+              times: ["Sundays at 10:00 a.m. | Robb Chapel"],
+              music: "Contemporary Worship",
+              parking: "Parking available",
+              bgClass: "bg-light",
+              planYourVisitLink: "",
+              bldg: "",
+              address: "2453 Woodland Hills Dr."
+            },
+            {
+              id: "espanol_creekside",
+              name: "Espanol at Creekside",
+              videoUrl:
+                "https://rockrms-assets.s3.us-east-2.amazonaws.com/images/_cov/worship-confirmation.jpg",
+              times: ["Sundays at 12:30 p.m. | Robb Chapel"],
+              music: "Contemporary Worship",
+              parking: "Parking available",
+              bgClass: "bg-light",
+              planYourVisitLink: "",
+              bldg: "",
+              address: "2453 Woodland Hills Dr."
+            },
+          ],
+        },
+      ];
+
+      function generatePage() {
+        const container = document.getElementById("service-content");
+      
+        data.forEach((campus) => {
+          // Retrieve the campus background or use a default class
+          const campusBG = campus.campusBG ? campus.campusBG : "bg-campus";
+      
+          // Generate the campus header and services HTML
+          const campusHTML = `
+            <div id="campus-${campus.id.toLowerCase().replace(" ", "-")}" 
+                 class=" cuff">
+              <h2 class="container text-white text-uppercase ">
+                ${campus.name} 
+              </h2>
+              ${campus.services.map(generateServiceHTML).join("")}
+            </div>
+          `;
+          
+          container.innerHTML += campusHTML;
+        });
+      }
+      
+      function generateServiceHTML(service) {
+        return `
+           
+
+    <div class="${service.bgClass} py-4">
+      <!-- start card -->
+      <div class="container my-5 pb-5">
+        <!-- video content -->
+        <div class="row">
+          <div class="col-sm-6 pb-3">
+            <div class="embed-container border-radius-global">
+              <iframe
+                src="https://player.vimeo.com/video/646149120"
+                allowfullscreen=""
+                frameborder="0"
+              ></iframe>
+            </div>
+          </div>
+          <!-- right side start -->
+          <!-- Service times -->
+          <div class="col-sm-6">
+            <div class="d-flex flex-column justify-content-between h-100">
+              <!-- header -->
+              <div class="contain">
+                <div class="row">
+                  <div class="col-md-12">
+                    <h3 class="tag   text-black h-text px-2 mt-0">
+                        ${service.name}
+                    </h3>
+                  </div>
+                </div>
+
+                <div class="border-radius-global">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <p class="tag-no-bg border-radius-global mb-2 mb-2">
+                        <i class="fas fa-clock mt-2 text-black"></i>
+                        <span>${service.times.join(", ")} </span>
+                      </p>
+                    </div>
+                  </div>
+                   
+                  <div class="row">
+                    <div class="col-md-12">
+                      <p class="tag-no-bg border-radius-global">
+                        <i class="fas let-spa-m fa-map-pin mt-3 text-black"></i>
+                        <span
+                          >${service.address}
+                        </span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- end of details -->
+              <!-- plan visit element -->
+              <div class="mt-2">
+                <div
+                  class="border-radius-global bg-white w-100 d-flex justify-content-between align-items-center"
+                >
+                  <div class="m-auto">
+                    <a
+                      href="service-times.html"
+                      class="p-0 m-0 text-black btn-block"
+                    >
+                      <h4 class="tag my-0 btn-text">Plan Your Visit</h4>
+                    </a>
+                  </div>
+                  <a href="service-times.html" class="p-0 m-0 d-flex">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="30"
+                      height="30"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="feather feather-arrow-right"
+                      transform="rotate(-35)"
+                    >
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                      <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+        `;
+      }
+      
+      document.addEventListener("DOMContentLoaded", generatePage);
+      
+    </script>
+  </body>
+</html>

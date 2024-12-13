@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spreaker RSS Feed</title>
+</head>
+<body>
+    <h1>Podcast Episodes</h1>
+    <ul id="rss-feed"></ul>
+
+
+
+    <script>
+        const feedUrl = 'https://www.spreaker.com/show/4563671/episodes/feed';
+
+        async function fetchRSS() {
+            const response = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`);
+            const data = await response.json();
+            const feedContainer = document.getElementById('rss-feed');
+
+            data.items.forEach(item => {
+                const listItem = document.createElement('li');
+                listItem.innerHTML = `
+                    <a href="${item.link}" target="_blank">${item.title}</a>
+                    <p>${item.description}</p>
+                `;
+                feedContainer.appendChild(listItem);
+            });
+        }
+
+        fetchRSS();
+    </script>
+</body>
+</html>

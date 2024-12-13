@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Map Nav</title>
+    <style>
+        body {
+            padding: 0px;
+            margin: 0px;
+        }
+        
+        .i-map {
+            height: 100vh;
+            width: 70%;
+            float: right;
+        }
+        
+        button {
+            cursor: pointer;
+        }
+        
+        .i-map-center {
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        
+        .i-map-nav {
+            position: relative;
+            width: 30%;
+            float: left;
+            color: #862533;
+            border: none;
+            height: 25vh;
+            background-color: white;
+        }
+        
+        .i-map-nav::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: .75rem;
+            background-color: #f0eeed;
+            z-index: 1;
+        }
+        
+        #i-map-info-window {
+            max-width: 60vw;
+            max-height: auto;
+        }
+        
+        .i-map-nav-card-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            max-height: 45vh;
+            overflow: hidden;
+        }
+        
+        .i-map-nav-card {
+            max-height: 45vh;
+            max-width: 40vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+        }
+        
+        .i-map-card-img {
+            max-height: 30vh;
+            max-width: 25vw;
+            object-fit: cover;
+            border-top: #862533 solid .75rem;
+            border-bottom: #862533 solid .75rem;
+        }
+        
+        .i-map-p-tight {
+            line-height: 1.3;
+            margin: 0rem;
+        }
+        
+        a:hover,
+        a:focus {
+            outline: none;
+        }
+        
+        .twmc--btn--traditional:hover,
+        .twmc--btn--traditional:focus {
+            transform: scale(1);
+        }
+        
+        .i-map-h4 {
+            font-size: 18px;
+            font-family: "Montserrat", sans-serif !important;
+            font-weight: 700;
+            line-height: 1.1;
+            color: inherit;
+        }
+        
+        @media screen and (max-width: 800px) {
+            .i-map-h4 {
+                margin-top: 0px;
+            }
+            .i-map-nav-container {
+                display: flex;
+                flex-wrap: wrap;
+                flex-direction: column;
+                height: auto;
+            }
+            #button-detail {
+                display: none;
+            }
+            .i-map {
+                width: 100%;
+                height: 60vh;
+            }
+            .i-map-nav {
+                width: 100%;
+                height: 10vh;
+            }
+            #i-map-info-window {
+                max-width: 100vw;
+                max-height: auto;
+            }
+            .i-map-card-img {
+                display: none;
+            }
+            .i-map-nav::before {
+                height: 0.4rem;
+                background-color: #862533;
+            }
+            .gm-style-iw {
+                max-width: 400px;
+                width: 100%;
+                margin: 0 auto;
+                box-sizing: border-box;
+            }
+        }
+        
+        @media screen and (max-width: 1200px) {
+            .button-heading {
+                font-size: 190%;
+            }
+            .i-map-nav button p {
+                font-size: 55%;
+            }
+        }
+        
+        #i-map-info-window {
+            box-sizing: border-box;
+            overflow-x: hidden;
+        }
+        
+        #i-map-info-window * {
+            box-sizing: inherit;
+        }
+        
+        @media (max-width: 768px) {
+            .twmc--btn {
+                font-size: 90%;
+                padding: 8px 15px;
+                width: auto;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .twmc--btn {
+                font-size: 85%;
+                padding: 5px 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="i-map-nav-container">
+        <div id="i-map" class="about-i-map i-map"></div>
+    </div>
+    <script>
+        const locationData = [{
+            name: "The Woodlands Methodist Church",
+            id: "location-1",
+            backgroundImage: "https://s3.us-east-2.amazonaws.com/rockrms-assets/twms-images/campuses-bg/optimized_campus_iamges/Woodlands%20-%20White.jpg",
+            activeNavBackground: "https://s3.us-east-2.amazonaws.com/rockrms-assets/twms-images/campuses-bg/optimized_campus_iamges/Woodlands%20-%20Red.jpg",
+            address: "2200 Lake Woodlands Dr, The Woodlands, TX 77380",
+            activeCardBackground: "https://s3.us-east-2.amazonaws.com/rockrms-assets/twms-images/campuses-bg/optimized_campus_iamges/Woodlands.jpg",
+            mapUrl: "https://www.google.com/maps/place/The+Woodlands+Methodist+Church/@30.1675257,-95.470854,17z/data=!3m2!4b1!5s0x864736cf4056dfa5:0x2d00ba35c741f350!4m6!3m5!1s0x8647316c9d1170e1:0x658c16e745f19438!8m2!3d30.1675257!4d-95.4682791!16s%2Fg%2F1tf719_l?entry=ttu&g_ep=EgoyMDI0MTAyNy4wIKXMDSoASAFQAw%3D%3D",
+            position: {
+                lat: 30.16765,
+                lng: -95.4685,
+            },
+            phone: "(281) 297-5900",
+            services: [{
+                name: "Harvest",
+                times: [
+                    "Sun | 9:00 a.m. | Sanctuary",
+                    "Sun | 11:00 a.m. | Harvest Worship Center",
+                ],
+            }, {
+                name: "Loft",
+                times: [
+                    "Sat | 6:00 p.m. | Loft Worship Center",
+                    "Sun | 9:30 & 11:00 a.m. | Loft Worship Center",
+                ],
+            }, {
+                name: "Traditional",
+                times: [
+                    "Sun | 7:45 & 9:00 a.m. | Chapel",
+                    "Sun | 11:00 a.m. | Sanctuary",
+                ],
+            }, {
+                name: "Español",
+                times: ["Sun | 10:00 a.m. | Recreation Center"],
+            }, ],
+            moreUrl: "https://thewoodlandsmethodist.org/home",
+        }, {
+            name: "The Church at Woodforest",
+            id: "location-2",
+            backgroundImage: "https://s3.us-east-2.amazonaws.com/rockrms-assets/twms-images/campuses-bg/optimized_campus_iamges/Woodforest%20-%20White.jpg",
+            activeNavBackground: "https://s3.us-east-2.amazonaws.com/rockrms-assets/twms-images/campuses-bg/optimized_campus_iamges/Woodforest%20-%20Red.jpg",
+            activeCardBackground: "https://s3.us-east-2.amazonaws.com/rockrms-assets/twms-images/campuses-bg/optimized_campus_iamges/Woodforest.jpg",
+            address: "700 Fish Creek Thoroughfare, Montgomery, TX 77316",
+
+            mapUrl: "https://www.google.com/maps/place/The+Church+at+Woodforest/@30.2897033,-95.5799979,17z/data=!3m1!4b1!4m6!3m5!1s0x86472512a7b87653:0x5400ddda61e2b3bb!8m2!3d30.2897033!4d-95.577423!16s%2Fg%2F11fn29jl9x?entry=ttu&g_ep=EgoyMDI0MTAyNy4wIKXMDSoASAFQAw%3D%3D",
+            position: {
+                lat: 30.2897033,
+                lng: -95.577423,
+            },
+            phone: "(936) 447-1240",
+            services: [{
+                name: "Woodforest Contemporary Worship",
+                times: ["Sun | 9:00 and 11:00 a.m. | Woodforest Worship Center"],
+            }, ],
+            moreUrl: "https://thewoodlandsmethodist.org/woodforest",
+        }, {
+            name: "The Church at Montgomery",
+            id: "location-3",
+            backgroundImage: "https://s3.us-east-2.amazonaws.com/rockrms-assets/twms-images/campuses-bg/optimized_campus_iamges/Montgomery%20-%20White.jpg",
+            activeNavBackground: "https://s3.us-east-2.amazonaws.com/rockrms-assets/twms-images/campuses-bg/optimized_campus_iamges/Montgomery%20-%20Red.jpg",
+            activeCardBackground: "https://s3.us-east-2.amazonaws.com/rockrms-assets/twms-images/campuses-bg/optimized_campus_iamges/Montgomery.jpg",
+            address: "19190 Keenan Cut Off Road, Montgomery, Texas 77316",
+            mapUrl: "https://www.google.com/maps/place/Oak+Hills+Junior+High+School/@30.3276154,-95.6636848,17z/data=!3m1!4b1!4m6!3m5!1s0x86472145bb0aa61b:0x8ba0027cd522a623!8m2!3d30.3276154!4d-95.6611099!16s%2Fg%2F11c3v0bklj?entry=ttu&g_ep=EgoyMDI0MTAyNy4wIKXMDSoASAFQAw%3D%3D",
+            position: {
+                lat: 30.3276154,
+                lng: -95.6636848,
+            },
+            phone: "(936) 597-4362",
+            services: [{
+                name: "Montgomery Contemporary Worship",
+                times: ["Sun | 10:30 a.m. | Cafeteria"],
+            }, ],
+            moreUrl: "https://thewoodlandsmethodist.org/montgomery",
+        }, {
+            name: "Covenant Church at Creekside",
+            id: "location-4",
+            backgroundImage: "https://s3.us-east-2.amazonaws.com/rockrms-assets/twms-images/campuses-bg/optimized_campus_iamges/Creekside%20-%20White.jpg",
+            activeNavBackground: "https://s3.us-east-2.amazonaws.com/rockrms-assets/twms-images/campuses-bg/optimized_campus_iamges/Creekside%20-%20Red.jpg",
+            activeCardBackground: "https://s3.us-east-2.amazonaws.com/rockrms-assets/twms-images/campuses-bg/optimized_campus_iamges/Creekside.jpg",
+            address: "5633 Creekside Forest Dr, The Woodlands, TX 77389",
+            mapUrl: "https://www.google.com/maps/place/Covenant+Methodist+Church/@30.1379955,-95.5559929,16z/data=!3m1!4b1!4m6!3m5!1s0x864731f6fcffffff:0x33de45054872cfa!8m2!3d30.1379956!4d-95.551122!16s%2Fg%2F11g0k23q6r?entry=ttu&g_ep=EgoyMDI0MTAyNy4wIKXMDSoASAFQAw%3D%3D",
+            position: {
+                lat: 30.138392,
+                lng: -95.550999,
+            },
+            phone: "(281) 357-1900",
+            services: [{
+                name: "English Contemporary Worship",
+                times: ["Sun | 10:00 a.m. | Worship Center"],
+            }, {
+                name: "Spanish",
+                times: ["Sun | 12:30 p.m. | Worship Center"],
+            }, ],
+            moreUrl: "https://thewoodlandsmethodist.org/creekside",
+        }, ];
+
+        function createNavButtons() {
+            const navContainer = document.querySelector(".i-map-nav-container");
+            let activeButton = null;
+
+            locationData.forEach((location) => {
+                const button = document.createElement("button");
+                button.id = location.id;
+                button.className = "i-map-nav i-map-center";
+                button.style.backgroundImage = `url(${location.backgroundImage})`;
+
+                const heading = document.createElement("div");
+                heading.className = "i-map-h4";
+                heading.textContent = location.name;
+                heading.style.fontSize = "115%";
+
+                const detail = document.createElement("p");
+                detail.style.fontSize = "65%";
+                detail.style.margin = "0";
+                detail.innerHTML = `${location.address}`;
+
+                button.appendChild(heading);
+                button.appendChild(detail);
+
+                function setActiveStyles(btn) {
+                    btn.style.backgroundImage = `url(${location.activeNavBackground})`;
+                    btn.style.color = "white";
+                    btn.querySelector("div").style.color = "white";
+                    btn.querySelector("p").style.color = "white";
+                }
+
+                function setInactiveStyles(btn) {
+                    btn.style.backgroundImage = `url(${location.backgroundImage})`;
+                    btn.style.color = "#862533";
+                    btn.querySelector("div").style.color = "#862533";
+                    btn.querySelector("p").style.color = "#862533";
+                }
+
+                button.onmouseover = () => {
+                    if (button !== activeButton) {
+                        setActiveStyles(button);
+                    }
+                };
+                button.onmouseout = () => {
+                    if (button !== activeButton) {
+                        setInactiveStyles(button);
+                    }
+                };
+
+                button.onclick = () => {
+                    if (activeButton) {
+                        setInactiveStyles(activeButton);
+                    }
+                    setActiveStyles(button);
+                    activeButton = button;
+                };
+
+
+                navContainer.appendChild(button);
+            });
+        }
+
+        function createInfoWindowContent(location) {
+            let servicesHtml = location.services
+                .map(
+                    (service) => `
+<h5 class="">${service.name}</h5>${service.times
+              .map(
+                (time) => `
+<p class="i-map-p-tight">${time}</p>`
+              )
+              .join("")}`
+          )
+          .join("");
+        return `
+<div id="i-map-info-window">
+    <div class="i-map-nav-card-container">
+        <div class="i-map-nav-card">
+            <img class="i-map-card-img" src="${location.activeCardBackground}">
+        </div>
+    </div>
+    <h4>${location.name}</h4>${servicesHtml}
+    <hr class="my-2" style="border:none;height :2px;background-color:#862533;">
+    <a class="" href="${location.mapUrl}" target="_blank">${location.address}</a>
+    <p class="i-map-p-tight py-2">
+        <a href="tel:${location.phone}" style="text-decoration:none;color :inherit;">${location.phone}</a>
+    </p>
+    <div class="my-2 mx-2 text-center">
+        <div class="row" style="margin-bottom :15px;display:flex;flex-direction :row;">
+            <div class="mx-2">
+                <a href="${location.moreUrl}" class="btn btn-default twmc--btn twmc--btn--traditional twmc-btn-intro--fullwidth" target="_blank">Learn More</a>
+            </div>
+            <div>
+                <a href="${location.mapUrl}" class="btn btn-default twmc--btn twmc--btn--traditional twmc-btn-intro--fullwidth" target="_blank">Map it ⇗</a>
+            </div>
+        </div>
+    </div>
+</div>`;
+      }
+
+      function initMap() {
+      const isMobile = window.innerWidth <= 768;
+      const iconSize = isMobile ? 30 : 45;
+        const map = new google.maps.Map(document.getElementById("i-map"), {
+          zoom: isMobile ? 10 : 12,
+          center: { lat: 30.240048, lng: -95.55158 },
+          scrollwheel: true,
+        });
+        let activeInfoWindow = null;
+        locationData.forEach((location, index) => {
+          const infoWindow = new google.maps.InfoWindow({
+            content: createInfoWindowContent(location),
+          });
+          const domeImageUrl =
+            "https://s3.us-east-2.amazonaws.com/rockrms-assets/twms-images/campuses-bg/optimized_campus_iamges/dome-map-ring-862633.png";
+          const marker = new google.maps.Marker({
+            position: location.position,
+            map,
+            title: "The Church at Woodforest",
+            icon: {
+              url: domeImageUrl,
+              scaledSize: new google.maps.Size(45, 45),
+            },
+          });
+          function handleLocationClick(marker, infoWindow, map) {
+            if (activeInfoWindow) {
+              activeInfoWindow.close();
+            }
+            map.panTo(marker.getPosition());
+            map.setZoom(13);
+            infoWindow.open(map, marker);
+            activeInfoWindow = infoWindow;
+          }
+          marker.addListener("click", () =>
+            handleLocationClick(marker, infoWindow, map)
+          );
+          marker.addListener("touchend", () =>
+            handleLocationClick(marker, infoWindow, map)
+          );
+          document.getElementById(location.id).addEventListener("click", () => {
+            handleLocationClick(marker, infoWindow, map);
+          });
+        });
+      }
+      createNavButtons();
+    </script>
+
+    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCo0ikcoSJP2bZZG1PWzK5C4TnALRIODIU&callback=initMap"></script>
+</body>
+
+</html>
