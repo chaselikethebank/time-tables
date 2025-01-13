@@ -27,15 +27,28 @@
             background-repeat: no-repeat;
         }
         
-        .i-map-nav {
-            position: relative;
-            width: 30%;
-            float: left;
-            color: #862533;
-            border: none;
-            height: 25vh;
-            background-color: white;
+          .i-map-nav {
+        position: relative;
+        width: 30%;
+        float: left;
+        color: #862533;
+        border: none;
+        height: 25vh;
+        font-size: 100%;
+        transition: background-image 1.2s ease 
+      }
+
+      .i-map-nav div,
+      .i-map-nav p {
+        transition: color 1.2s ease, font-size 1.2s ease;
+      }
+
+
+           .i-map-nav:hover {
+               
         }
+        
+        
         
         .i-map-nav::before {
             content: "";
@@ -44,7 +57,7 @@
             left: 0;
             width: 100%;
             height: .75rem;
-            background-color: #f0eeed;
+             
             z-index: 1;
         }
         
@@ -121,6 +134,9 @@
             .i-map-nav {
                 width: 100%;
                 height: 10vh;
+                font-size: 80%;
+                padding-top: .5rem;
+
             }
             #i-map-info-window {
                 max-width: 100vw;
@@ -131,7 +147,7 @@
             }
             .i-map-nav::before {
                 height: 0.4rem;
-                background-color: #862533;
+                 
             }
             .gm-style-iw {
                 max-width: 400px;
@@ -184,8 +200,8 @@
         const locationData = [{
             name: "The Woodlands Methodist Church",
             id: "location-1",
-            backgroundImage: "https://s3.us-east-2.amazonaws.com/rockrms-assets/twms-images/campuses-bg/optimized_campus_iamges/Woodlands%20-%20White.jpg",
-            activeNavBackground: "https://s3.us-east-2.amazonaws.com/rockrms-assets/twms-images/campuses-bg/optimized_campus_iamges/Woodlands%20-%20Red.jpg",
+            inactiveBackground: "https://s3.us-east-2.amazonaws.com/rockrms-assets/twms-images/campuses-bg/optimized_campus_iamges/Woodlands%20-%20White.jpg",
+            onHoverBackground: "https://s3.us-east-2.amazonaws.com/rockrms-assets/twms-images/campuses-bg/optimized_campus_iamges/Woodlands%20-%20Red.jpg",
             address: "2200 Lake Woodlands Dr, The Woodlands, TX 77380",
             activeCardBackground: "https://s3.us-east-2.amazonaws.com/rockrms-assets/twms-images/campuses-bg/optimized_campus_iamges/Woodlands.jpg",
             mapUrl: "https://www.google.com/maps/place/The+Woodlands+Methodist+Church/@30.1675257,-95.470854,17z/data=!3m2!4b1!5s0x864736cf4056dfa5:0x2d00ba35c741f350!4m6!3m5!1s0x8647316c9d1170e1:0x658c16e745f19438!8m2!3d30.1675257!4d-95.4682791!16s%2Fg%2F1tf719_l?entry=ttu&g_ep=EgoyMDI0MTAyNy4wIKXMDSoASAFQAw%3D%3D",
@@ -220,8 +236,8 @@
         }, {
             name: "The Church at Woodforest",
             id: "location-2",
-            backgroundImage: "https://s3.us-east-2.amazonaws.com/rockrms-assets/twms-images/campuses-bg/optimized_campus_iamges/Woodforest%20-%20White.jpg",
-            activeNavBackground: "https://s3.us-east-2.amazonaws.com/rockrms-assets/twms-images/campuses-bg/optimized_campus_iamges/Woodforest%20-%20Red.jpg",
+            inactiveBackground: "https://s3.us-east-2.amazonaws.com/rockrms-assets/twms-images/campuses-bg/optimized_campus_iamges/Woodforest%20-%20White.jpg",
+            onHoverBackground: "https://s3.us-east-2.amazonaws.com/rockrms-assets/twms-images/campuses-bg/optimized_campus_iamges/Woodforest%20-%20Red.jpg",
             activeCardBackground: "https://s3.us-east-2.amazonaws.com/rockrms-assets/twms-images/campuses-bg/optimized_campus_iamges/Woodforest.jpg",
             address: "700 Fish Creek Thoroughfare, Montgomery, TX 77316",
 
@@ -239,8 +255,8 @@
         }, {
             name: "The Church at Montgomery",
             id: "location-3",
-            backgroundImage: "https://s3.us-east-2.amazonaws.com/rockrms-assets/twms-images/campuses-bg/optimized_campus_iamges/Montgomery%20-%20White.jpg",
-            activeNavBackground: "https://s3.us-east-2.amazonaws.com/rockrms-assets/twms-images/campuses-bg/optimized_campus_iamges/Montgomery%20-%20Red.jpg",
+            inactiveBackground: "https://s3.us-east-2.amazonaws.com/rockrms-assets/twms-images/campuses-bg/optimized_campus_iamges/Montgomery%20-%20White.jpg",
+            onHoverBackground: "https://s3.us-east-2.amazonaws.com/rockrms-assets/twms-images/campuses-bg/optimized_campus_iamges/Montgomery%20-%20Red.jpg",
             activeCardBackground: "https://s3.us-east-2.amazonaws.com/rockrms-assets/twms-images/campuses-bg/optimized_campus_iamges/Montgomery.jpg",
             address: "19190 Keenan Cut Off Road, Montgomery, Texas 77316",
             mapUrl: "https://www.google.com/maps/place/Oak+Hills+Junior+High+School/@30.3276154,-95.6636848,17z/data=!3m1!4b1!4m6!3m5!1s0x86472145bb0aa61b:0x8ba0027cd522a623!8m2!3d30.3276154!4d-95.6611099!16s%2Fg%2F11c3v0bklj?entry=ttu&g_ep=EgoyMDI0MTAyNy4wIKXMDSoASAFQAw%3D%3D",
@@ -257,8 +273,8 @@
         }, {
             name: "Covenant Church at Creekside",
             id: "location-4",
-            backgroundImage: "https://s3.us-east-2.amazonaws.com/rockrms-assets/twms-images/campuses-bg/optimized_campus_iamges/Creekside%20-%20White.jpg",
-            activeNavBackground: "https://s3.us-east-2.amazonaws.com/rockrms-assets/twms-images/campuses-bg/optimized_campus_iamges/Creekside%20-%20Red.jpg",
+            inactiveBackground: "https://s3.us-east-2.amazonaws.com/rockrms-assets/twms-images/campuses-bg/optimized_campus_iamges/Creekside%20-%20White.jpg",
+            onHoverBackground: "https://s3.us-east-2.amazonaws.com/rockrms-assets/twms-images/campuses-bg/optimized_campus_iamges/Creekside%20-%20Red.jpg",
             activeCardBackground: "https://s3.us-east-2.amazonaws.com/rockrms-assets/twms-images/campuses-bg/optimized_campus_iamges/Creekside.jpg",
             address: "5633 Creekside Forest Dr, The Woodlands, TX 77389",
             mapUrl: "https://www.google.com/maps/place/Covenant+Methodist+Church/@30.1379955,-95.5559929,16z/data=!3m1!4b1!4m6!3m5!1s0x864731f6fcffffff:0x33de45054872cfa!8m2!3d30.1379956!4d-95.551122!16s%2Fg%2F11g0k23q6r?entry=ttu&g_ep=EgoyMDI0MTAyNy4wIKXMDSoASAFQAw%3D%3D",
@@ -280,63 +296,73 @@
         function createNavButtons() {
             const navContainer = document.querySelector(".i-map-nav-container");
             let activeButton = null;
-
+        
             locationData.forEach((location) => {
                 const button = document.createElement("button");
                 button.id = location.id;
                 button.className = "i-map-nav i-map-center";
-                button.style.backgroundImage = `url(${location.backgroundImage})`;
-
+                button.style.backgroundImage = `url(${location.inactiveBackground})`;
+        
                 const heading = document.createElement("div");
                 heading.className = "i-map-h4";
                 heading.textContent = location.name;
-                heading.style.fontSize = "115%";
-
+                heading.style.fontSize = "125%";
+        
                 const detail = document.createElement("p");
-                detail.style.fontSize = "65%";
-                detail.style.margin = "0";
+                detail.style.fontSize = "85%";
+                detail.style.margin = "2px 4px 2px 4px";
                 detail.innerHTML = `${location.address}`;
-
+        
                 button.appendChild(heading);
                 button.appendChild(detail);
-
-                function setActiveStyles(btn) {
-                    btn.style.backgroundImage = `url(${location.activeNavBackground})`;
-                    btn.style.color = "white";
-                    btn.querySelector("div").style.color = "white";
-                    btn.querySelector("p").style.color = "white";
-                }
-
-                function setInactiveStyles(btn) {
-                    btn.style.backgroundImage = `url(${location.backgroundImage})`;
-                    btn.style.color = "#862533";
-                    btn.querySelector("div").style.color = "#862533";
-                    btn.querySelector("p").style.color = "#862533";
-                }
-
-                button.onmouseover = () => {
-                    if (button !== activeButton) {
-                        setActiveStyles(button);
-                    }
-                };
-                button.onmouseout = () => {
-                    if (button !== activeButton) {
-                        setInactiveStyles(button);
-                    }
-                };
-
-                button.onclick = () => {
-                    if (activeButton) {
-                        setInactiveStyles(activeButton);
-                    }
-                    setActiveStyles(button);
-                    activeButton = button;
-                };
-
-
                 navContainer.appendChild(button);
+        
+                button.addEventListener("mouseover", () => {
+                    if (button !== activeButton) {
+                        button.style.backgroundImage = `url(${location.onHoverBackground})`;
+                        setTextColor(button, "white");
+                    }
+                });
+        
+                button.addEventListener("mouseout", () => {
+                    if (button !== activeButton) {
+                        button.style.backgroundImage = `url(${location.inactiveBackground})`;
+                        setTextColor(button, "#862533");
+                    }
+                });
+        
+                button.addEventListener("click", () => {
+                    if (activeButton && activeButton !== button) {
+                        resetButtonStyles(activeButton);
+                    }
+                    setActiveStyles(button, location);
+                    activeButton = button;
+                });
             });
+        
+            function setActiveStyles(btn, location) {
+                btn.style.backgroundImage = `url(${location.onHoverBackground})`;
+                setTextColor(btn, "white");
+                 
+            }
+        
+            function resetButtonStyles(btn) {
+                const loc = locationData.find((l) => l.id === btn.id);
+                btn.style.backgroundImage = `url(${loc.inactiveBackground})`;
+                setTextColor(btn, "#862533");
+            }
+        
+            function setTextColor(btn, color) {
+                btn.style.color = color;
+                btn.querySelector("div").style.color = color;
+                btn.querySelector("p").style.color = color;
+            }
         }
+        
+        createNavButtons();
+        
+        
+        
 
         function createInfoWindowContent(location) {
             let servicesHtml = location.services
@@ -394,7 +420,7 @@
           const marker = new google.maps.Marker({
             position: location.position,
             map,
-            title: "The Church at Woodforest",
+            title: location.name,
             icon: {
               url: domeImageUrl,
               scaledSize: new google.maps.Size(45, 45),
@@ -420,7 +446,7 @@
           });
         });
       }
-      createNavButtons();
+ 
     </script>
 
     <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCo0ikcoSJP2bZZG1PWzK5C4TnALRIODIU&callback=initMap"></script>
