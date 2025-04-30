@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BS3 + Modern x Test</title>
+
+    <!-- Bootstrap 3.4.1 CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+     <link rel="stylesheet" href="modern-layout.css">
+
+    <style>
+        
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Bootstrap 3 with Modern x & Styles</h1>
+        <p>Using Bootstrap 3.4.1 base + custom prefixed CSS (`x-*`) for modern x and aesthetics.</p>
+    </div>
+
+    <div class="container">
+
+         <section>
+            <h2>Section 1: Simple Flexbox Centering</h2>
+            <div class="x-flex   x-justify-center x-items-center" style="min-height: 150px; background-color: #f9f9f9;">
+                <div class="x-block" style="width: 200px;">Centered Item</div>
+            </div>
+        </section>
+
+         <section>
+            <h2>Section 2: Responsive Card Grid (Flex Row + BS3 Cols)</h2>
+            <p>Using <code>.x-flex .x-flex-wrap .x-gap-4</code> for the row, and standard <code>.col-sm-6 .col-lg-4</code> for the cards.</p>
+            <p>Cards use the custom <code>.x-card</code> class for modern styling.</p>
+
+            <!-- The Flex Row -->
+            <div class="row x-flex x-flex-wrap   x-items-stretch   "   >
+                <!-- Note: BS3 .row usually cancels parent padding, flex doesn't. -->
+                <!-- We apply negative margins to mimic BS3 row behavior if columns have padding -->
+
+                <!-- Card 1 (Using BS3 column inside flex item) -->
+                <div class="col-xs-12 col-sm-6 col-lg-4 x-items-stretch x-card-wrapper">
+                    <div class="x-block x-items-stretch x-card-wrapper ">
+                        <div class="x-card-header text-left">Modern Card 1</div>
+                        <div class="x-card-body x-card-content x-items-stretch ">
+                            This card uses BS3 `col-lg-4` but sits in a Flexbox row. Modern styling applied via `.x-card`.
+                            <br><br>
+                            <div class="text-left">
+                            <button class="btn btn-primary">BS3 Primary</button>
+                            <button class="btn btn-default">BS3 Default</button>
+                        </div>
+                        </div>
+                        <div class="x-card-footer text-left">Card Footer</div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="col-xs-12 col-sm-6 col-lg-4">
+                    <div class="x-block ">
+                        <div class="x-card-header text-left">Modern Card 2</div>
+                        <div class="x-card-body x-card-content text-left ">
+                            This card uses BS3 <code>`col-lg-4`</code> but sits in a Flexbox row. Modern styling applied via `.x-card`.
+                            This card uses BS3 <code>`col-lg-4`</code> but sits in a Flexbox row. Modern styling applied via `.x-card`.
+                            This card uses BS3 <code>`col-lg-4`</code> but sits in a Flexbox row. Modern styling applied via `.x-card`.
+                            This card uses BS3 <code>`col-lg-4`</code> but sits in a Flexbox row. Modern styling applied via `.x-card`.
+                            <br><br>
+                            <div class="text-left">
+                            <button class="btn btn-primary">BS3 Primary</button>
+                            <button class="btn btn-default">BS3 Default</button>
+                        </div>
+                        </div>
+                        <div class="x-card-footer text-left">Card Footer</div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="col-xs-12 col-sm-6 col-lg-4">
+                    <div class="x-block ">
+                        <div class="x-card-header text-left">Modern Card 3</div>
+                        <div class="x-card-body x-card-content ">
+                            This card uses BS3 <code>`col-lg-4`</code> but sits in a Flexbox row. Modern styling applied via `.x-card`.
+                            <br><br>
+                            <div class="text-left">
+                            <button class="btn btn-primary">BS3 Primary</button>
+                            <button class="btn btn-default">BS3 Default</button>
+                        </div>
+                        </div>
+                        <div class="x-card-footer text-left">Card Footer</div>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="col-xs-12 col-sm-6 col-lg-4">
+                    <div class="x-block ">
+                        <div class="x-card-header text-left">Modern Card 4</div>
+                        <div class="x-card-body x-card-content ">
+                            This card uses BS3 `col-lg-4` but sits in a Flexbox row. Modern styling applied via `.x-card`.
+                            <br><br>
+                            <div class="text-left">
+                            <button class="btn btn-primary">BS3 Primary</button>
+                            <button class="btn btn-default">BS3 Default</button>
+                        </div>
+                        </div>
+                        <div class="x-card-footer text-left">Card Footer</div>
+                    </div>
+                </div>
+
+            </div> <!-- End Flex Row -->
+        </section>
+
+
+        <!-- Section 3: Two-Column x (Flexbox) -->
+        <section>
+             <h2>Section 3: Two Column Flex x (Sidebar + Main)</h2>
+             <div class="x-flex x-flex-col x-md-flex-row x-gap-6">
+                 <div class="x-flex-none" style="width: 100%; max-width: 250px;"> <!-- Sidebar -->
+                     <div class="x-block" style="min-height: 200px;">Sidebar (flex-none)</div>
+                 </div>
+                 <div class="x-flex-1"> <!-- Main Content -->
+                     <div class="x-block" style="min-height: 200px;">Main Content (flex-1 takes remaining space)</div>
+                 </div>
+             </div>
+        </section>
+
+        <!-- Section 4: CSS Grid Example -->
+        <section>
+            <h2>Section 4: CSS Grid Example</h2>
+            <p>Using <code>.x-grid .x-grid-cols-12 .x-gap-4</code></p>
+            <div class="x-grid x-grid-cols-12 x-gap-4">
+                <div class="x-col-span-12 x-md-col-span-4 x-block">Column Span 4</div>
+                <div class="x-col-span-12 x-md-col-span-8 x-block">Column Span 8</div>
+                <div class="x-col-span-6 x-md-col-span-3 x-block">Column Span 3</div>
+                <div class="x-col-span-6 x-md-col-span-3 x-block">Column Span 3</div>
+                <div class="x-col-span-6 x-md-col-span-3 x-block">Column Span 3</div>
+                <div class="x-col-span-6 x-md-col-span-3 x-block">Column Span 3</div>
+                <div class="x-col-span-12 x-block">Column Span 12</div>
+            </div>
+        </section>
+
+
+    </div> <!-- End Main Container -->
+
+    <!-- Section 5: Wide Container Example -->
+    <section class="x-container-wide" style="background-color: #f9f9f9; padding-top: 1rem; padding-bottom: 1rem; margin-top: 2rem;">
+        <h2>Section 5: Using the Wide Container</h2>
+        <p>This section uses <code>.x-container-wide</code> to potentially extend beyond the standard Bootstrap container width on large screens (up to 1440px in this example).</p>
+        <div class="x-block">Content within the wide container.</div>
+    </section>
+
+
+    <!-- Bootstrap 3 JS (Optional, needed for dropdowns, modals etc if used) -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+
+</body>
+</html>
