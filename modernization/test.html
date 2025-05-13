@@ -48,8 +48,8 @@
                             This card uses BS3 `col-lg-4` but sits in a Flexbox row. Modern styling applied via `.x-card`.
                             <br><br>
                             <div class="text-left">
-                            <button class="btn btn-primary">BS3 Primary</button>
-                            <button class="btn btn-default">BS3 Default</button>
+                            <button class="btn btn-primary caps">caps class</button>
+                            <button class="btn btn-default no-caps">no-caps class</button>
                         </div>
                         </div>
                         <div class="x-card-footer text-left">Card Footer</div>
@@ -129,8 +129,8 @@
             <h2>Section 4: CSS Grid Example</h2>
             <p>Using <code>.x-grid .x-grid-cols-12 .x-gap-4</code></p>
             <div class="x-grid x-grid-cols-12 x-gap-4">
-                <div class="x-col-span-12 x-md-col-span-4 x-block">Column Span 4</div>
-                <div class="x-col-span-12 x-md-col-span-8 x-block">Column Span 8</div>
+                <div class="x-col-span-12 x-md-col-span-4 x-block x-bt-sm-primary">Column Span 4<br/><br/>Botder top, Small, Primary color: <code>x-bt-sm-primary</code></div>
+                <div class="x-col-span-12 x-md-col-span-8 x-block x-bt-md-secondary">Column Span 8<br/><br/>Botder top, Medium, Secondary color: <code>x-bt-md-secondary</code></div>
                 <div class="x-col-span-6 x-md-col-span-3 x-block">Column Span 3</div>
                 <div class="x-col-span-6 x-md-col-span-3 x-block">Column Span 3</div>
                 <div class="x-col-span-6 x-md-col-span-3 x-block">Column Span 3</div>
@@ -144,6 +144,7 @@
 
     <!-- Section 5: Wide Container Example -->
     <section class="x-container-wide" style="background-color: #f9f9f9; padding-top: 1rem; padding-bottom: 1rem; margin-top: 2rem;">
+        <br/>
         <h2>Section 5: Using the Wide Container</h2>
         <p>This section uses <code>.x-container-wide</code> to potentially extend beyond the standard Bootstrap container width on large screens (up to 1440px in this example).</p>
         <div class="x-block">Content within the wide container.</div>

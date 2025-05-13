@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nova UI Documentation</title>
+
+    <!-- Bootstrap 3.4.1 CSS (Included for context, but docs use Nova UI) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+    <!-- Prism CSS (for code highlighting) -->
+    <link rel="stylesheet" href="prism.css"> <!-- Adjust path if needed -->
+
+    <!-- Nova UI CSS (Load AFTER Bootstrap and Prism) -->
+    <link rel="stylesheet" href="./nova-ui.css">
+
+    <style>
+        /* Minor doc-specific styles */
+        body {
+            /* Ensure flex layout takes full height */
+            min-height: 100vh;
+            display: flex; /* Use flex for main layout */
+        }
+
+        .nv-docs-sidebar {
+            width: 260px; /* Fixed width for sidebar */
+            flex-shrink: 0; /* Prevent sidebar from shrinking */
+            height: 100vh; /* Full viewport height */
+            position: sticky; /* Stick to the top */
+            top: 0;
+            overflow-y: auto; /* Allow scrolling within sidebar */
+            border-right: 1px solid var(--nv-color-gray-300);
+        }
+
+        .nv-docs-content {
+            flex-grow: 1; /* Allow content to take remaining space */
+            min-width: 0; /* Prevent content overflow issues in flex */
+        }
+
+        .nv-docs-section {
+            border-bottom: 1px solid var(--nv-color-gray-200);
+            /* Use large spacing scale */
+            padding-top: var(--spacing-xxxxxl);
+            padding-bottom: var(--spacing-xxxxxl);
+            margin-bottom: var(--spacing-xxxxl);
+        }
+         .nv-docs-section:last-child {
+            border-bottom: 0;
+            margin-bottom: 0;
+         }
+
+        .nv-docs-example {
+            border: 1px solid var(--nv-color-gray-300);
+            border-radius: var(--radius-m);
+            background-color: var(--nv-color-gray-100); /* Slight background for contrast */
+        }
+
+        /* Style for code blocks */
+        pre[class*="language-"] {
+            margin-top: var(--spacing-l);
+            margin-bottom: var(--spacing-l);
+            border-radius: var(--radius-m);
+            /* Use Nova variables if Prism theme doesn't override */
+            background-color: var(--nv-color-gray-900);
+            color: var(--nv-color-gray-100);
+            padding: var(--spacing-l);
+        }
+
+        /* Utility Class Table Styling */
+        .nv-docs-table {
+          width: 100%;
+          margin-bottom: var(--spacing-l);
+          border-collapse: collapse;
+        }
+        .nv-docs-table th,
+        .nv-docs-table td {
+          padding: var(--spacing-s) var(--spacing-m);
+          border: 1px solid var(--nv-color-gray-300);
+          text-align: left;
+          vertical-align: top;
+        }
+         .nv-docs-table thead th {
+           font-weight: var(--nv-fw-semibold);
+           background-color: var(--nv-color-gray-100);
+         }
+        .nv-docs-table code { /* Style inline code in tables */
+            background-color: var(--nv-color-gray-200);
+            padding: var(--spacing-xxs) var(--spacing-xs);
+            border-radius: var(--radius-m);
+            font-family: var(--nv-font-family-mono);
+            color: var(--nv-color-danger-dark); /* Make code stand out */
+        }
+
+    </style>
+</head>
+<body class="nv-font-sans"> <!-- Apply base font to body -->
+
+    <!-- Sidebar -->
+    <aside class="nv-docs-sidebar nv-p-5 nv-bg-white">
+        <h2 class="nv-fs-4 nv-fw-bold nv-text-primary nv-mb-6">Nova UI</h2>
+        <nav>
+            <ul class="nv-list-unstyled nv-p-0 nv-m-0"> <!-- Need .nv-list-unstyled -->
+                <li class="nv-mb-2"><a href="#introduction" class="nv-link nv-text-dark nv-fw-medium nv-d-block">Introduction</a></li>
+                <li class="nv-mb-2"><a href="#getting-started" class="nv-link nv-text-dark nv-d-block">Getting Started</a></li>
+                <li class="nv-mb-4"><a href="#core-concepts" class="nv-link nv-text-dark nv-d-block">Core Concepts</a></li>
+
+                <li class="nv-mb-2"><strong class="nv-fw-semibold nv-text-muted nv-d-block nv-fs-sm nv-text-uppercase">Layout</strong></li>
+                <li class="nv-ml-3 nv-mb-2"><a href="#containers" class="nv-link nv-text-dark nv-d-block">Containers</a></li>
+                <li class="nv-ml-3 nv-mb-4"><a href="#grid" class="nv-link nv-text-dark nv-d-block">Grid System</a></li>
+
+                <li class="nv-mb-2"><strong class="nv-fw-semibold nv-text-muted nv-d-block nv-fs-sm nv-text-uppercase">Utilities</strong></li>
+                <li class="nv-ml-3 nv-mb-2"><a href="#spacing" class="nv-link nv-text-dark nv-d-block">Spacing</a></li>
+                <li class="nv-ml-3 nv-mb-2"><a href="#borders" class="nv-link nv-text-dark nv-d-block">Borders</a></li>
+                <li class="nv-ml-3 nv-mb-2"><a href="#colors" class="nv-link nv-text-dark nv-d-block">Colors</a></li>
+                <li class="nv-ml-3 nv-mb-2"><a href="#display" class="nv-link nv-text-dark nv-d-block">Display</a></li>
+                <li class="nv-ml-3 nv-mb-2"><a href="#flexbox" class="nv-link nv-text-dark nv-d-block">Flexbox</a></li>
+                <li class="nv-ml-3 nv-mb-4"><a href="#typography" class="nv-link nv-text-dark nv-d-block">Typography</a></li>
+
+                <li class="nv-mb-2"><strong class="nv-fw-semibold nv-text-muted nv-d-block nv-fs-sm nv-text-uppercase">Components</strong></li>
+                <li class="nv-ml-3 nv-mb-2"><a href="#buttons" class="nv-link nv-text-dark nv-d-block">Buttons</a></li>
+                <li class="nv-ml-3 nv-mb-2"><a href="#alerts" class="nv-link nv-text-dark nv-d-block">Alerts</a></li>
+                <li class="nv-ml-3 nv-mb-4"><a href="#cards" class="nv-link nv-text-dark nv-d-block">Cards</a></li>
+
+                <li class="nv-mb-2"><a href="#customization" class="nv-link nv-text-dark nv-d-block">Customization</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="nv-docs-content nv-p-7 nv-bg-gray-100"> <!-- Added base padding -->
+
+        <!-- Introduction -->
+        <section id="introduction" class="nv-docs-section">
+            <h1 class="nv-fs-1 nv-fw-bold nv-mb-4">Introduction to Nova UI</h1>
+            <p class="nv-fs-4 nv-text-muted nv-mb-6">A modern, utility-first CSS framework designed for coexistence with Bootstrap 3.4.1.</p>
+            <p class="nv-mb-3">Nova UI provides a set of modern styling utilities and components, all carefully namespaced with the <code>nv-</code> prefix to prevent conflicts with existing Bootstrap 3 classes.</p>
+            <p class="nv-mb-3">It embraces CSS variables for easy customization, a mobile-first responsive approach, and a clean aesthetic with no shadows or outlines, relying instead on color and typography.</p>
+            <h3 class="nv-fs-3 nv-fw-semibold nv-mt-6 nv-mb-3">Core Principles</h3>
+            <ul class="nv-pl-5"> <!-- Need ul/li styling or use utilities -->
+                 <li class="nv-mb-2"><strong>Unique Prefix:</strong> All classes start with <code>nv-</code>.</li>
+                 <li class="nv-mb-2"><strong>Utility-First:</strong> Compose interfaces with granular classes.</li>
+                 <li class="nv-mb-2"><strong>CSS Variables:</strong> Easy theming and customization.</li>
+                 <li class="nv-mb-2"><strong>Modern & Clean:</strong> No shadows/outlines, focus on color/typography.</li>
+                 <li class="nv-mb-2"><strong>Responsive:</strong> Mobile-first with extensive breakpoints.</li>
+                 <li class="nv-mb-2"><strong>Flexbox Grid:</strong> Modern layout capabilities.</li>
+            </ul>
+        </section>
+
+        <!-- Getting Started -->
+        <section id="getting-started" class="nv-docs-section">
+            <h2 class="nv-fs-2 nv-fw-bold nv-mb-4">Getting Started</h2>
+            <p class="nv-mb-3">Include the Nova UI CSS file in the <code><head></code> of your HTML document, making sure it comes <strong class="nv-fw-semibold">after</strong> the Bootstrap 3.4.1 CSS file.</p>
+            <pre><code class="language-html"><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Project</title>
+
+  <!-- Bootstrap 3.4.1 CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" ...>
+
+  <!-- Nova UI CSS (Load AFTER Bootstrap) -->
+  <link rel="stylesheet" href="path/to/nova-ui.css">
+</head>
+<body>
+  <!-- Your content here -->
+  <h1 class="nv-fs-1 nv-text-primary">Hello using Nova UI!</h1>
+  <button class="btn btn-success">Bootstrap Button</button>
+
+  <!-- Bootstrap 3 JS (Optional) -->
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js" ...></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" ...></script>
+</body>
+</html></code></pre>
+        </section>
+
+        <!-- Core Concepts -->
+        <section id="core-concepts" class="nv-docs-section">
+            <h2 class="nv-fs-2 nv-fw-bold nv-mb-4">Core Concepts</h2>
+
+            <h3 class="nv-fs-4 nv-fw-semibold nv-mb-3">Prefixing</h3>
+            <p class="nv-mb-4">Every class in Nova UI starts with <code>nv-</code> (e.g., <code>nv-container</code>, <code>nv-p-5</code>, <code>nv-btn-primary</code>). This avoids naming collisions with Bootstrap 3 classes like <code>.container</code>, <code>.p-5</code> (if you were using a later Bootstrap), or <code>.btn-primary</code>.</p>
+
+            <h3 class="nv-fs-4 nv-fw-semibold nv-mb-3">CSS Variables</h3>
+            <p class="nv-mb-4">Nova UI heavily relies on CSS Custom Properties (Variables) defined in <code>:root</code>. You can easily override these to customize the look and feel (colors, spacing, fonts, etc.). See the <a href="#customization" class="nv-link">Customization</a> section.</p>
+
+            <h3 class="nv-fs-4 nv-fw-semibold nv-mb-3">Responsive Design</h3>
+            <p class="nv-mb-2">The framework is mobile-first. Utilities and grid classes can be applied responsively using breakpoint infixes:</p>
+            <ul class="nv-pl-5 nv-mb-4">
+                <li>No infix: Applies to all screen sizes (e.g., <code>nv-p-3</code>)</li>
+                <li><code>sm</code>: Applies from <code>--nv-breakpoint-sm</code> (576px) upwards (e.g., <code>nv-p-sm-4</code>)</li>
+                <li><code>md</code>: Applies from <code>--nv-breakpoint-md</code> (768px) upwards (e.g., <code>nv-d-md-flex</code>)</li>
+                <li><code>lg</code>: Applies from <code>--nv-breakpoint-lg</code> (992px) upwards (e.g., <code>nv-col-lg-6</code>)</li>
+                <li><code>xl</code>: Applies from <code>--nv-breakpoint-xl</code> (1200px) upwards</li>
+                <li><code>xxl</code>: Applies from <code>--nv-breakpoint-xxl</code> (1400px) upwards</li>
+                <li><code>xxxl</code>: Applies from <code>--nv-breakpoint-xxxl</code> (1600px) upwards</li>
+            </ul>
+             <p>Example: <code><div class="nv-d-none nv-d-lg-block">Visible only on large screens and up.</div></code></p>
+
+            <h3 class="nv-fs-4 nv-fw-semibold nv-mb-3">No Shadows / Outlines</h3>
+            <p class="nv-mb-4">Following a modern, flat design principle, Nova UI avoids default box-shadows and outlines. Visual feedback (like focus states) is handled through changes in background color, border color, or text color. Ensure your customizations maintain accessible focus indicators.</p>
+        </section>
+
+
+        <!-- Containers -->
+        <section id="containers" class="nv-docs-section">
+            <h2 class="nv-fs-2 nv-fw-bold nv-mb-4">Containers</h2>
+            <p class="nv-mb-3">Containers center and constrain your content horizontally.</p>
+
+            <h3 class="nv-fs-4 nv-fw-semibold nv-mb-3">Default Container</h3>
+            <p class="nv-mb-3">Use <code>.nv-container</code> for a responsive fixed-width container. Its <code>max-width</code> changes at each breakpoint.</p>
+            <div class="nv-docs-example nv-p-4 nv-mb-4">
+                <div class="nv-container nv-bg-primary-lighter nv-p-3">
+                    <code>.nv-container</code> content
+                </div>
+            </div>
+            <pre><code class="language-html"><div class="nv-container">
+  ... Your content here ...
+</div></code></pre>
+
+            <h3 class="nv-fs-4 nv-fw-semibold nv-mt-6 nv-mb-3">Fluid Container</h3>
+            <p class="nv-mb-3">Use <code>.nv-container-fluid</code> for a full-width container, spanning the entire width of the viewport.</p>
+             <div class="nv-docs-example nv-p-4 nv-mb-4">
+                <div class="nv-container-fluid nv-bg-secondary-lighter nv-p-3">
+                    <code>.nv-container-fluid</code> content
+                </div>
+            </div>
+            <pre><code class="language-html"><div class="nv-container-fluid">
+  ... Your content here ...
+</div></code></pre>
+        </section>
+
+
+        <!-- Grid System -->
+        <section id="grid" class="nv-docs-section">
+             <h2 class="nv-fs-2 nv-fw-bold nv-mb-4">Grid System</h2>
+             <p class="nv-mb-4">Nova UI includes a powerful mobile-first flexbox grid system for building layouts of all shapes and sizes. It's based on a 12-column system with multiple tiers, enabling complex responsive layouts.</p>
+
+             <h3 class="nv-fs-4 nv-fw-semibold nv-mb-3">How it Works</h3>
+             <ul class="nv-pl-5 nv-mb-4">
+                 <li class="nv-mb-2">Rows (<code>.nv-row</code>) are wrappers for columns. They use negative margins to counteract the padding on columns and ensure content aligns correctly. They are flex containers.</li>
+                 <li class="nv-mb-2">Columns (<code>.nv-col-*</code>, <code>.nv-col-sm-*</code>, etc.) create the horizontal divisions. They have horizontal padding (gutter).</li>
+                 <li class="nv-mb-2">You must place column content directly within columns, and columns must be immediate children of a row.</li>
+             </ul>
+
+             <h3 class="nv-fs-4 nv-fw-semibold nv-mb-3">Basic Example</h3>
+             <div class="nv-docs-example nv-p-4 nv-mb-4">
+                <div class="nv-row nv-text-center">
+                    <div class="nv-col nv-border nv-p-3 nv-bg-white">Column</div>
+                    <div class="nv-col nv-border nv-p-3 nv-bg-white">Column</div>
+                    <div class="nv-col nv-border nv-p-3 nv-bg-white">Column</div>
+                </div>
+             </div>
+            <pre><code class="language-html"><div class="nv-container">
+  <div class="nv-row">
+    <div class="nv-col">Column</div> <!-- Takes equal width -->
+    <div class="nv-col">Column</div>
+    <div class="nv-col">Column</div>
+  </div>
+</div></code></pre>
+
+            <h3 class="nv-fs-4 nv-fw-semibold nv-mt-6 nv-mb-3">Responsive Columns</h3>
+             <p class="nv-mb-3">Use breakpoint-specific column classes (e.g., <code>nv-col-md-6</code>, <code>nv-col-lg-4</code>) to define column widths at different screen sizes.</p>
+            <div class="nv-docs-example nv-p-4 nv-mb-4">
+                <div class="nv-row nv-text-center">
+                    <div class="nv-col-12 nv-col-md-8 nv-border nv-p-3 nv-bg-white"><code>.nv-col-12 .nv-col-md-8</code></div>
+                    <div class="nv-col-6 nv-col-md-4 nv-border nv-p-3 nv-bg-white"><code>.nv-col-6 .nv-col-md-4</code></div>
+                </div>
+                 <div class="nv-row nv-text-center nv-mt-3">
+                    <div class="nv-col-6 nv-col-lg-3 nv-border nv-p-3 nv-bg-white"><code>.nv-col-6 .nv-col-lg-3</code></div>
+                    <div class="nv-col-6 nv-col-lg-3 nv-border nv-p-3 nv-bg-white"><code>.nv-col-6 .nv-col-lg-3</code></div>
+                    <div class="nv-col-6 nv-col-lg-3 nv-border nv-p-3 nv-bg-white"><code>.nv-col-6 .nv-col-lg-3</code></div>
+                    <div class="nv-col-6 nv-col-lg-3 nv-border nv-p-3 nv-bg-white"><code>.nv-col-6 .nv-col-lg-3</code></div>
+                </div>
+            </div>
+             <pre><code class="language-html"><div class="nv-container">
+  <!-- Stack on mobile, 2/3 + 1/3 on medium+ -->
+  <div class="nv-row">
+    <div class="nv-col-12 nv-col-md-8">.nv-col-12 .nv-col-md-8</div>
+    <div class="nv-col-6 nv-col-md-4">.nv-col-6 .nv-col-md-4</div> <!-- Note: .nv-col-6 prevents stacking before md -->
+  </div>
+
+  <!-- 50% width on mobile, 25% width on large+ -->
+  <div class="nv-row nv-mt-3">
+    <div class="nv-col-6 nv-col-lg-3">.nv-col-6 .nv-col-lg-3</div>
+    <div class="nv-col-6 nv-col-lg-3">.nv-col-6 .nv-col-lg-3</div>
+    <div class="nv-col-6 nv-col-lg-3">.nv-col-6 .nv-col-lg-3</div>
+    <div class="nv-col-6 nv-col-lg-3">.nv-col-6 .nv-col-lg-3</div>
+  </div>
+</div></code></pre>
+
+             <h3 class="nv-fs-4 nv-fw-semibold nv-mt-6 nv-mb-3">Gutters</h3>
+             <p class="nv-mb-3">Gutters are the gaps between column content, created by horizontal padding. Use gutter utilities (if added, e.g., <code>nv-g-*, nv-gx-*, nv-gy-*</code>) or override the <code>--nv-gutter-x</code> and <code>--nv-gutter-y</code> CSS variables on the <code>.nv-row</code> to control spacing.</p>
+            <div class="nv-docs-example nv-p-4 nv-mb-4">
+                <div class="nv-row nv-text-center" style="--nv-gutter-x: 0.5rem; --nv-gutter-y: 0.5rem;">
+                    <div class="nv-col-6"><div class="nv-bg-white nv-p-3">Small Gutters</div></div>
+                    <div class="nv-col-6"><div class="nv-bg-white nv-p-3">Small Gutters</div></div>
+                    <div class="nv-col-6"><div class="nv-bg-white nv-p-3">Small Gutters</div></div>
+                    <div class="nv-col-6"><div class="nv-bg-white nv-p-3">Small Gutters</div></div>
+                </div>
+                 <div class="nv-row nv-text-center nv-mt-4" style="--nv-gutter-x: 3rem; --nv-gutter-y: 1rem;">
+                    <div class="nv-col-6"><div class="nv-bg-white nv-p-3">Large Gutters</div></div>
+                    <div class="nv-col-6"><div class="nv-bg-white nv-p-3">Large Gutters</div></div>
+                    <div class="nv-col-6"><div class="nv-bg-white nv-p-3">Large Gutters</div></div>
+                    <div class="nv-col-6"><div class="nv-bg-white nv-p-3">Large Gutters</div></div>
+                </div>
+            </div>
+            <pre><code class="language-html"><!-- Row with smaller gutters -->
+<div class="nv-row" style="--nv-gutter-x: 0.5rem; --nv-gutter-y: 0.5rem;">
+  <div class="nv-col-6"><div class="nv-bg-white nv-p-3">...</div></div>
+  <div class="nv-col-6"><div class="nv-bg-white nv-p-3">...</div></div>
+  <div class="nv-col-6"><div class="nv-bg-white nv-p-3">...</div></div>
+  <div class="nv-col-6"><div class="nv-bg-white nv-p-3">...</div></div>
+</div></code></pre>
+        </section>
+
+        <!-- Spacing -->
+        <section id="spacing" class="nv-docs-section">
+            <h2 class="nv-fs-2 nv-fw-bold nv-mb-4">Spacing Utilities</h2>
+            <p class="nv-mb-4">Assign responsive-friendly margin or padding values to elements using shorthand classes based on a numeric scale mapped to the <code>--spacing-*</code> variables.</p>
+
+            <h3 class="nv-fs-4 nv-fw-semibold nv-mb-3">Notation</h3>
+            <p class="nv-mb-3">The classes are named using the format: <code>{property}{sides}-{breakpoint}-{size}</code></p>
+            <ul class="nv-pl-5 nv-mb-4">
+                <li class="nv-mb-2"><strong>Property:</strong> <code>m</code> (margin), <code>p</code> (padding)</li>
+                <li class="nv-mb-2">
+                    <strong>Sides:</strong>
+                    <ul>
+                        <li><code>t</code> - top (e.g., <code>nv-mt-3</code>)</li>
+                        <li><code>b</code> - bottom (e.g., <code>nv-mb-5</code>)</li>
+                        <li><code>s</code> - start (left in LTR, right in RTL) (e.g., <code>nv-ms-2</code>)</li>
+                        <li><code>e</code> - end (right in LTR, left in RTL) (e.g., <code>nv-pe-4</code>)</li>
+                        <li><code>x</code> - horizontal (left and right) (e.g., <code>nv-px-6</code>)</li>
+                        <li><code>y</code> - vertical (top and bottom) (e.g., <code>nv-my-1</code>)</li>
+                        <li><em>blank</em> - all 4 sides (e.g., <code>nv-p-7</code>)</li>
+                    </ul>
+                </li>
+                <li class="nv-mb-2"><strong>Breakpoint:</strong> <em>blank</em>, <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>, <code>xxl</code>, <code>xxxl</code> (e.g., <code>nv-mt-md-0</code>)</li>
+                <li class="nv-mb-2"><strong>Size:</strong> <code>0</code> to <code>13</code> (mapping to <code>--spacing-*</code> variables), or <code>auto</code> (for margin)</li>
+            </ul>
+
+            <h3 class="nv-fs-4 nv-fw-semibold nv-mb-3">Spacing Scale</h3>
+             <table class="nv-docs-table nv-mb-5">
+                <thead>
+                    <tr><th>Class Size</th><th>Variable</th><th>Value</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><code>0</code></td><td><code>0</code></td><td>0</td></tr>
+                    <tr><td><code>1</code></td><td><code>--spacing-xxs</code></td><td>0.125rem (2px)</td></tr>
+                    <tr><td><code>2</code></td><td><code>--spacing-xs</code></td><td>0.25rem (4px)</td></tr>
+                    <tr><td><code>3</code></td><td><code>--spacing-s</code></td><td>0.5rem (8px)</td></tr>
+                    <tr><td><code>4</code></td><td><code>--spacing-m</code></td><td>0.75rem (12px)</td></tr>
+                    <tr><td><code>5</code></td><td><code>--spacing-l</code></td><td>1rem (16px)</td></tr>
+                    <tr><td><code>6</code></td><td><code>--spacing-xl</code></td><td>1.25rem (20px)</td></tr>
+                    <tr><td><code>7</code></td><td><code>--spacing-xxl</code></td><td>1.5rem (24px)</td></tr>
+                    <tr><td><code>8</code></td><td><code>--spacing-xxxl</code></td><td>2rem (32px)</td></tr>
+                    <tr><td><code>9</code></td><td><code>--spacing-xxxxl</code></td><td>2.5rem (40px)</td></tr>
+                    <tr><td><code>10</code></td><td><code>--spacing-xxxxxl</code></td><td>3rem (48px)</td></tr>
+                    <tr><td><code>11</code></td><td><code>--spacing-xxxxxxl</code></td><td>3.5rem (56px)</td></tr>
+                    <tr><td><code>12</code></td><td><code>--spacing-xxxxxxxl</code></td><td>4rem (64px)</td></tr>
+                    <tr><td><code>13</code></td><td><code>--spacing-xxxxxxxxl</code></td><td>5rem (80px)</td></tr>
+                    <tr><td><code>auto</code></td><td><code>auto</code> (margin only)</td><td>auto</td></tr>
+                </tbody>
+            </table>
+
+            <h3 class="nv-fs-4 nv-fw-semibold nv-mb-3">Example</h3>
+            <div class="nv-docs-example nv-p-4 nv-mb-4">
+                <div class="nv-bg-primary nv-text-white nv-m-5 nv-p-3 nv-fs-sm"><code>.nv-m-5 .nv-p-3</code></div>
+                <div class="nv-bg-success nv-text-white nv-mt-7 nv-pb-4 nv-px-6 nv-fs-sm"><code>.nv-mt-7 .nv-pb-4 .nv-px-6</code></div>
+                <div class="nv-bg-info nv-text-white nv-ms-auto nv-me-3 nv-w-50 nv-p-2 nv-fs-sm"><code>.nv-ms-auto .nv-me-3</code> (Margin start auto)</div>
+            </div>
+            <pre><code class="language-html"><div class="nv-m-5 nv-p-3">...</div>
+<div class="nv-mt-7 nv-pb-4 nv-px-6">...</div>
+<div class="nv-ms-auto nv-me-3 nv-w-50 nv-p-2">...</div> <!-- Requires nv-w-50 width utility --></code></pre>
+             <!-- NOTE: You might need to add width utilities like .nv-w-50, .nv-w-100 etc. to nova-ui.css -->
+        </section>
+
+        <!-- Borders -->
+        <section id="borders" class="nv-docs-section">
+            <h2 class="nv-fs-2 nv-fw-bold nv-mb-4">Borders</h2>
+            <p class="nv-mb-4">Use border utilities to add or remove borders, change border colors, and adjust border-radius.</p>
+
+            <h3 class="nv-fs-4 nv-fw-semibold nv-mb-3">Additive & Subtractive</h3>
+            <div class="nv-docs-example nv-p-4 nv-mb-4 nv-d-flex nv-flex-wrap">
+                 <div class="nv-m-2 nv-p-5 nv-bg-white nv-border" style="width: 100px; height: 100px;"><code>.nv-border</code></div>
+                 <div class="nv-m-2 nv-p-5 nv-bg-white nv-border-top" style="width: 100px; height: 100px;"><code>.nv-border-top</code></div>
+                 <div class="nv-m-2 nv-p-5 nv-bg-white nv-border-end" style="width: 100px; height: 100px;"><code>.nv-border-end</code></div>
+                 <div class="nv-m-2 nv-p-5 nv-bg-white nv-border-bottom" style="width: 100px; height: 100px;"><code>.nv-border-bottom</code></div>
+                 <div class="nv-m-2 nv-p-5 nv-bg-white nv-border-start" style="width: 100px; height: 100px;"><code>.nv-border-start</code></div>
+                 <div class="nv-m-2 nv-p-5 nv-bg-white nv-border nv-border-0" style="width: 100px; height: 100px;"><code>.nv-border-0</code></div>
+                 <div class="nv-m-2 nv-p-5 nv-bg-white nv-border nv-border-top-0" style="width: 100px; height: 100px;"><code>.nv-border-top-0</code></div>
+                 </div>
+            <pre><code class="language-html"><!-- Additive -->
+<div class="nv-border"></div>
+<div class="nv-border-top"></div>
+<div class="nv-border-end"></div>
+<div class="nv-border-bottom"></div>
+<div class="nv-border-start"></div>
+
+<!-- Subtractive -->
+<div class="nv-border nv-border-0"></div>
+<div class="nv-border nv-border-top-0"></div>
+... etc ...</code></pre>
+
+            <h3 class="nv-fs-4 nv-fw-semibold nv-mt-6 nv-mb-3">Border Color</h3>
+            <div class="nv-docs-example nv-p-4 nv-mb-4 nv-d-flex nv-flex-wrap">
+                <div class="nv-m-2 nv-p-5 nv-bg-white nv-border nv-border-primary" style="width: 100px; height: 100px;"></div>
+                <div class="nv-m-2 nv-p-5 nv-bg-white nv-border nv-border-secondary" style="width: 100px; height: 100px;"></div>
+                <div class="nv-m-2 nv-p-5 nv-bg-white nv-border nv-border-success" style="width: 100px; height: 100px;"></div>
+                <div class="nv-m-2 nv-p-5 nv-bg-white nv-border nv-border-danger" style="width: 100px; height: 100px;"></div>
+                <div class="nv-m-2 nv-p-5 nv-bg-white nv-border nv-border-warning" style="width: 100px; height: 100px;"></div>
+                <div class="nv-m-2 nv-p-5 nv-bg-white nv-border nv-border-info" style="width: 100px; height: 100px;"></div>
+                <div class="nv-m-2 nv-p-5 nv-bg-white nv-border nv-border-light" style="width: 100px; height: 100px;"></div>
+                <div class="nv-m-2 nv-p-5 nv-bg-light nv-border nv-border-dark" style="width: 100px; height: 100px;"></div>
+            </div>
+             <pre><code class="language-html"><div class="nv-border nv-border-primary"></div>
+<div class="nv-border nv-border-secondary"></div>
+... etc for success, danger, warning, info, light, dark ...</code></pre>
+
+            <h3 class="nv-fs-4 nv-fw-semibold nv-mt-6 nv-mb-3">Border Radius</h3>
+            <div class="nv-docs-example nv-p-4 nv-mb-4 nv-d-flex nv-flex-wrap nv-align-items-center">
+                 <div class="nv-m-3 nv-p-5 nv-bg-primary nv-text-white nv-rounded" style="width: 100px; height: 100px;">.nv-rounded</div>
+                 <div class="nv-m-3 nv-p-5 nv-bg-primary nv-text-white nv-rounded-m" style="width: 100px; height: 100px;">.nv-rounded-m</div>
+                 <div class="nv-m-3 nv-p-5 nv-bg-primary nv-text-white nv-rounded-l" style="width: 100px; height: 100px;">.nv-rounded-l</div>
+                 <div class="nv-m-3 nv-p-5 nv-bg-primary nv-text-white nv-rounded-pill" style="width: 150px; height: 60px; line-height: 30px; text-align: center;">.nv-rounded-pill</div>
+                 <div class="nv-m-3 nv-p-5 nv-bg-primary nv-text-white nv-rounded-top" style="width: 100px; height: 100px;">.nv-rounded-top</div>
+                 <div class="nv-m-3 nv-p-5 nv-bg-primary nv-text-white nv-rounded-end" style="width: 100px; height: 100px;">.nv-rounded-end</div>
+                 <div class="nv-m-3 nv-p-5 nv-bg-primary nv-text-white nv-rounded-0" style="width: 100px; height: 100px;">.nv-rounded-0</div>
+            </div>
+            <pre><code class="language-html"><div class="nv-rounded"></div>
+<div class="nv-rounded-m"></div>
+<div class="nv-rounded-l"></div>
+<div class="nv-rounded-pill"></div>
+<div class="nv-rounded-top"></div>
+<div class="nv-rounded-end"></div>
+<div class="nv-rounded-bottom"></div>
+<div class="nv-rounded-start"></div>
+<div class="nv-rounded-0"></div></code></pre>
+        </section>
+
+
+        <!-- Colors -->
+        <section id="colors" class="nv-docs-section">
+            <h2 class="nv-fs-2 nv-fw-bold nv-mb-4">Colors</h2>
+            <p class="nv-mb-4">Convey meaning through color with a handful of color utility classes. Includes support for styling links with hover states, too.</p>
+
+            <h3 class="nv-fs-4 nv-fw-semibold nv-mb-3">Text Color</h3>
+             <div class="nv-docs-example nv-p-4 nv-mb-4">
+                 <p class="nv-text-primary">.nv-text-primary text example</p>
+                 <p class="nv-text-secondary">.nv-text-secondary text example</p>
+                 <p class="nv-text-success">.nv-text-success text example</p>
+                 <p class="nv-text-danger">.nv-text-danger text example</p>
+                 <p class="nv-text-warning nv-bg-dark">.nv-text-warning text example (on dark bg)</p>
+                 <p class="nv-text-info nv-bg-dark">.nv-text-info text example (on dark bg)</p>
+                 <p class="nv-text-light nv-bg-dark">.nv-text-light text example (on dark bg)</p>
+                 <p class="nv-text-dark">.nv-text-dark text example</p>
+                 <p class="nv-text-muted">.nv-text-muted text example</p>
+                 <p class="nv-text-white nv-bg-dark">.nv-text-white text example (on dark bg)</p>
+                 <p class="nv-text-black">.nv-text-black text example</p>
+             </div>
+             <pre><code class="language-html"><p class="nv-text-primary">...</p>
+<p class="nv-text-secondary">...</p>
+... etc ...</code></pre>
+
+             <h3 class="nv-fs-4 nv-fw-semibold nv-mt-6 nv-mb-3">Background Color</h3>
+             <div class="nv-docs-example nv-p-4 nv-mb-4">
+                 <div class="nv-p-3 nv-mb-2 nv-bg-primary nv-text-white">.nv-bg-primary</div>
+                 <div class="nv-p-3 nv-mb-2 nv-bg-primary-light nv-text-primary-darker">.nv-bg-primary-light</div>
+                 <div class="nv-p-3 nv-mb-2 nv-bg-secondary nv-text-white">.nv-bg-secondary</div>
+                 <div class="nv-p-3 nv-mb-2 nv-bg-success nv-text-white">.nv-bg-success</div>
+                 <div class="nv-p-3 nv-mb-2 nv-bg-danger nv-text-white">.nv-bg-danger</div>
+                 <div class="nv-p-3 nv-mb-2 nv-bg-warning nv-text-dark">.nv-bg-warning</div>
+                 <div class="nv-p-3 nv-mb-2 nv-bg-info nv-text-dark">.nv-bg-info</div>
+                 <div class="nv-p-3 nv-mb-2 nv-bg-light nv-text-dark">.nv-bg-light</div>
+                 <div class="nv-p-3 nv-mb-2 nv-bg-dark nv-text-white">.nv-bg-dark</div>
+                 <div class="nv-p-3 nv-mb-2 nv-bg-white nv-text-dark nv-border">.nv-bg-white</div>
+                 <div class="nv-p-3 nv-mb-2 nv-bg-transparent nv-text-dark nv-border">.nv-bg-transparent</div>
+             </div>
+            <pre><code class="language-html"><div class="nv-bg-primary">...</div>
+<div class="nv-bg-primary-light">...</div>
+... etc ...</code></pre>
+        </section>
+
+        <!-- Display -->
+         <section id="display" class="nv-docs-section">
+             <h2 class="nv-fs-2 nv-fw-bold nv-mb-4">Display Property</h2>
+             <p class="nv-mb-4">Quickly and responsively toggle the display value of components and more with our display utilities.</p>
+             <table class="nv-docs-table nv-mb-5">
+                 <thead><tr><th>Class</th><th>Description</th></tr></thead>
+                 <tbody>
+                     <tr><td><code>.nv-d-none</code></td><td>Hides the element.</td></tr>
+                     <tr><td><code>.nv-d-inline</code></td><td>Displays as inline.</td></tr>
+                     <tr><td><code>.nv-d-inline-block</code></td><td>Displays as inline-block.</td></tr>
+                     <tr><td><code>.nv-d-block</code></td><td>Displays as block.</td></tr>
+                     <tr><td><code>.nv-d-flex</code></td><td>Displays as block-level flex container.</td></tr>
+                     <tr><td><code>.nv-d-inline-flex</code></td><td>Displays as inline-level flex container.</td></tr>
+                     <!-- Add others if implemented: grid, table, table-cell, etc. -->
+                 </tbody>
+             </table>
+             <p class="nv-mb-3">Responsive variations also exist, like <code>.nv-d-lg-none</code>, <code>.nv-d-md-flex</code>.</p>
+             <div class="nv-docs-example nv-p-4 nv-mb-4">
+                 <div class="nv-bg-light nv-p-2 nv-mb-2 nv-d-inline"><code>.nv-d-inline</code></div>
+                 <div class="nv-bg-light nv-p-2 nv-mb-2 nv-d-inline"><code>.nv-d-inline</code></div>
+                 <hr class="nv-my-3">
+                 <span class="nv-bg-light nv-p-2 nv-d-block"><code>.nv-d-block</code></span>
+                 <span class="nv-bg-light nv-p-2 nv-d-block"><code>.nv-d-block</code></span>
+                 <hr class="nv-my-3">
+                 <div class="nv-d-lg-none nv-p-2 nv-bg-danger nv-text-white">Hidden on large screens and up (<code>.nv-d-lg-none</code>)</div>
+                 <div class="nv-d-none nv-d-lg-block nv-p-2 nv-bg-success nv-text-white">Hidden until large screens (<code>.nv-d-none .nv-d-lg-block</code>)</div>
+             </div>
+            <pre><code class="language-html"><div class="nv-d-inline">Inline</div>
+<div class="nv-d-inline">Inline</div>
+
+<span class="nv-d-block">Block</span>
+<span class="nv-d-block">Block</span>
+
+<!-- Responsive Example -->
+<div class="nv-d-lg-none">Hidden on large screens and up</div>
+<div class="nv-d-none nv-d-lg-block">Hidden until large screens</div></code></pre>
+         </section>
+
+         <!-- Flexbox -->
+        <section id="flexbox" class="nv-docs-section">
+            <h2 class="nv-fs-2 nv-fw-bold nv-mb-4">Flexbox</h2>
+            <p class="nv-mb-4">Quickly manage the layout, alignment, and sizing of grid columns, navigation, components, and more with a full suite of responsive flexbox utilities.</p>
+
+             <h3 class="nv-fs-4 nv-fw-semibold nv-mb-3">Enable Flex Behaviors</h3>
+             <div class="nv-docs-example nv-p-4 nv-mb-4">
+                 <div class="nv-d-flex nv-p-2 nv-bg-light nv-mb-2">I'm a flexbox container!</div>
+                 <div class="nv-d-inline-flex nv-p-2 nv-bg-light">I'm an inline flexbox container!</div>
+             </div>
+            <pre><code class="language-html"><div class="nv-d-flex">...</div>
+<div class="nv-d-inline-flex">...</div>
+<!-- Responsive variants like nv-d-sm-flex also exist --></code></pre>
+
+            <h3 class="nv-fs-4 nv-fw-semibold nv-mt-6 nv-mb-3">Direction</h3>
+             <div class="nv-docs-example nv-p-4 nv-mb-4">
+                 <div class="nv-d-flex nv-flex-row nv-mb-3 nv-bg-light">
+                     <div class="nv-p-2 nv-bg-secondary nv-text-white nv-m-1">Item 1</div>
+                     <div class="nv-p-2 nv-bg-secondary nv-text-white nv-m-1">Item 2</div>
+                     <div class="nv-p-2 nv-bg-secondary nv-text-white nv-m-1">Item 3</div>
+                 </div>
+                 <div class="nv-d-flex nv-flex-row-reverse nv-mb-3 nv-bg-light">
+                      <div class="nv-p-2 nv-bg-secondary nv-text-white nv-m-1">Item 1</div>
+                     <div class="nv-p-2 nv-bg-secondary nv-text-white nv-m-1">Item 2</div>
+                     <div class="nv-p-2 nv-bg-secondary nv-text-white nv-m-1">Item 3</div>
+                 </div>
+                  <div class="nv-d-flex nv-flex-column nv-mb-3 nv-bg-light">
+                      <div class="nv-p-2 nv-bg-secondary nv-text-white nv-m-1">Item 1</div>
+                     <div class="nv-p-2 nv-bg-secondary nv-text-white nv-m-1">Item 2</div>
+                     <div class="nv-p-2 nv-bg-secondary nv-text-white nv-m-1">Item 3</div>
+                 </div>
+                  <div class="nv-d-flex nv-flex-column-reverse nv-bg-light">
+                     <div class="nv-p-2 nv-bg-secondary nv-text-white nv-m-1">Item 1</div>
+                     <div class="nv-p-2 nv-bg-secondary nv-text-white nv-m-1">Item 2</div>
+                     <div class="nv-p-2 nv-bg-secondary nv-text-white nv-m-1">Item 3</div>
+                 </div>
+             </div>
+             <pre><code class="language-html"><div class="nv-d-flex nv-flex-row">...</div>
+<div class="nv-d-flex nv-flex-row-reverse">...</div>
+<div class="nv-d-flex nv-flex-column">...</div>
+<div class="nv-d-flex nv-flex-column-reverse">...</div>
+<!-- Responsive variants like nv-flex-md-row also exist --></code></pre>
+
+            <h3 class="nv-fs-4 nv-fw-semibold nv-mt-6 nv-mb-3">Justify Content</h3>
+             <p class="nv-mb-3">Utilities for <code>justify-content</code> to change the alignment of flex items on the main axis.</p>
+             <!-- Example for justify-content-center -->
+             <div class="nv-docs-example nv-p-4 nv-mb-4">
+                 <div class="nv-d-flex nv-justify-content-center nv-bg-light">
+                     <div class="nv-p-2 nv-bg-secondary nv-text-white nv-m-1">Item 1</div>
+                     <div class="nv-p-2 nv-bg-secondary nv-text-white nv-m-1">Item 2</div>
+                     <div class="nv-p-2 nv-bg-secondary nv-text-white nv-m-1">Item 3</div>
+                 </div>
+             </div>
+             <pre><code class="language-html"><div class="nv-d-flex nv-justify-content-start">...</div>
+<div class="nv-d-flex nv-justify-content-end">...</div>
+<div class="nv-d-flex nv-justify-content-center">...</div>
+<div class="nv-d-flex nv-justify-content-between">...</div>
+<div class="nv-d-flex nv-justify-content-around">...</div>
+<div class="nv-d-flex nv-justify-content-evenly">...</div>
+<!-- Responsive variants like nv-justify-content-lg-between also exist --></code></pre>
+
+            <h3 class="nv-fs-4 nv-fw-semibold nv-mt-6 nv-mb-3">Align Items</h3>
+             <p class="nv-mb-3">Utilities for <code>align-items</code> to change the alignment of flex items on the cross axis.</p>
+             <!-- Example for align-items-center -->
+             <div class="nv-docs-example nv-p-4 nv-mb-4">
+                 <div class="nv-d-flex nv-align-items-center nv-bg-light" style="height: 100px;">
+                     <div class="nv-p-2 nv-bg-secondary nv-text-white nv-m-1">Item 1</div>
+                     <div class="nv-p-2 nv-bg-secondary nv-text-white nv-m-1 nv-py-4">Tall Item 2</div>
+                     <div class="nv-p-2 nv-bg-secondary nv-text-white nv-m-1">Item 3</div>
+                 </div>
+             </div>
+             <pre><code class="language-html"><div class="nv-d-flex nv-align-items-start">...</div>
+<div class="nv-d-flex nv-align-items-end">...</div>
+<div class="nv-d-flex nv-align-items-center">...</div>
+<div class="nv-d-flex nv-align-items-baseline">...</div>
+<div class="nv-d-flex nv-align-items-stretch">...</div> <!-- Default -->
+<!-- Responsive variants like nv-align-items-md-center also exist --></code></pre>
+
+            <!-- Add sections for Align Self, Fill, Grow/Shrink, Wrap, Order if needed -->
+
+        </section>
+
+        <!-- Typography -->
+        <section id="typography" class="nv-docs-section">
+            <h2 class="nv-fs-2 nv-fw-bold nv-mb-4">Typography</h2>
+            <p class="nv-mb-4">Control text alignment, wrapping, weight, size, and more.</p>
+
+            <h3 class="nv-fs-4 nv-fw-semibold nv-mb-3">Font Size</h3>
+            <div class="nv-docs-example nv-p-4 nv-mb-4">
+                <p class="nv-fs-1">.nv-fs-1 text</p>
+                <p class="nv-fs-2">.nv-fs-2 text</p>
+                <p class="nv-fs-3">.nv-fs-3 text</p>
+                <p class="nv-fs-4">.nv-fs-4 text</p>
+                <p class="nv-fs-5">.nv-fs-5 text</p>
+                <p class="nv-fs-6">.nv-fs-6 text (base)</p>
+                <p class="nv-fs-sm">.nv-fs-sm text</p>
+                <p class="nv-fs-xs">.nv-fs-xs text</p>
+            </div>
+            <pre><code class="language-html"><p class="nv-fs-1">...</p>
+...
+<p class="nv-fs-xs">...</p></code></pre>
+
+            <h3 class="nv-fs-4 nv-fw-semibold nv-mt-6 nv-mb-3">Font Weight and Style</h3>
+            <div class="nv-docs-example nv-p-4 nv-mb-4">
+                <p class="nv-fw-light">Light weight text.</p>
+                <p class="nv-fw-normal">Normal weight text.</p>
+                <p class="nv-fw-medium">Medium weight text.</p>
+                <p class="nv-fw-semibold">Semi bold weight text.</p>
+                <p class="nv-fw-bold">Bold weight text.</p>
+                <p class="nv-fw-bolder">Bolder weight text (relative).</p>
+                <p class="nv-fst-italic">Italic text.</p>
+                <p class="nv-fst-normal">Text normally styled.</p>
+            </div>
+            <pre><code class="language-html"><p class="nv-fw-light">...</p>
+<p class="nv-fw-bold">...</p>
+<p class="nv-fst-italic">...</p></code></pre>
+
+
+            <h3 class="nv-fs-4 nv-fw-semibold nv-mt-6 nv-mb-3">Text Alignment</h3>
+             <div class="nv-docs-example nv-p-4 nv-mb-4">
+                 <p class="nv-text-start">Start aligned text on all viewport sizes.</p>
+                 <p class="nv-text-center">Center aligned text on all viewport sizes.</p>
+                 <p class="nv-text-end">End aligned text on all viewport sizes.</p>
+                 <p class="nv-text-sm-center">Center aligned text starting from small viewport.</p>
+                 <p class="nv-text-lg-end">End aligned text starting from large viewport.</p>
+             </div>
+             <pre><code class="language-html"><p class="nv-text-start">...</p>
+<p class="nv-text-center">...</p>
+<p class="nv-text-end">...</p>
+<!-- Responsive -->
+<p class="nv-text-sm-center">...</p>
+<p class="nv-text-lg-end">...</p></code></pre>
+
+             <!-- Add sections for Text Decoration, Transform, Line Height, Monospace if desired -->
+
+        </section>
+
+        <!-- Buttons -->
+        <section id="buttons" class="nv-docs-section">
+            <h2 class="nv-fs-2 nv-fw-bold nv-mb-4">Buttons</h2>
+            <p class="nv-mb-4">Use Nova UI's custom button styles for actions in forms, dialogs, and more with support for multiple sizes, states, and more.</p>
+
+            <h3 class="nv-fs-4 nv-fw-semibold nv-mb-3">Examples</h3>
+            <div class="nv-docs-example nv-p-4 nv-mb-4">
+                <button type="button" class="nv-btn nv-btn-primary nv-m-1">Primary</button>
+                <button type="button" class="nv-btn nv-btn-secondary nv-m-1">Secondary</button>
+                <button type="button" class="nv-btn nv-btn-success nv-m-1">Success</button> <!-- Add styles if not present -->
+                <button type="button" class="nv-btn nv-btn-danger nv-m-1">Danger</button> <!-- Add styles -->
+                <button type="button" class="nv-btn nv-btn-warning nv-m-1">Warning</button> <!-- Add styles -->
+                <button type="button" class="nv-btn nv-btn-info nv-m-1">Info</button> <!-- Add styles -->
+                <button type="button" class="nv-btn nv-btn-light nv-m-1">Light</button> <!-- Add styles -->
+                <button type="button" class="nv-btn nv-btn-dark nv-m-1">Dark</button> <!-- Add styles -->
+                <button type="button" class="nv-btn nv-btn-link nv-m-1">Link</button> <!-- Add styles -->
+            </div>
+            <pre><code class="language-html"><button type="button" class="nv-btn nv-btn-primary">Primary</button>
+<button type="button" class="nv-btn nv-btn-secondary">Secondary</button>
+<!-- Add other variants as needed --></code></pre>
+
+            <h3 class="nv-fs-4 nv-fw-semibold nv-mt-6 nv-mb-3">Ghost Buttons</h3>
+             <p class="nv-mb-3">Need a button, but not the hefty background colors they bring? Replace the default modifier classes with the <code>.nv-btn-ghost-*</code> ones to remove all background images and colors on any button.</p>
+             <div class="nv-docs-example nv-p-4 nv-mb-4">
+                <button type="button" class="nv-btn nv-btn-ghost-primary nv-m-1">Ghost Primary</button>
+                <button type="button" class="nv-btn nv-btn-ghost-secondary nv-m-1">Ghost Secondary</button> <!-- Add styles -->
+                <button type="button" class="nv-btn nv-btn-ghost-success nv-m-1">Ghost Success</button> <!-- Add styles -->
+             </div>
+            <pre><code class="language-html"><button type="button" class="nv-btn nv-btn-ghost-primary">Primary</button>
+<button type="button" class="nv-btn nv-btn-ghost-secondary">Secondary</button></code></pre>
+
+
+            <h3 class="nv-fs-4 nv-fw-semibold nv-mt-6 nv-mb-3">Sizes</h3>
+            <div class="nv-docs-example nv-p-4 nv-mb-4">
+                <button type="button" class="nv-btn nv-btn-primary nv-btn-lg nv-m-1">Large button</button>
+                <button type="button" class="nv-btn nv-btn-secondary nv-btn-lg nv-m-1">Large button</button>
+                <hr class="nv-my-3">
+                <button type="button" class="nv-btn nv-btn-primary nv-m-1">Default button</button>
+                <button type="button" class="nv-btn nv-btn-secondary nv-m-1">Default button</button>
+                 <hr class="nv-my-3">
+                <button type="button" class="nv-btn nv-btn-primary nv-btn-sm nv-m-1">Small button</button>
+                <button type="button" class="nv-btn nv-btn-secondary nv-btn-sm nv-m-1">Small button</button>
+            </div>
+            <pre><code class="language-html"><button type="button" class="nv-btn nv-btn-primary nv-btn-lg">Large button</button>
+<button type="button" class="nv-btn nv-btn-primary">Default button</button>
+<button type="button" class="nv-btn nv-btn-primary nv-btn-sm">Small button</button></code></pre>
+
+             <h3 class="nv-fs-4 nv-fw-semibold nv-mt-6 nv-mb-3">Disabled State</h3>
+            <div class="nv-docs-example nv-p-4 nv-mb-4">
+                <button type="button" class="nv-btn nv-btn-primary nv-m-1" disabled>Primary disabled</button>
+                <button type="button" class="nv-btn nv-btn-secondary nv-m-1" disabled>Secondary disabled</button>
+                <button type="button" class="nv-btn nv-btn-ghost-primary nv-m-1" disabled>Ghost disabled</button>
+            </div>
+            <pre><code class="language-html"><button type="button" class="nv-btn nv-btn-lg nv-btn-primary" disabled>Primary button</button></code></pre>
+
+        </section>
+
+        <!-- Alerts -->
+        <section id="alerts" class="nv-docs-section">
+            <h2 class="nv-fs-2 nv-fw-bold nv-mb-4">Alerts</h2>
+            <p class="nv-mb-4">Provide contextual feedback messages for typical user actions with the handful of available and flexible alert messages.</p>
+            <div class="nv-docs-example nv-p-4 nv-mb-4">
+                <div class="nv-alert nv-alert-primary" role="alert">
+                  A simple primary alert—check it out!
+                </div>
+                <div class="nv-alert nv-alert-secondary" role="alert">
+                  A simple secondary alert—check it out!
+                </div>
+                <div class="nv-alert nv-alert-success" role="alert">
+                  A simple success alert—check it out!
+                </div>
+                <div class="nv-alert nv-alert-danger" role="alert">
+                  A simple danger alert—check it out!
+                </div>
+                <div class="nv-alert nv-alert-warning" role="alert">
+                  A simple warning alert—check it out!
+                </div>
+                <div class="nv-alert nv-alert-info" role="alert">
+                  A simple info alert—check it out!
+                </div>
+                <div class="nv-alert nv-alert-light" role="alert">
+                  A simple light alert—check it out!
+                </div>
+                <div class="nv-alert nv-alert-dark" role="alert">
+                  A simple dark alert—check it out!
+                </div>
+                 <!-- Add styles for light/dark alerts if not present -->
+            </div>
+            <pre><code class="language-html"><div class="nv-alert nv-alert-primary" role="alert">...</div>
+<div class="nv-alert nv-alert-success" role="alert">...</div>
+... etc ...</code></pre>
+
+            <h3 class="nv-fs-4 nv-fw-semibold nv-mt-6 nv-mb-3">Alerts with Links</h3>
+             <div class="nv-docs-example nv-p-4 nv-mb-4">
+                 <div class="nv-alert nv-alert-warning" role="alert">
+                     A simple warning alert with <a href="#" class="nv-alert-link">an example link</a>. Give it a click if you like.
+                 </div>
+                 <div class="nv-alert nv-alert-info" role="alert">
+                     A simple info alert with <a href="#" class="nv-alert-link">an example link</a>. Give it a click if you like.
+                 </div>
+             </div>
+             <pre><code class="language-html"><div class="nv-alert nv-alert-warning" role="alert">
+  A simple warning alert with <a href="#" class="nv-alert-link">an example link</a>.
+</div></code></pre>
+        </section>
+
+        <!-- Cards -->
+         <section id="cards" class="nv-docs-section">
+             <h2 class="nv-fs-2 nv-fw-bold nv-mb-4">Cards</h2>
+             <p class="nv-mb-4">Nova UI cards provide a flexible and extensible content container. While there's a basic <code>.nv-card</code> class, they are often composed using utility classes.</p>
+
+             <h3 class="nv-fs-4 nv-fw-semibold nv-mb-3">Basic Example (Using Component Class)</h3>
+              <div class="nv-docs-example nv-p-4 nv-mb-4">
+                  <div class="nv-card" style="width: 18rem;"> <!-- Example width -->
+                      <div class="nv-card-body"> <!-- Component part -->
+                          <h5 class="nv-fs-5 nv-fw-semibold nv-mb-2">Card title</h5>
+                          <h6 class="nv-text-muted nv-mb-3 nv-fs-6 nv-fw-normal">Card subtitle</h6>
+                          <p class="nv-mb-4">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                          <a href="#" class="nv-btn nv-btn-sm nv-btn-primary">Go somewhere</a>
+                          <a href="#" class="nv-link nv-fs-sm nv-ml-2">Another link</a>
+                      </div>
+                  </div>
+              </div>
+            <pre><code class="language-html"><div class="nv-card" style="width: 180rem;">
+  <div class="nv-card-body">
+    <h5 class="nv-fs-5 nv-fw-semibold nv-mb-2">Card title</h5>
+    <h6 class="nv-text-muted nv-mb-3 nv-fs-6 nv-fw-normal">Card subtitle</h6>
+    <p class="nv-mb-4">...</p>
+    <a href="#" class="nv-btn nv-btn-sm nv-btn-primary">Go somewhere</a>
+  </div>
+</div></code></pre>
+
+             <h3 class="nv-fs-4 nv-fw-semibold nv-mt-6 nv-mb-3">Composing with Utilities</h3>
+             <p class="nv-mb-3">You can achieve the same result or variations using only utility classes:</p>
+              <div class="nv-docs-example nv-p-4 nv-mb-4">
+                 <div class="nv-border nv-rounded-l nv-bg-white nv-p-5" style="width: 18rem;">
+                      <h5 class="nv-fs-5 nv-fw-semibold nv-mb-2">Card title</h5>
+                      <p class="nv-text-muted nv-mb-4">Composed using <code>nv-border</code>, <code>nv-rounded-l</code>, <code>nv-bg-white</code>, <code>nv-p-5</code> etc.</p>
+                      <button class="nv-btn nv-btn-sm nv-btn-success">Utility Card Button</button>
+                 </div>
+              </div>
+             <pre><code class="language-html"><div class="nv-border nv-rounded-l nv-bg-white nv-p-5" style="width: 18rem;">
+  <h5 class="nv-fs-5 nv-fw-semibold nv-mb-2">Card title</h5>
+  <p class="nv-text-muted nv-mb-4">...</p>
+  <button class="nv-btn nv-btn-sm nv-btn-success">Utility Card Button</button>
+</div></code></pre>
+
+            <h3 class="nv-fs-4 nv-fw-semibold nv-mt-6 nv-mb-3">Header and Footer</h3>
+            <div class="nv-docs-example nv-p-4 nv-mb-4">
+                  <div class="nv-card nv-text-center">
+                     <div class="nv-card-header"> <!-- Component part -->
+                       Featured
+                     </div>
+                      <div class="nv-card-body"> <!-- Component part -->
+                          <h5 class="nv-fs-5 nv-fw-semibold nv-mb-2">Special title treatment</h5>
+                          <p class="nv-mb-4">With supporting text below as a natural lead-in to additional content.</p>
+                          <a href="#" class="nv-btn nv-btn-primary">Go somewhere</a>
+                      </div>
+                       <div class="nv-card-footer nv-text-muted"> <!-- Component part -->
+                         2 days ago
+                       </div>
+                  </div>
+              </div>
+             <pre><code class="language-html"><div class="nv-card nv-text-center">
+  <div class="nv-card-header">
+    Featured
+  </div>
+  <div class="nv-card-body">
+     <h5 class="nv-fs-5 ...">Special title treatment</h5>
+     <p ...>...</p>
+     <a href="#" class="nv-btn nv-btn-primary">Go somewhere</a>
+  </div>
+  <div class="nv-card-footer nv-text-muted">
+    2 days ago
+  </div>
+</div></code></pre>
+
+         </section>
+
+        <!-- Customization -->
+        <section id="customization" class="nv-docs-section">
+            <h2 class="nv-fs-2 nv-fw-bold nv-mb-4">Customization</h2>
+            <p class="nv-mb-4">Customize Nova UI by overriding the CSS variables defined in the <code>:root</code> scope.</p>
+            <p class="nv-mb-3">You can do this in your own CSS file that is loaded <strong class="nv-fw-semibold">after</strong> <code>nova-ui.css</code>.</p>
+
+            <h3 class="nv-fs-4 nv-fw-semibold nv-mb-3">Example: Changing Primary Color and Base Radius</h3>
+            <pre><code class="language-css">/* your-custom-styles.css */
+
+:root {
+  /* Change the base primary color to a purple */
+  --nv-color-primary-lightest: #f3e5f5;
+  --nv-color-primary-lighter: #e1bee7;
+  --nv-color-primary-light: #ce93d8;
+  --nv-color-primary-base: #9c27b0; /* New base purple */
+  --nv-color-primary-dark: #7b1fa2;
+  --nv-color-primary-darker: #6a1b9a;
+  --nv-color-primary-darkest: #4a148c;
+
+  /* Make the default radius sharper */
+  --radius: 0.2rem;
+
+  /* Adjust base font size */
+  --nv-font-size-base: 15px;
+}</code></pre>
+            <p class="nv-mt-4">Simply include this CSS file after `nova-ui.css`, and the framework's components and utilities will automatically use your new values.</p>
+             <div class="nv-docs-example nv-p-4 nv-mt-4">
+                <p>If you inspect this documentation site, you'll see it uses the default variables. If you were to apply the CSS above, the primary buttons, links, and default border-radius would change.</p>
+                <button class="nv-btn nv-btn-primary nv-mr-2">Primary Button (Default)</button>
+                <span class="nv-border nv-p-3 nv-d-inline-block nv-rounded">Default Radius</span>
+             </div>
+        </section>
+
+    </main>
+
+    <!-- Prism JS (Load at the end) -->
+    <script src="js/prism.js"></script> <!-- Adjust path if needed -->
+
+    <!-- Bootstrap 3 JS (If needed for BS3 components in examples, but generally not for the docs page itself) -->
+    <!-- <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script> -->
+
+</body>
+</html>

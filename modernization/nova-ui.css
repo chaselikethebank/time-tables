@@ -1,0 +1,1331 @@
+/* ==========================================================================
+   Nova UI v0.1.0 | MIT License | github.com/your-repo (replace later)
+   ========================================================================== */
+
+/* -------------------------------------------------------------------------- */
+/* 1. Core Variables & Base Styles                                            */
+/* -------------------------------------------------------------------------- */
+:root {
+  /* -- Nova UI Prefix: nv- -- */
+
+  /* Base Font */
+  --nv-font-family-sans: system-ui, -apple-system, Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+  --nv-font-family-mono: SFMono-Regular
+    "Liberation Mono", "Courier New", monospace;
+  --nv-font-size-base: 1rem; /* Typically 16px */
+  --nv-line-height-base: 1.6;
+  --nv-font-weight-base: 400;
+  --nv-body-bg: #ffffff;
+  --nv-body-color: #212529;
+
+  /* Radius (Using your names directly, unlikely to clash) */
+  --radius: 0.3rem; /* Slightly adjusted for a cleaner default */
+  --radius-m: 4px;
+  --radius-l: 8px;
+
+  /* Spacing (Using your names directly) - Mapped to utilities later */
+  --spacing-xxs: 0.125rem; /* 2px */
+  --spacing-xs: 0.25rem; /* 4px */
+  --spacing-s: 0.5rem; /* 8px */
+  --spacing-m: 0.75rem; /* 12px */
+  --spacing-l: 1rem; /* 16px */
+  --spacing-xl: 1.25rem; /* 20px */
+  --spacing-xxl: 1.5rem; /* 24px */
+  --spacing-xxxl: 2rem; /* 32px */
+  --spacing-xxxxl: 2.5rem; /* 40px */
+  --spacing-xxxxxl: 3rem; /* 48px */
+  --spacing-xxxxxxl: 3.5rem; /* 56px (adjusted slightly for better scale) */
+  --spacing-xxxxxxxl: 4rem; /* 64px (adjusted slightly) */
+  --spacing-xxxxxxxxl: 5rem; /* 80px */
+
+  /* Color Palette (Example - Customize as needed) */
+  /* Neutral / Gray Scale */
+  --nv-color-white: #fff;
+  --nv-color-gray-100: #f8f9fa;
+  --nv-color-gray-200: #e9ecef;
+  --nv-color-gray-300: #dee2e6;
+  --nv-color-gray-400: #ced4da;
+  --nv-color-gray-500: #adb5bd;
+  --nv-color-gray-600: #6c757d; /* Good base text on light bg */
+  --nv-color-gray-700: #495057;
+  --nv-color-gray-800: #343a40; /* Good heading text on light bg */
+  --nv-color-gray-900: #212529; /* Base body color */
+  --nv-color-black: #000;
+
+  /* Primary Theme Color */
+  --nv-color-primary-lightest: #e7f5ff;
+  --nv-color-primary-lighter: #cfe2ff;
+  --nv-color-primary-light: #a3caff;
+  --nv-color-primary-base: #0d6efd; /* Example Blue */
+  --nv-color-primary-dark: #0a58ca;
+  --nv-color-primary-darker: #084298;
+  --nv-color-primary-darkest: #052c65;
+
+  /* Secondary Theme Color */
+  --nv-color-secondary-lightest: #f0f1f3;
+  --nv-color-secondary-lighter: #d8dbe0;
+  --nv-color-secondary-light: #b8bec4;
+  --nv-color-secondary-base: #6c757d; /* Example Gray */
+  --nv-color-secondary-dark: #565e64;
+  --nv-color-secondary-darker: #40464a;
+  --nv-color-secondary-darkest: #2a2e31;
+
+  /* Accent Theme Color */
+  --nv-color-accent-lightest: #fff0e7;
+  --nv-color-accent-lighter: #ffd9c2;
+  --nv-color-accent-light: #ffb58a;
+  --nv-color-accent-base: #fd7e14; /* Example Orange */
+  --nv-color-accent-dark: #ca6510;
+  --nv-color-accent-darker: #974c0c;
+  --nv-color-accent-darkest: #653308;
+
+  /* Functional Colors */
+  --nv-color-success-light: #d1e7dd;
+  --nv-color-success-base: #198754;
+  --nv-color-success-dark: #146c43;
+  --nv-color-info-light: #cff4fc;
+  --nv-color-info-base: #0dcaf0;
+  --nv-color-info-dark: #0aa9c8;
+  --nv-color-warning-light: #fff3cd;
+  --nv-color-warning-base: #ffc107;
+  --nv-color-warning-dark: #cca706;
+  --nv-color-danger-light: #f8d7da;
+  --nv-color-danger-base: #dc3545;
+  --nv-color-danger-dark: #b02a37;
+
+  /* Transitions */
+  --nv-transition-base: all 0.2s ease-in-out;
+
+  /* Breakpoints */
+  --nv-breakpoint-xs: 0;
+  --nv-breakpoint-sm: 576px;
+  --nv-breakpoint-md: 768px;
+  --nv-breakpoint-lg: 992px;
+  --nv-breakpoint-xl: 1200px;
+  --nv-breakpoint-xxl: 1400px; /* For wider screens */
+  --nv-breakpoint-xxxl: 1600px; /* For super wide screens */
+
+  /* Container Max Widths */
+  --nv-container-max-sm: 540px;
+  --nv-container-max-md: 720px;
+  --nv-container-max-lg: 960px;
+  --nv-container-max-xl: 1140px;
+  --nv-container-max-xxl: 1320px;
+  --nv-container-max-xxxl: 1500px;
+}
+
+/* Base HTML & Body */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: var(--nv-font-size-base);
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+body {
+  margin: 0;
+  font-family: var(--nv-font-family-sans);
+  font-size: var(--nv-font-size-base);
+  font-weight: var(--nv-font-weight-base);
+  line-height: var(--nv-line-height-base);
+  color: var(--nv-body-color);
+  background-color: var(--nv-body-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Basic Link Styling */
+a.nv-link, /* Use specific class for Nova links if needed */
+  .nv-link {
+  /* Or apply broadly to links within Nova components */
+  color: var(--nv-color-primary-base);
+  text-decoration: none; /* Modern default */
+  transition: var(--nv-transition-base);
+}
+a.nv-link:hover,
+.nv-link:hover {
+  color: var(--nv-color-primary-dark);
+  text-decoration: underline; /* Add underline on hover for clarity */
+}
+
+/* Remove Outline - Use focus visible polyfill or ensure clear focus states */
+/* WARNING: Accessibility concern. Ensure alternative focus indication is clear */
+*:focus {
+  outline: none;
+}
+*:focus-visible {
+  /* Define a clear, non-outline focus style using color/background */
+  box-shadow: 0 0 0 2px rgba(var(--nv-color-primary-base-rgb, 13 110 253) / 0.4); /* Fallback if needed, Bootstrap 5 style */
+  /* Or better: use background/border color changes if contrast is sufficient */
+}
+
+/* -------------------------------------------------------------------------- */
+/* 2. Layout: Container & Grid System (Flexbox)                             */
+/* -------------------------------------------------------------------------- */
+
+/* Container */
+.nv-container,
+.nv-container-fluid {
+  width: 100%;
+  padding-right: calc(var(--nv-gutter-x, 1.5rem) * 0.5); /* Gutter variable */
+  padding-left: calc(var(--nv-gutter-x, 1.5rem) * 0.5);
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/* Responsive Containers */
+.nv-container {
+  --nv-gutter-x: 1.5rem;
+} /* Default gutter */
+
+@media (min-width: 576px) {
+  .nv-container {
+    max-width: var(--nv-container-max-sm);
+  }
+}
+@media (min-width: 768px) {
+  .nv-container {
+    max-width: var(--nv-container-max-md);
+  }
+}
+@media (min-width: 992px) {
+  .nv-container {
+    max-width: var(--nv-container-max-lg);
+  }
+}
+@media (min-width: 1200px) {
+  .nv-container {
+    max-width: var(--nv-container-max-xl);
+  }
+}
+@media (min-width: 1400px) {
+  .nv-container {
+    max-width: var(--nv-container-max-xxl);
+  }
+}
+@media (min-width: 1600px) {
+  .nv-container {
+    max-width: var(--nv-container-max-xxxl);
+  }
+}
+
+/* Row */
+.nv-row {
+  --nv-gutter-x: 1.5rem; /* Can be overridden */
+  --nv-gutter-y: 0;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: calc(var(--nv-gutter-y) * -1); /* Gutters */
+  margin-right: calc(var(--nv-gutter-x) * -0.5);
+  margin-left: calc(var(--nv-gutter-x) * -0.5);
+}
+.nv-row > * {
+  box-sizing: border-box;
+  flex-shrink: 0;
+  width: 100%;
+  max-width: 100%;
+  padding-right: calc(var(--nv-gutter-x) * 0.5);
+  padding-left: calc(var(--nv-gutter-x) * 0.5);
+  margin-top: var(--nv-gutter-y);
+}
+
+/* Columns (Mobile First) */
+.nv-col {
+  flex: 1 0 0%; /* Default: takes up available space */
+}
+
+.nv-col-auto {
+  flex: 0 0 auto;
+  width: auto;
+}
+
+/* Generate column classes (1-12) */
+.nv-col-1 {
+  flex: 0 0 auto;
+  width: 8.333333%;
+}
+.nv-col-2 {
+  flex: 0 0 auto;
+  width: 16.666667%;
+}
+.nv-col-3 {
+  flex: 0 0 auto;
+  width: 25%;
+}
+.nv-col-4 {
+  flex: 0 0 auto;
+  width: 33.333333%;
+}
+.nv-col-5 {
+  flex: 0 0 auto;
+  width: 41.666667%;
+}
+.nv-col-6 {
+  flex: 0 0 auto;
+  width: 50%;
+}
+.nv-col-7 {
+  flex: 0 0 auto;
+  width: 58.333333%;
+}
+.nv-col-8 {
+  flex: 0 0 auto;
+  width: 66.666667%;
+}
+.nv-col-9 {
+  flex: 0 0 auto;
+  width: 75%;
+}
+.nv-col-10 {
+  flex: 0 0 auto;
+  width: 83.333333%;
+}
+.nv-col-11 {
+  flex: 0 0 auto;
+  width: 91.666667%;
+}
+.nv-col-12 {
+  flex: 0 0 auto;
+  width: 100%;
+}
+
+/* Responsive Columns (Example for 'md' breakpoint - repeat for sm, lg, xl, xxl, xxxl) */
+@media (min-width: 768px) {
+  /* --nv-breakpoint-md */
+  .nv-col-md {
+    flex: 1 0 0%;
+  }
+  .nv-col-md-auto {
+    flex: 0 0 auto;
+    width: auto;
+  }
+  .nv-col-md-1 {
+    flex: 0 0 auto;
+    width: 8.333333%;
+  }
+  .nv-col-md-2 {
+    flex: 0 0 auto;
+    width: 16.666667%;
+  }
+  .nv-col-md-3 {
+    flex: 0 0 auto;
+    width: 25%;
+  }
+  .nv-col-md-4 {
+    flex: 0 0 auto;
+    width: 33.333333%;
+  }
+  .nv-col-md-5 {
+    flex: 0 0 auto;
+    width: 41.666667%;
+  }
+  .nv-col-md-6 {
+    flex: 0 0 auto;
+    width: 50%;
+  }
+  .nv-col-md-7 {
+    flex: 0 0 auto;
+    width: 58.333333%;
+  }
+  .nv-col-md-8 {
+    flex: 0 0 auto;
+    width: 66.666667%;
+  }
+  .nv-col-md-9 {
+    flex: 0 0 auto;
+    width: 75%;
+  }
+  .nv-col-md-10 {
+    flex: 0 0 auto;
+    width: 83.333333%;
+  }
+  .nv-col-md-11 {
+    flex: 0 0 auto;
+    width: 91.666667%;
+  }
+  .nv-col-md-12 {
+    flex: 0 0 auto;
+    width: 100%;
+  }
+  /* Add offset, order classes if needed */
+  .nv-offset-md-1 {
+    margin-left: 8.333333%;
+  }
+  .nv-offset-md-2 {
+    margin-left: 16.666667%;
+  }
+  /* ... up to 11 */
+}
+/* --- Repeat similar blocks for sm, lg, xl, xxl, xxxl breakpoints --- */
+/* Example for lg */
+@media (min-width: 992px) {
+  /* --nv-breakpoint-lg */
+  .nv-col-lg {
+    flex: 1 0 0%;
+  }
+  .nv-col-lg-auto {
+    flex: 0 0 auto;
+    width: auto;
+  }
+  .nv-col-lg-1 {
+    flex: 0 0 auto;
+    width: 8.333333%;
+  } /* ... up to 12 */
+  .nv-col-lg-12 {
+    flex: 0 0 auto;
+    width: 100%;
+  }
+  .nv-offset-lg-1 {
+    margin-left: 8.333333%;
+  } /* ... up to 11 */
+}
+/* ... etc for xl, xxl, xxxl */
+
+/* -------------------------------------------------------------------------- */
+/* 3. Utilities                                                               */
+/* -------------------------------------------------------------------------- */
+
+/* Spacing (Margin & Padding) - Using a 0-9 scale mapping */
+/*
+    0: 0
+    1: var(--spacing-xxs)   0.125rem
+    2: var(--spacing-xs)    0.25rem
+    3: var(--spacing-s)     0.5rem
+    4: var(--spacing-m)     0.75rem
+    5: var(--spacing-l)     1rem
+    6: var(--spacing-xl)    1.25rem
+    7: var(--spacing-xxl)   1.5rem
+    8: var(--spacing-xxxl)  2rem
+    9: var(--spacing-xxxxl) 2.5rem
+   10: var(--spacing-xxxxxl) 3rem
+   11: var(--spacing-xxxxxxl) 3.5rem
+   12: var(--spacing-xxxxxxxl) 4rem
+   13: var(--spacing-xxxxxxxxl) 5rem
+   'auto': auto
+  */
+.nv-m-0 {
+  margin: 0 !important;
+}
+.nv-m-1 {
+  margin: var(--spacing-xxs) !important;
+}
+.nv-m-2 {
+  margin: var(--spacing-xs) !important;
+}
+.nv-m-3 {
+  margin: var(--spacing-s) !important;
+}
+.nv-m-4 {
+  margin: var(--spacing-m) !important;
+}
+.nv-m-5 {
+  margin: var(--spacing-l) !important;
+}
+/* ... add up to 13 if needed */
+.nv-m-auto {
+  margin: auto !important;
+}
+
+.nv-mt-0 {
+  margin-top: 0 !important;
+}
+.nv-mt-1 {
+  margin-top: var(--spacing-xxs) !important;
+}
+/* ... etc for mt, me, mb, ms, mx, my */
+.nv-mx-auto {
+  margin-right: auto !important;
+  margin-left: auto !important;
+}
+.nv-my-auto {
+  margin-top: auto !important;
+  margin-bottom: auto !important;
+}
+/* ... similar pattern for all directions (t, b, s(start/left), e(end/right), x, y) */
+
+.nv-p-0 {
+  padding: 0 !important;
+}
+.nv-p-1 {
+  padding: var(--spacing-xxs) !important;
+}
+.nv-p-2 {
+  padding: var(--spacing-xs) !important;
+}
+.nv-p-3 {
+  padding: var(--spacing-s) !important;
+}
+.nv-p-4 {
+  padding: var(--spacing-m) !important;
+}
+.nv-p-5 {
+  padding: var(--spacing-l) !important;
+}
+/* ... add up to 13 if needed */
+
+.nv-pt-0 {
+  padding-top: 0 !important;
+}
+.nv-pt-1 {
+  padding-top: var(--spacing-xxs) !important;
+}
+/* ... etc for pt, pe, pb, ps, px, py */
+
+/* Responsive Spacing (Example for 'md' breakpoint) */
+@media (min-width: 768px) {
+  .nv-m-md-0 {
+    margin: 0 !important;
+  }
+  .nv-m-md-1 {
+    margin: var(--spacing-xxs) !important;
+  }
+  /* ... etc */
+  .nv-mt-md-0 {
+    margin-top: 0 !important;
+  }
+  /* ... etc */
+  .nv-p-md-0 {
+    padding: 0 !important;
+  }
+  /* ... etc */
+  .nv-pt-md-0 {
+    padding-top: 0 !important;
+  }
+  /* ... etc */
+}
+/* --- Repeat similar blocks for sm, lg, xl, xxl, xxxl breakpoints --- */
+
+/* Borders */
+.nv-border {
+  border: 1px solid var(--nv-color-gray-300) !important;
+}
+.nv-border-top {
+  border-top: 1px solid var(--nv-color-gray-300) !important;
+}
+.nv-border-end {
+  border-right: 1px solid var(--nv-color-gray-300) !important;
+}
+.nv-border-bottom {
+  border-bottom: 1px solid var(--nv-color-gray-300) !important;
+}
+.nv-border-start {
+  border-left: 1px solid var(--nv-color-gray-300) !important;
+}
+
+.nv-border-0 {
+  border: 0 !important;
+}
+.nv-border-top-0 {
+  border-top: 0 !important;
+}
+.nv-border-end-0 {
+  border-right: 0 !important;
+}
+.nv-border-bottom-0 {
+  border-bottom: 0 !important;
+}
+.nv-border-start-0 {
+  border-left: 0 !important;
+}
+
+/* Border Colors */
+.nv-border-primary {
+  border-color: var(--nv-color-primary-base) !important;
+}
+.nv-border-secondary {
+  border-color: var(--nv-color-secondary-base) !important;
+}
+.nv-border-success {
+  border-color: var(--nv-color-success-base) !important;
+}
+.nv-border-info {
+  border-color: var(--nv-color-info-base) !important;
+}
+.nv-border-warning {
+  border-color: var(--nv-color-warning-base) !important;
+}
+.nv-border-danger {
+  border-color: var(--nv-color-danger-base) !important;
+}
+.nv-border-light {
+  border-color: var(--nv-color-gray-200) !important;
+}
+.nv-border-dark {
+  border-color: var(--nv-color-gray-700) !important;
+}
+.nv-border-white {
+  border-color: var(--nv-color-white) !important;
+}
+
+/* Border Radius */
+.nv-rounded {
+  border-radius: var(--radius) !important;
+}
+.nv-rounded-m {
+  border-radius: var(--radius-m) !important;
+}
+.nv-rounded-l {
+  border-radius: var(--radius-l) !important;
+}
+.nv-rounded-0 {
+  border-radius: 0 !important;
+}
+.nv-rounded-pill {
+  border-radius: 50rem !important;
+} /* Pill shape */
+.nv-rounded-top {
+  border-top-left-radius: var(--radius) !important;
+  border-top-right-radius: var(--radius) !important;
+}
+.nv-rounded-end {
+  border-top-right-radius: var(--radius) !important;
+  border-bottom-right-radius: var(--radius) !important;
+}
+.nv-rounded-bottom {
+  border-bottom-right-radius: var(--radius) !important;
+  border-bottom-left-radius: var(--radius) !important;
+}
+.nv-rounded-start {
+  border-top-left-radius: var(--radius) !important;
+  border-bottom-left-radius: var(--radius) !important;
+}
+/* Add variants for -m and -l radii if needed */
+
+/* Colors (Background) */
+.nv-bg-primary {
+  background-color: var(--nv-color-primary-base) !important;
+}
+.nv-bg-primary-light {
+  background-color: var(--nv-color-primary-light) !important;
+}
+.nv-bg-primary-lighter {
+  background-color: var(--nv-color-primary-lighter) !important;
+}
+.nv-bg-primary-lightest {
+  background-color: var(--nv-color-primary-lightest) !important;
+}
+/* ... add dark variants if needed */
+.nv-bg-secondary {
+  background-color: var(--nv-color-secondary-base) !important;
+}
+.nv-bg-success {
+  background-color: var(--nv-color-success-base) !important;
+}
+.nv-bg-info {
+  background-color: var(--nv-color-info-base) !important;
+}
+.nv-bg-warning {
+  background-color: var(--nv-color-warning-base) !important;
+}
+.nv-bg-danger {
+  background-color: var(--nv-color-danger-base) !important;
+}
+.nv-bg-light {
+  background-color: var(--nv-color-gray-100) !important;
+}
+.nv-bg-dark {
+  background-color: var(--nv-color-gray-800) !important;
+}
+.nv-bg-white {
+  background-color: var(--nv-color-white) !important;
+}
+.nv-bg-transparent {
+  background-color: transparent !important;
+}
+
+/* Colors (Text) */
+.nv-text-primary {
+  color: var(--nv-color-primary-base) !important;
+}
+.nv-text-primary-dark {
+  color: var(--nv-color-primary-dark) !important;
+}
+/* ... add other variants */
+.nv-text-secondary {
+  color: var(--nv-color-secondary-base) !important;
+}
+.nv-text-success {
+  color: var(--nv-color-success-base) !important;
+}
+.nv-text-info {
+  color: var(--nv-color-info-base) !important;
+}
+.nv-text-warning {
+  color: var(--nv-color-warning-base) !important;
+}
+.nv-text-danger {
+  color: var(--nv-color-danger-base) !important;
+}
+.nv-text-light {
+  color: var(--nv-color-gray-500) !important;
+} /* Lighter gray for text */
+.nv-text-dark {
+  color: var(--nv-color-gray-900) !important;
+} /* Dark text */
+.nv-text-white {
+  color: var(--nv-color-white) !important;
+}
+.nv-text-muted {
+  color: var(--nv-color-gray-600) !important;
+}
+.nv-text-black {
+  color: var(--nv-color-black) !important;
+}
+
+/* Display */
+.nv-d-none {
+  display: none !important;
+}
+.nv-d-inline {
+  display: inline !important;
+}
+.nv-d-inline-block {
+  display: inline-block !important;
+}
+.nv-d-block {
+  display: block !important;
+}
+.nv-d-flex {
+  display: flex !important;
+}
+.nv-d-inline-flex {
+  display: inline-flex !important;
+}
+/* ... Add grid, table etc. if needed */
+
+/* Responsive Display (Example for 'md' breakpoint) */
+@media (min-width: 768px) {
+  .nv-d-md-none {
+    display: none !important;
+  }
+  .nv-d-md-inline {
+    display: inline !important;
+  }
+  .nv-d-md-inline-block {
+    display: inline-block !important;
+  }
+  .nv-d-md-block {
+    display: block !important;
+  }
+  .nv-d-md-flex {
+    display: flex !important;
+  }
+  .nv-d-md-inline-flex {
+    display: inline-flex !important;
+  }
+}
+/* --- Repeat similar blocks for sm, lg, xl, xxl, xxxl breakpoints --- */
+
+/* Flexbox Utilities */
+.nv-flex-row {
+  flex-direction: row !important;
+}
+.nv-flex-column {
+  flex-direction: column !important;
+}
+.nv-flex-row-reverse {
+  flex-direction: row-reverse !important;
+}
+.nv-flex-column-reverse {
+  flex-direction: column-reverse !important;
+}
+
+.nv-flex-fill {
+  flex: 1 1 auto !important;
+}
+.nv-flex-grow-0 {
+  flex-grow: 0 !important;
+}
+.nv-flex-grow-1 {
+  flex-grow: 1 !important;
+}
+.nv-flex-shrink-0 {
+  flex-shrink: 0 !important;
+}
+.nv-flex-shrink-1 {
+  flex-shrink: 1 !important;
+}
+.nv-flex-wrap {
+  flex-wrap: wrap !important;
+}
+.nv-flex-nowrap {
+  flex-wrap: nowrap !important;
+}
+.nv-flex-wrap-reverse {
+  flex-wrap: wrap-reverse !important;
+}
+
+/* Justify Content */
+.nv-justify-content-start {
+  justify-content: flex-start !important;
+}
+.nv-justify-content-end {
+  justify-content: flex-end !important;
+}
+.nv-justify-content-center {
+  justify-content: center !important;
+}
+.nv-justify-content-between {
+  justify-content: space-between !important;
+}
+.nv-justify-content-around {
+  justify-content: space-around !important;
+}
+.nv-justify-content-evenly {
+  justify-content: space-evenly !important;
+}
+
+/* Align Items */
+.nv-align-items-start {
+  align-items: flex-start !important;
+}
+.nv-align-items-end {
+  align-items: flex-end !important;
+}
+.nv-align-items-center {
+  align-items: center !important;
+}
+.nv-align-items-baseline {
+  align-items: baseline !important;
+}
+.nv-align-items-stretch {
+  align-items: stretch !important;
+}
+
+/* Align Self */
+.nv-align-self-start {
+  align-self: flex-start !important;
+}
+.nv-align-self-end {
+  align-self: flex-end !important;
+}
+.nv-align-self-center {
+  align-self: center !important;
+}
+.nv-align-self-baseline {
+  align-self: baseline !important;
+}
+.nv-align-self-stretch {
+  align-self: stretch !important;
+}
+
+/* Align Content */
+.nv-align-content-start {
+  align-content: flex-start !important;
+}
+.nv-align-content-end {
+  align-content: flex-end !important;
+}
+.nv-align-content-center {
+  align-content: center !important;
+}
+.nv-align-content-between {
+  align-content: space-between !important;
+}
+.nv-align-content-around {
+  align-content: space-around !important;
+}
+.nv-align-content-stretch {
+  align-content: stretch !important;
+}
+
+/* Order */
+.nv-order-first {
+  order: -1 !important;
+}
+.nv-order-0 {
+  order: 0 !important;
+}
+.nv-order-1 {
+  order: 1 !important;
+}
+/* ... add more if needed */
+.nv-order-last {
+  order: 6 !important;
+} /* Adjust based on max needed order */
+
+/* Responsive Flex (Example for 'md' breakpoint) */
+@media (min-width: 768px) {
+  .nv-flex-md-row {
+    flex-direction: row !important;
+  }
+  .nv-flex-md-column {
+    flex-direction: column !important;
+  }
+  /* ... etc for all flex properties */
+  .nv-justify-content-md-start {
+    justify-content: flex-start !important;
+  }
+  /* ... etc */
+  .nv-align-items-md-center {
+    align-items: center !important;
+  }
+  /* ... etc */
+}
+/* --- Repeat similar blocks for sm, lg, xl, xxl, xxxl breakpoints --- */
+
+/* Typography */
+.nv-text-start {
+  text-align: left !important;
+}
+.nv-text-center {
+  text-align: center !important;
+}
+.nv-text-end {
+  text-align: right !important;
+}
+
+/* Responsive Text Align (Example for 'md') */
+@media (min-width: 768px) {
+  .nv-text-md-start {
+    text-align: left !important;
+  }
+  .nv-text-md-center {
+    text-align: center !important;
+  }
+  .nv-text-md-end {
+    text-align: right !important;
+  }
+}
+/* --- Repeat similar blocks for sm, lg, xl, xxl, xxxl breakpoints --- */
+
+/* Font Weight */
+.nv-fw-light {
+  font-weight: 300 !important;
+}
+.nv-fw-normal {
+  font-weight: 400 !important;
+}
+.nv-fw-medium {
+  font-weight: 500 !important;
+} /* Common addition */
+.nv-fw-semibold {
+  font-weight: 600 !important;
+} /* Common addition */
+.nv-fw-bold {
+  font-weight: 700 !important;
+}
+.nv-fw-bolder {
+  font-weight: bolder !important;
+} /* relative */
+
+/* Font Style */
+.nv-fst-italic {
+  font-style: italic !important;
+}
+.nv-fst-normal {
+  font-style: normal !important;
+}
+
+/* Text Decoration */
+.nv-text-decoration-none {
+  text-decoration: none !important;
+}
+.nv-text-decoration-underline {
+  text-decoration: underline !important;
+}
+.nv-text-decoration-line-through {
+  text-decoration: line-through !important;
+}
+
+/* Text Transform */
+.nv-text-lowercase {
+  text-transform: lowercase !important;
+}
+.nv-text-uppercase {
+  text-transform: uppercase !important;
+}
+.nv-text-capitalize {
+  text-transform: capitalize !important;
+}
+
+/* Font Size (Example scale - adjust as needed) */
+.nv-fs-1 {
+  font-size: 2.25rem !important;
+} /* h1 */
+.nv-fs-2 {
+  font-size: 1.8rem !important;
+} /* h2 */
+.nv-fs-3 {
+  font-size: 1.5rem !important;
+} /* h3 */
+.nv-fs-4 {
+  font-size: 1.25rem !important;
+} /* h4 */
+.nv-fs-5 {
+  font-size: 1.1rem !important;
+} /* h5 */
+.nv-fs-6 {
+  font-size: 1rem !important;
+} /* h6 / base */
+.nv-fs-sm {
+  font-size: 0.875rem !important;
+} /* small */
+.nv-fs-xs {
+  font-size: 0.75rem !important;
+} /* extra small */
+
+/* Line Height */
+.nv-lh-1 {
+  line-height: 1 !important;
+}
+.nv-lh-sm {
+  line-height: 1.25 !important;
+}
+.nv-lh-base {
+  line-height: var(--nv-line-height-base) !important;
+} /* 1.6 */
+.nv-lh-lg {
+  line-height: 2 !important;
+}
+
+/* Monospace Font */
+.nv-font-monospace {
+  font-family: var(--nv-font-family-mono) !important;
+}
+
+/* -------------------------------------------------------------------------- */
+/* 4. Basic Components (Examples - Build upon these)                          */
+/* -------------------------------------------------------------------------- */
+
+/* Buttons */
+.nv-btn {
+  display: inline-block;
+  font-weight: var(--nv-font-weight-base);
+  line-height: var(--nv-line-height-base);
+  color: var(--nv-body-color); /* Default text color */
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  background-color: transparent;
+  border: 1px solid transparent; /* Base border */
+  padding: var(--spacing-s) var(--spacing-l); /* Base padding (8px 16px) */
+  font-size: var(--nv-font-size-base);
+  border-radius: var(--radius);
+  transition: var(--nv-transition-base);
+}
+
+/* No outline/shadow already handled by global reset */
+/* Focus state relies on :focus-visible or color changes */
+
+/* Primary Button */
+.nv-btn-primary {
+  color: var(--nv-color-white);
+  background-color: var(--nv-color-primary-base);
+  border-color: var(--nv-color-primary-base);
+}
+.nv-btn-primary:hover {
+  color: var(--nv-color-white);
+  background-color: var(--nv-color-primary-dark);
+  border-color: var(--nv-color-primary-dark);
+}
+.nv-btn-primary:focus,
+.nv-btn-primary.nv-focus {
+  /* Add .nv-focus for programmatic focus */
+  color: var(--nv-color-white);
+  background-color: var(--nv-color-primary-dark);
+  border-color: var(--nv-color-primary-darker);
+  /* Optional: Use the focus-visible box-shadow if needed */
+  /* box-shadow: 0 0 0 2px rgba(var(--nv-color-primary-base-rgb, 13 110 253) / 0.4); */
+}
+.nv-btn-primary:active,
+.nv-btn-primary.nv-active {
+  color: var(--nv-color-white);
+  background-color: var(--nv-color-primary-darker);
+  border-color: var(--nv-color-primary-darker);
+}
+.nv-btn-primary:disabled,
+.nv-btn-primary.nv-disabled {
+  color: var(--nv-color-white);
+  background-color: var(--nv-color-primary-light);
+  border-color: var(--nv-color-primary-light);
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+/* Secondary Button (Example using gray) */
+.nv-btn-secondary {
+  color: var(--nv-color-white);
+  background-color: var(--nv-color-secondary-base);
+  border-color: var(--nv-color-secondary-base);
+}
+.nv-btn-secondary:hover {
+  color: var(--nv-color-white);
+  background-color: var(--nv-color-secondary-dark);
+  border-color: var(--nv-color-secondary-dark);
+}
+/* ... add focus, active, disabled states similarly */
+
+/* Ghost/Outline Style Button (Example) */
+.nv-btn-ghost-primary {
+  color: var(--nv-color-primary-base);
+  border-color: var(--nv-color-primary-base);
+  background-color: transparent;
+}
+.nv-btn-ghost-primary:hover {
+  color: var(--nv-color-white);
+  background-color: var(--nv-color-primary-base);
+  border-color: var(--nv-color-primary-base);
+}
+/* ... add focus, active, disabled states similarly */
+
+/* --- Add other button colors (success, danger, etc.) following the same pattern --- */
+
+/* Button Sizes */
+.nv-btn-sm {
+  padding: var(--spacing-xs) var(--spacing-s); /* 4px 8px */
+  font-size: var(--nv-fs-sm); /* 0.875rem */
+  border-radius: var(--radius-m);
+}
+.nv-btn-lg {
+  padding: var(--spacing-m) var(--spacing-xl); /* 12px 20px */
+  font-size: var(--nv-fs-4); /* 1.25rem */
+  border-radius: var(--radius-l);
+}
+
+/* Alerts (Example) */
+.nv-alert {
+  position: relative;
+  padding: var(--spacing-l); /* 1rem */
+  margin-bottom: var(--spacing-l); /* 1rem */
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+}
+
+.nv-alert-primary {
+  color: var(--nv-color-primary-darker);
+  background-color: var(--nv-color-primary-lightest);
+  border-color: var(--nv-color-primary-lighter);
+}
+/* Add link styling within alerts */
+.nv-alert-primary .nv-alert-link {
+  color: var(--nv-color-primary-darkest);
+  font-weight: var(--nv-fw-bold);
+}
+
+.nv-alert-secondary {
+  color: var(--nv-color-secondary-darker);
+  background-color: var(--nv-color-secondary-lightest);
+  border-color: var(--nv-color-secondary-lighter);
+}
+.nv-alert-secondary .nv-alert-link {
+  /* ... */
+}
+
+/* --- Add success, danger, warning, info alerts following the pattern --- */
+
+/* Cards (Example using utilities) */
+/* No specific .nv-card class needed, compose with utilities: */
+/* Example: <div class="nv-border nv-rounded nv-p-5 nv-mb-5">...</div> */
+/* Or define a convenience class if preferred: */
+.nv-card {
+  border: 1px solid var(--nv-color-gray-300);
+  border-radius: var(--radius-l); /* Use larger radius for cards */
+  background-color: var(--nv-color-white);
+  /* Add padding/margin via utilities: nv-p-*, nv-m-* */
+}
+.nv-card-body {
+  padding: var(--spacing-xl); /* Example default padding */
+}
+.nv-card-header {
+  padding: var(--spacing-l) var(--spacing-xl);
+  margin-bottom: 0; /* Reset heading margin */
+  background-color: var(--nv-color-gray-100);
+  border-bottom: 1px solid var(--nv-color-gray-300);
+  border-top-left-radius: inherit; /* Inherit from .nv-card */
+  border-top-right-radius: inherit;
+}
+.nv-card-footer {
+  padding: var(--spacing-l) var(--spacing-xl);
+  background-color: var(--nv-color-gray-100);
+  border-top: 1px solid var(--nv-color-gray-300);
+  border-bottom-left-radius: inherit;
+  border-bottom-right-radius: inherit;
+}
+
+/* -------------------------------------------------------------------------- */
+/* 5. Helper Classes                                                          */
+/* -------------------------------------------------------------------------- */
+
+.nv-clearfix::after {
+  display: block;
+  clear: both;
+  content: "";
+}
+
+/* Screen Reader Only */
+.nv-sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+.nv-sr-only-focusable:active,
+.nv-sr-only-focusable:focus {
+  position: static !important;
+  width: auto !important;
+  height: auto !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  overflow: visible !important;
+  clip: auto !important;
+  white-space: normal !important;
+}
+
+/* In section 5. Helper Classes */
+.nv-list-unstyled {
+  padding-left: 0;
+  list-style: none;
+}
+
+/* Add Width Utilities (Example) */
+.nv-w-25 {
+  width: 25% !important;
+}
+.nv-w-50 {
+  width: 50% !important;
+}
+.nv-w-75 {
+  width: 75% !important;
+}
+.nv-w-100 {
+  width: 100% !important;
+}
+.nv-w-auto {
+  width: auto !important;
+}
+
+/* Add Height Utilities (Example) */
+.nv-h-25 {
+  height: 25% !important;
+}
+.nv-h-50 {
+  height: 50% !important;
+}
+.nv-h-75 {
+  height: 75% !important;
+}
+.nv-h-100 {
+  height: 100% !important;
+}
+.nv-h-auto {
+  height: auto !important;
+}
+
+/* Viewport Height */
+.nv-vh-100 {
+  height: 100vh !important;
+}
+
+/* Add missing Button styles (copy pattern from nv-btn-primary) */
+.nv-btn-success {
+  /* ... */
+}
+.nv-btn-success:hover {
+  /* ... */
+}
+/* ... focus, active, disabled states */
+
+.nv-btn-danger {
+  /* ... */
+}
+/* ... etc ... */
+
+.nv-btn-warning {
+  /* ... */
+}
+/* ... etc ... */
+
+.nv-btn-info {
+  /* ... */
+}
+/* ... etc ... */
+
+.nv-btn-light {
+  color: var(--nv-color-black);
+  background-color: var(--nv-color-gray-200);
+  border-color: var(--nv-color-gray-300);
+}
+.nv-btn-light:hover {
+  color: var(--nv-color-black);
+  background-color: var(--nv-color-gray-300);
+  border-color: var(--nv-color-gray-400);
+}
+/* ... focus, active, disabled states */
+
+.nv-btn-dark {
+  color: var(--nv-color-white);
+  background-color: var(--nv-color-gray-800);
+  border-color: var(--nv-color-gray-800);
+}
+.nv-btn-dark:hover {
+  color: var(--nv-color-white);
+  background-color: var(--nv-color-gray-900);
+  border-color: var(--nv-color-gray-900);
+}
+/* ... focus, active, disabled states */
+
+.nv-btn-link {
+  font-weight: 400;
+  color: var(--nv-color-primary-base);
+  text-decoration: none; /* Typically underline on hover only */
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.nv-btn-link:hover {
+  color: var(--nv-color-primary-dark);
+  text-decoration: underline;
+}
+/* ... focus (maybe subtle background?), active, disabled states */
+
+/* Add missing Ghost Button styles (copy pattern) */
+.nv-btn-ghost-secondary {
+  /* ... */
+}
+/* ... etc ... */
+
+/* Add missing Alert styles (copy pattern) */
+.nv-alert-success {
+  /* ... */
+}
+.nv-alert-danger {
+  /* ... */
+}
+.nv-alert-warning {
+  /* ... */
+}
+.nv-alert-info {
+  /* ... */
+}
+.nv-alert-light {
+  color: var(--nv-color-gray-700);
+  background-color: var(--nv-color-gray-100);
+  border-color: var(--nv-color-gray-200);
+}
+.nv-alert-light .nv-alert-link {
+  /* ... */
+}
+
+.nv-alert-dark {
+  color: var(--nv-color-gray-300);
+  background-color: var(--nv-color-gray-800);
+  border-color: var(--nv-color-gray-700);
+}
+.nv-alert-dark .nv-alert-link {
+  /* ... */
+}
+/* END Nova UI */
